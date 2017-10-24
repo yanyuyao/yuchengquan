@@ -1,0 +1,287 @@
+[ 2017-10-24T14:07:29+08:00 ] 127.0.0.1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ycq_hooks` [ RunTime:0.1230s ]
+SQL: SELECT `name`,`addons` FROM `ycq_hooks`  [ RunTime:0.0980s ]
+SQL: SHOW COLUMNS FROM `ycq_addons` [ RunTime:0.0970s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('ReturnTop')  [ RunTime:0.0930s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('Attachment')  [ RunTime:0.0980s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('Attachment','SocialComment')  [ RunTime:0.1020s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('Attachment')  [ RunTime:0.0930s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('Editor')  [ RunTime:0.0940s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('EditorForAdmin')  [ RunTime:0.0940s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('SiteStat','SystemInfo','DevTeam')  [ RunTime:0.0940s ]
+SQL: SELECT `id`,`name` FROM `ycq_addons` WHERE `status` = 1 AND `name` IN ('Editor')  [ RunTime:0.0960s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.427081s ]
+INFO: [ app_init ] --END-- [ RunTime:1.428081s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:30+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ycq_config` [ RunTime:0.1010s ]
+SQL: SELECT `type`,`name`,`value` FROM `ycq_config` WHERE `status` = 1  [ RunTime:0.0970s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:33+08:00 ] 127.0.0.1 /admin.php?s=/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:39+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:39+08:00 ] 127.0.0.1 /admin.php?s=/Public/verify.html&random=0.5087427611288533
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:46+08:00 ] 127.0.0.1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: lite D:\github\yuchengquan\sources\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `ycq_member` [ RunTime:0.0960s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `ycq_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0980s ]
+SQL: SHOW COLUMNS FROM `ycq_action` [ RunTime:0.0950s ]
+SQL: SELECT * FROM `ycq_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `ycq_member` [ RunTime:0.0950s ]
+SQL: SELECT `nickname` FROM `ycq_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `ycq_action_log` [ RunTime:0.1020s ]
+SQL: INSERT INTO `ycq_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES ('1','1','2130706433','member','1','1508825264','admin在2017-10-24 14:07登录了后台') [ RunTime:0.0970s ]
+SQL: SELECT * FROM `ycq_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0950s ]
+NOTIC: [8] Undefined offset: 1 D:\github\yuchengquan\sources\Application\Common\Common\function.php 第 679 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given D:\github\yuchengquan\sources\Application\Common\Common\function.php 第 679 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_action_log` WHERE `action_id` = 1 AND `user_id` = 1 AND `create_time` > 1508738864 LIMIT 1   [ RunTime:0.0990s ]
+SQL: UPDATE `ycq_member` SET `score`=score+10 WHERE ( uid=1 AND status>-1 ) [ RunTime:0.0980s ]
+SQL: UPDATE `ycq_member` SET `login`=`login`+1,`last_login_time`='1508825264',`last_login_ip`='2130706433' WHERE `uid` = 1 [ RunTime:0.0940s ]
+
+[ 2017-10-24T14:07:48+08:00 ] 127.0.0.1 /admin.php?s=/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ycq_menu` [ RunTime:0.0950s ]
+SQL: SELECT `id`,`title`,`url` FROM `ycq_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1030s ]
+SQL: SELECT `pid` FROM `ycq_menu` WHERE ( pid !=0 AND url like '%Index/index%' ) LIMIT 1   [ RunTime:0.0940s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `ycq_addons` [ RunTime:0.1090s ]
+SQL: SELECT `config` FROM `ycq_addons` WHERE `name` = 'SiteStat' AND `status` = 1 LIMIT 1   [ RunTime:0.0930s ]
+SQL: SHOW COLUMNS FROM `ycq_member` [ RunTime:0.0990s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_member` LIMIT 1   [ RunTime:0.0970s ]
+SQL: SHOW COLUMNS FROM `ycq_action_log` [ RunTime:0.0970s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_action_log` LIMIT 1   [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `ycq_document` [ RunTime:0.0940s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_document` LIMIT 1   [ RunTime:0.0920s ]
+SQL: SHOW COLUMNS FROM `ycq_category` [ RunTime:0.0990s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_category` LIMIT 1   [ RunTime:0.0930s ]
+SQL: SHOW COLUMNS FROM `ycq_model` [ RunTime:0.0940s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_model` LIMIT 1   [ RunTime:0.0920s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-1.210069s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Addons\SiteStat\SiteStatAddon [ RunTime:1.172067s ]
+SQL: SELECT `config` FROM `ycq_addons` WHERE `name` = 'SystemInfo' AND `status` = 1 LIMIT 1   [ RunTime:0.0940s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-1.470084s ]
+SQL: select version() as v; [ RunTime:0.1090s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.224013s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.251015s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.475028s ]
+INFO: Run Addons\SystemInfo\SystemInfoAddon [ RunTime:0.474028s ]
+SQL: SELECT `config` FROM `ycq_addons` WHERE `name` = 'DevTeam' AND `status` = 1 LIMIT 1   [ RunTime:0.0930s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-1.790102s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.572033s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.578033s ]
+INFO: Run Addons\DevTeam\DevTeamAddon [ RunTime:0.103005s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:1.750100s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.572033s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.579034s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-10-24T14:07:48+08:00 ] 127.0.0.1 /admin.php?s=/Public/verify.html&random=0.5590586478244592
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-10-24T14:07:53+08:00 ] 127.0.0.1 /admin.php?s=/Article/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ycq_menu` [ RunTime:0.0950s ]
+SQL: SELECT `id`,`title`,`url` FROM `ycq_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0950s ]
+SQL: SELECT `pid` FROM `ycq_menu` WHERE ( pid !=0 AND url like '%Article/index%' ) LIMIT 1   [ RunTime:0.1020s ]
+SQL: SELECT * FROM `ycq_menu` WHERE `id` = 2 LIMIT 1   [ RunTime:0.1000s ]
+SQL: SELECT DISTINCT  `group` FROM `ycq_menu` WHERE `group` <> '' AND `pid` = 2  [ RunTime:0.0960s ]
+SQL: SELECT `id`,`url` FROM `ycq_menu` WHERE `pid` = 2 AND `hide` = 0  [ RunTime:0.0960s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ycq_menu` WHERE `group` = '内容' AND `pid` = 2 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1010s ]
+SQL: SHOW COLUMNS FROM `ycq_auth_group_access` [ RunTime:0.0990s ]
+SQL: SELECT `extend_id` FROM ycq_auth_group_access g INNER JOIN ycq_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `ycq_category` [ RunTime:0.0950s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `ycq_category` WHERE `status` = 1 ORDER BY pid,sort  [ RunTime:0.0930s ]
+SQL: SHOW COLUMNS FROM `ycq_model` [ RunTime:0.0950s ]
+SQL: SELECT * FROM `ycq_model` WHERE `name` = 'document' LIMIT 1   [ RunTime:0.0990s ]
+SQL: SHOW COLUMNS FROM `ycq_document` [ RunTime:0.1010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ycq_document DOCUMENT WHERE `status` IN ('0','1','2') AND `pid` = 0 LIMIT 1   [ RunTime:0.0960s ]
+SQL: SELECT `id`,`title`,`type`,`update_time`,`status`,`view`,`category_id`,`model_id`,`pid` FROM ycq_document DOCUMENT WHERE `status` IN ('0','1','2') AND `pid` = 0 ORDER BY level DESC,DOCUMENT.id DESC LIMIT 0,10   [ RunTime:0.0930s ]
+SQL: SELECT `extend` FROM `ycq_model` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0960s ]
+SQL: SHOW COLUMNS FROM `ycq_attribute` [ RunTime:0.0940s ]
+SQL: SELECT `id`,`name`,`type`,`extra` FROM `ycq_attribute` WHERE `model_id` = 1  [ RunTime:0.1000s ]
+NOTIC: [8] Undefined variable: groups D:\github\yuchengquan\sources\Application\Admin\Controller\ArticleController.class.php 第 231 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.103006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.104006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-10-24T14:07:56+08:00 ] 127.0.0.1 /admin.php?s=/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ycq_menu` [ RunTime:0.1050s ]
+SQL: SELECT `id`,`title`,`url` FROM `ycq_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1000s ]
+SQL: SELECT `pid` FROM `ycq_menu` WHERE ( pid !=0 AND url like '%User/index%' ) LIMIT 1   [ RunTime:0.0970s ]
+SQL: SELECT * FROM `ycq_menu` WHERE `id` = 16 LIMIT 1   [ RunTime:0.0980s ]
+SQL: SELECT DISTINCT  `group` FROM `ycq_menu` WHERE `group` <> '' AND `pid` = 16  [ RunTime:0.0960s ]
+SQL: SELECT `id`,`url` FROM `ycq_menu` WHERE `pid` = 16 AND `hide` = 0  [ RunTime:0.0960s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ycq_menu` WHERE `group` = '用户管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0960s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ycq_menu` WHERE `group` = '行为管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0960s ]
+SQL: SHOW COLUMNS FROM `ycq_member` [ RunTime:0.0970s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ycq_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' LIMIT 1   [ RunTime:0.0950s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `ycq_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' ORDER BY uid desc LIMIT 0,10   [ RunTime:0.1050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.280016s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.280016s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-10-24T14:07:59+08:00 ] 127.0.0.1 /admin.php?s=/Config/group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ycq_menu` [ RunTime:0.0970s ]
+SQL: SELECT `id`,`title`,`url` FROM `ycq_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1000s ]
+SQL: SELECT `pid` FROM `ycq_menu` WHERE ( pid !=0 AND url like '%Config/group%' ) LIMIT 1   [ RunTime:0.0960s ]
+SQL: SELECT * FROM `ycq_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.1000s ]
+SQL: SELECT DISTINCT  `group` FROM `ycq_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.1250s ]
+SQL: SELECT `id`,`url` FROM `ycq_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0970s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ycq_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ycq_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.1140s ]
+SQL: SHOW COLUMNS FROM `ycq_config` [ RunTime:0.1000s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ycq_config` WHERE `status` = 1 AND `group` = 1 ORDER BY sort  [ RunTime:0.1000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.181011s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.181011s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
