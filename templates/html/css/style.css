@@ -1,0 +1,475 @@
+*{
+	font-family:"微软雅黑";
+}
+body{
+	margin:0;
+	font-size:17px;
+}
+a{
+	text-decoration:none;
+}
+input{
+	padding:0;
+	border:none;
+}
+.red{
+	color:#B6090F;
+}
+.green{
+	color:#13F20F;
+}
+.middleline8{
+	width:100%; height:8px; background-color:#f2f2f2;
+}
+
+
+
+
+
+/* index 首页样式 */
+.index-body{
+	width:100%;
+	height:100%;
+	background-image:url(../img/index-bg.jpg);
+	background-size:100%;
+	background-position:center;
+	display:flex;
+	display: -webkit-flex; /* Safari */
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+}
+.index-button{
+	width:200px;
+	height:50px;
+	line-height:50px;
+	background-color:#B6090F;
+	color:#fff;
+	margin:0 auto 80px;
+	border:none;
+	font-size:20px;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+}
+.index-footer{
+	position:absolute;
+	bottom:10px;
+	left:0;
+	right:0;
+}
+.index-footer img{
+	width:40%;
+}
+
+
+
+
+
+/* task 任务页面样式 */
+.task-single{
+	width:455px;
+	height:100px;
+	color:#000;
+	border-bottom:1px solid #ccc;
+	padding:0 10px;
+}
+.task-single-right{
+	float:right;
+	width:90px;
+	height:100%;
+	display:flex;
+	display: -webkit-flex;
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+}
+.task-single-right-button{
+	font-size:19px;
+	color:#fff;
+	padding:5px;
+	background-color:#f96306;
+	text-align:center;
+	border-radius:10px; 
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+}
+.task-single-right-remark{
+	font-size:14px; margin-top:10px;
+}
+.task-single-right-remark img{
+	width:20px; 
+	vertical-align:middle; 
+	margin:-3px 3px 0 0;
+}
+.task-single-textk{
+	display:flex;
+	display: -webkit-flex;
+	flex-direction:column;
+	justify-content:center;
+	height:100%;
+	padding:0 10px 0 5px;
+}
+.task-single-text{
+	overflow:hidden;
+	text-overflow: ellipsis;
+    -webkit-line-clamp:3;
+	display:-webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+
+
+
+
+/* editinfo 完善/修改个人信息*/
+.editinfo-bt{
+	line-height:60px;
+	text-align:center;
+	font-size:22px;
+}
+.editinfo-input{
+	width:395px;
+	padding:10px 40px;
+}
+.editinfo-inputsingle{
+	line-height:50px;
+	border-bottom:1px solid #f2f2f2;
+	font-size:20px;
+}
+.editinfo-inputsingle input{
+	border:none; 
+	line-height:30px;
+	font-size:18px;
+	padding-left:5px;
+}
+.editinfo-inputsingle textarea{
+	width:100%;
+	border:none;
+	height:100px;
+	font-size:17px;
+	padding:7px;
+}
+.editinfo-skill{
+	width:455px;
+	padding:0 10px;
+}
+.editinfo-skill-bt{
+	width:435px;
+	padding:10px;
+	font-size:20px;
+}
+.editinfo-skill-single{
+	width:69px;
+	height:69px;
+	margin:10px;
+	float:left;
+	border:1px solid #ccc;
+	border-radius:35px;
+	-webkit-border-radius:35px;
+	-moz-border-radius:35px;
+	line-height:71px;
+	white-space:nowrap;
+	text-align:center;
+}
+.editinfo-skill-single.active{
+	color:#fff;
+	background-color:#B6090F;
+}
+.editinfo-submit{
+	width:100%;
+	text-align:center;
+}
+.editinfo-submit input{
+	width:300px; 
+	height:45px;
+	background-color:#b6090f;
+	color:#fff;
+	font-size:18px;
+	border:none;
+	margin-top:30px;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+.editinfo-skill-tips{
+	width:425px;
+	padding:10px 15px;
+	font-size:13px;
+	line-height:20px;
+	color:#333;
+	text-align:left;
+	border:1px solid #ccc;
+}
+.editinfo-skill-tips img{
+	width:35px;
+	height:35px;
+	float:left;
+	margin-right:5px;
+}
+.editinfo-logo{
+	width:100%;
+	text-align:center;
+}
+.editinfo-logo img{
+	width:170px;
+	margin-top:50px;
+}
+
+
+
+
+
+
+
+/* taskinfo 任务详情页面*/
+.taskinfo-bt{
+	line-height:60px;
+	font-size:22px;
+	width:440px;
+	margin-left:35px;
+	position:relative;
+}
+.taskinfo-bt-right{
+	position:absolute;
+	right:10px;
+	font-size:16px;
+}
+.taskinfo-bt-right img{
+	width:35px;
+	height:25px;
+	vertical-align:middle;
+	margin-top:-5px;
+}
+.taskinfo-bt-right2{
+	position:absolute;
+	right:170px;
+	font-size:17px;
+}
+.taskinfo-task{
+	width:435px;
+	margin:0 20px;
+	text-indent:2em;
+}
+input.taskinfo-task-contact{
+	width:150px;
+	height:35px;
+	background-color:#f96306;
+	color:#fff;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+.taskinfo-tips{
+	width:455px;
+	padding:15px 10px;
+}
+
+
+
+
+
+
+/* person 个人中心页面 */
+.person-head{
+	width:100%;
+	padding:10px 0;
+}
+.person-head-left{
+	width:150px;
+	text-align:center;
+	float:left;
+	padding-top:10px;
+}
+.person-head-left img{
+	width:100px;
+	height:100px;
+	border-radius:50px;
+	-webkit-border-radius:50px;
+	-moz-border-radius:50px;
+	border:1px solid #ccc;
+}
+.person-head-right{
+	width:320px;
+	float:right;
+}
+.person-head-right img{
+	width:23px;
+	height:23px;
+	vertical-align:middle;
+	margin-top:-3px;
+	margin-right:5px;
+}
+.person-head-right-up{
+	margin-left:20px;
+	font-size:15px;
+}
+.person-list{
+	width:420px;
+	padding:20px 27.5px;
+}
+.person-list-single{
+	width:108px;
+	height:108px;
+	margin:10px 15px;
+	border:1px solid #ccc;
+	float:left;
+	color:#000;
+	border-radius:54px;
+	-webkit-border-radius:54px;
+	-moz-border-radius:54px;
+	display:flex;
+	display: -webkit-flex;
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+}
+.pop-box{
+	width:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	display:none;
+}
+.pop-zhezhao{
+	width:100%;
+	height:100%;
+	background-color:#000;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+.pop{
+	width:325px;
+	position:absolute;
+	top:145px;
+	left:75px;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	background-color:#fff;
+	text-align:center;
+}
+.pop h3{
+	font-size:20px;	
+}
+.pop-tixianinput{
+	width:200px;
+	height:40px;
+	line-height:40px;
+	padding:0 8px;
+	border:1px solid #ccc;
+	font-size:17px;
+}
+.pop-button-k{
+	margin-top:30px;
+	border-top:1px solid #ccc;
+	line-height:50px;
+}
+.pop-button1{
+	width:162px;
+	border-right:1px solid #ccc;
+	float:left;
+}
+.pop-button2{
+	width:162px;
+	float:right;
+}
+
+
+
+
+
+
+
+
+
+
+/* upgrade 账户升级页面 */
+.up-single{
+	width:405px;
+	margin:30px 35px;
+	line-height:40px;
+}
+.up-single-center{
+	margin-left:70px;
+}
+.up-single input{
+	width:100px;
+	height:40px;
+	background-color:#b6090f;
+	color:#fff;
+	float:right;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+.up-tips{
+	width:423px;
+	margin:40px 25px;
+	padding:20px 0;
+	text-align:center;
+	border:1px solid #ccc;
+}
+
+
+
+
+
+/* releasetask 发布任务页面 */
+.releasetask-number{
+	width:70px;
+	line-height:30px;
+	height:30px;
+	border-bottom:1px solid #ccc;
+	text-align:center;
+	font-size:17px;
+}
+.releasetask-text{
+	width:310px;
+	line-height:30px;
+	height:30px;
+	border-bottom:1px solid #ccc;
+}
+.releasetask-textarea{
+	width:370px;
+	height:100px;
+	margin-left:1px;
+	font-size:17px;
+	padding:7px;
+}
+.releasetask-employee{
+	width:100%;
+	margin-top:50px;
+}
+.vip-icon{
+	width:23px;
+	height:23px;
+	vertical-align:middle;
+	margin-top:-3px;
+	margin-right:5px;
+	margin-left:5px;
+}
+
+
+
+
+
+
+/* employee-info 雇员信息页面 */
+.employee-info-nav2{
+	width:415px;
+	padding:15px 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
