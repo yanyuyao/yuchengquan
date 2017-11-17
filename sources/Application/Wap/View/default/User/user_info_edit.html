@@ -1,0 +1,55 @@
+<include file="Public/head-home"/>
+	<div class="editinfo-bt">
+    	请完善个人信息：
+    </div>
+    <div class="middleline8"></div>
+    <div class="editinfo-input">
+    	<div class="editinfo-inputsingle">
+        	姓名：<input type="text" placeholder="请输入姓名">
+    	</div>
+        <div class="editinfo-inputsingle">
+        	性别：<input name="sex" type="radio" value="男">男 <input name="sex" type="radio" value="女">女
+    	</div>
+        <div class="editinfo-inputsingle">
+        	电话：<input type="tel" maxlength="11" placeholder="请输入联系电话">
+    	</div>
+        <div class="editinfo-inputsingle">
+        	<textarea placeholder="个人评价"></textarea>
+        </div>
+    </div>
+    <!--skill start-->
+    <div class="editinfo-skill">
+    	<div class="editinfo-skill-bt">技能</div>
+        <div class="editinfo-skill-single">建筑</div>
+        <div class="editinfo-skill-single">维修</div>
+        <div class="editinfo-skill-single">普工</div>
+        <div class="editinfo-skill-single">木工</div>
+        <div class="editinfo-skill-single">司机</div>
+        <div class="editinfo-skill-single">园林绿化</div>
+        <div class="editinfo-skill-single">农活</div>
+        <div class="editinfo-skill-single">销售</div>
+        <div class="editinfo-skill-single">零活</div>
+        <div class="editinfo-skill-single">其他</div>
+        <div style="clear:both;"></div>
+        <div class="editinfo-skill-tips">
+        	<img src="__IMG__/tips.png">技能可多选，最多选取5个，虚假技能信息客户投诉会影响您的信用积分，请谨慎选择
+        </div>
+    </div>
+    <!--skill end-->
+    <div class="editinfo-submit">
+    	<input type="button" value="提交信息">
+    </div>
+    
+	
+    <script src="js/jquery-2.1.4.js"></script>
+    <script>
+		$(".editinfo-skill-single").click(function(){
+			if($(this).hasClass("active")){
+				$(this).removeClass("active");
+			}else if($(".editinfo-skill-single.active").length<=4){
+				$(this).addClass("active");
+			}
+		})
+	</script>
+
+<include file="Public/footer"/>
