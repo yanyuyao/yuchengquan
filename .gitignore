@@ -1,3 +1,8 @@
 
 sources/Application/User/Conf/config.php
 sources/Application/Common/Conf/config.php
+*.log
+sources/Runtime/Cache/*
+sources/Runtime/Logs/*
+sources/Runtime/Temp/*
+*.zip

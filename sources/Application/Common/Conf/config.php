@@ -36,11 +36,11 @@ return array(
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysql', // 数据库类型
-    'DB_HOST'   => 'xxxx', // 服务器地址
-    'DB_NAME'   => 'xxxx', // 数据库名
-    'DB_USER'   => 'xxxx', // 用户名
-    'DB_PWD'    => 'xxxx',  // 密码
-    'DB_PORT'   => 'xxxx', // 端口
+    'DB_HOST'   => '47.88.227.140', // 服务器地址
+    'DB_NAME'   => 'yuchengquan', // 数据库名
+    'DB_USER'   => 'root', // 用户名
+    'DB_PWD'    => 'rootran',  // 密码
+    'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'ycq_', // 数据库表前缀
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
