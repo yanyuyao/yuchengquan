@@ -18,14 +18,13 @@ class UserController extends HomeController {
 
 	/* 用户中心首页 */
 	public function index(){
-		
 	}
 	public function center(){
 		$usertype = "user";
 		if($usertype == 'user'){
 			$this->display('user_center');
 		}else if($usertype == 'employer'){
-			$this->display('user_employer');
+			$this->display('employer_center');
 		}
 	}
 	//会员主页

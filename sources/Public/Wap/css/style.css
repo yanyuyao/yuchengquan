@@ -292,6 +292,7 @@ input.taskinfo-task-contact{
 .person-head-right{
 	width:320px;
 	float:right;
+	margin-top:10px;
 }
 .person-head-right img{
 	width:23px;
@@ -309,9 +310,9 @@ input.taskinfo-task-contact{
 	padding:20px 27.5px;
 }
 .person-list-single{
-	width:108px;
-	height:108px;
-	margin:10px 15px;
+	width:100px;
+	height:100px;
+	margin:10px 19px;
 	border:1px solid #ccc;
 	float:left;
 	color:#000;
