@@ -3,7 +3,9 @@
 }
 body{
 	margin:0;
+	padding-bottom:69px;
 	font-size:17px;
+	background-color:#fff;
 }
 a{
 	text-decoration:none;
@@ -61,12 +63,49 @@ input{
 .index-footer img{
 	width:40%;
 }
+.index-task{
+	padding:30px;
+	background-color:#f2f2f2;
+}
+.index-task-single{
+	
+}
+
 
 
 
 
 
 /* task 任务页面样式 */
+.task-filter{
+	width:100%;
+}
+.task-filter ul{
+	margin:0;
+	padding:0;
+	width:100%;
+	line-height:50px;
+}
+.task-filter ul li{
+	width:158px;
+	float:left;
+	text-align:center;
+	list-style:none;
+	border-bottom:10px solid #f2f2f2;
+}
+.task-filter ul li.center{
+	width:155px;
+	border-left:2px solid #f2f2f2;
+	border-right:2px solid #f2f2f2;
+}
+.task-filter-select{
+	width:80%;
+	border:none;
+	margin:0 10%;
+}
+.task-list{
+	padding-top:60px;
+}
 .task-single{
 	width:455px;
 	height:100px;

@@ -1,10 +1,59 @@
 <include file="Public/head-home"/>
-	<div class="index-body">
-        <a href=""><input class="index-button" type="button" value="我要兼职"></a>
-        <a href=""><input class="index-button" type="button" value="我是雇主"></a>
-        <footer class="index-footer">
-        	<img src="__IMG__/logo.png">
-        </footer>
+<link rel="stylesheet" href="__CSS__/swiper.min.css">
+	<style>
+    .swiper-container {
+        width:100%;
+        height: 200px;
+        margin: 0 auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    </style>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">禹城智达电子商务有限公司</div>
+			<div class="swiper-slide">禹城智达电子商务有限公司</div>
+			<div class="swiper-slide">禹城智达电子商务有限公司</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<div class="person-list">
+    	<a href="/wap.php?s=/Job/index"><div class="person-list-single">兼职</div></a>
+		<a href="/wap.php?s=/Job/pushjob"><div class="person-list-single">招人</div></a>
+        <a href="/wap.php?s=/Job/index"><div class="person-list-single">全职</div></a>
+        <div style="clear:both;"></div>
     </div>
+	<div class="index-task">
+		<div class="index-task-single">
+			
+		</div>
+		<div class="index-task-single">
+			
+		</div>
+	</div>
 <include file="Public/footer"/>
-
+<script src="__JS__/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween:0
+    });
+</script>
