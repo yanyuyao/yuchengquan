@@ -6,19 +6,29 @@
         height: 200px;
         margin: 0 auto;
     }
+	.swiper-container3 {
+        width:100%;
+        height: 80px;
+        margin:-20px auto 0;
+    }
+	.swiper-slide img{
+		width:100%;
+		height:100%;
+	}
     </style>
 	<div class="swiper-container swiper-container1">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">禹城智达电子商务有限公司</div>
-			<div class="swiper-slide">禹城智达电子商务有限公司</div>
-			<div class="swiper-slide">禹城智达电子商务有限公司</div>
+			<div class="swiper-slide"><img src="__IMG__/index-banner1.jpg"></div>
+			<div class="swiper-slide"><img src="__IMG__/index-banner2.jpg"></div>
+			<div class="swiper-slide"><img src="__IMG__/index-banner3.jpg"></div>
 		</div>
-		<div class="swiper-pagination"></div>
+		<div class="swiper-pagination swiper-pagination1"></div>
 	</div>
 	<div class="person-list">
-    	<a href="/wap.php?s=/Job/index"><div class="person-list-single">兼职</div></a>
-		<a href="/wap.php?s=/Job/pushjob"><div class="person-list-single">招人</div></a>
-        <a href="/wap.php?s=/Job/index"><div class="person-list-single">全职</div></a>
+    	<a href="/wap.php?s=/Job/index"><div class="index-dh-single">兼职</div></a>
+		<a href="/wap.php?s=/Job/pushjob"><div class="index-dh-single">招人</div></a>
+        <a href="/wap.php?s=/Job/index"><div class="index-dh-single">全职</div></a>
+		<a href="/wap.php?s=/Job/index"><div class="index-dh-single">出租</div></a>
         <div style="clear:both;"></div>
     </div>
 	<div class="index-task">
@@ -128,11 +138,19 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+	<div class="swiper-container swiper-container3">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"><img src="__IMG__/logo-text.jpg"></div>
+			<div class="swiper-slide"><img src="__IMG__/logo-text.jpg"></div>
+			<div class="swiper-slide"><img src="__IMG__/logo-text.jpg"></div>
+		</div>
+		<div class="swiper-pagination swiper-pagination3"></div>
+	</div>
 <include file="Public/footer"/>
 <script src="__JS__/swiper.min.js"></script>
 <script>
     var swiper = new Swiper('.swiper-container1', {
-        pagination: '.swiper-pagination',
+        pagination: '.swiper-pagination1',
         paginationClickable: true,
         spaceBetween:0
     });
@@ -143,5 +161,10 @@
 		autoplay:900,
 		freeMode : true,
 	    autoplayDisableOnInteraction : false
+    });
+	var swiper = new Swiper('.swiper-container3', {
+        pagination: '.swiper-pagination3',
+        paginationClickable: true,
+        spaceBetween:0
     });
 </script>
