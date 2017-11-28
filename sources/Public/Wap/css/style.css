@@ -64,15 +64,34 @@ input{
 	width:40%;
 }
 .index-task{
-	padding:30px;
+	padding:30px 0;
 	background-color:#f2f2f2;
 }
-.index-task-single{
-	
+.index-task-k{
+	width:415px;
+	height:230px;
+	margin-left:15px;
+	margin-bottom:30px;
+	background-color:#fff;
+	box-shadow:2px 2px 3px #ccc;
+	padding:10px 15px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	overflow:hidden;
 }
-
-
-
+.index-task-k .swiper-slide{
+	border-bottom:2px solid #f2f2f2;
+	padding:5px 0;
+}
+.index-task-single-line{
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.index-task-li-right{
+	float:right;
+}
 
 
 
