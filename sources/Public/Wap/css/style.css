@@ -98,7 +98,9 @@ input{
 	margin:10px 10.5px;
 	border:1px solid #ccc;
 	float:left;
-	color:#000;
+	color:#fff;
+	font-size:23px;
+	background-color:#b6090f;
 	border-radius:40px;
 	-webkit-border-radius:40px;
 	-moz-border-radius:40px;
