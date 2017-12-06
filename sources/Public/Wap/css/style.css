@@ -133,6 +133,9 @@ input{
 .bgpink{
 	background-color:#FFC0CB;
 }
+.bgred{
+	background-color:red;
+}
 .index-task-single-address{
 	font-size:14px;
 	line-height:25px;
@@ -202,11 +205,11 @@ input{
 	padding-top:60px;
 }
 .task-single{
-	width:455px;
+	width:435px;
 	height:100px;
 	color:#000;
-	border-bottom:2px solid #f2f2f2;
-	padding:0 10px;
+	border-bottom:5px solid #f2f2f2;
+	padding:10px 20px 0;
 }
 .task-single-right{
 	float:right;
