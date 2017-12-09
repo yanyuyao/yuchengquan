@@ -25,8 +25,14 @@ class IndexController extends HomeController {
         $this->assign('category',$category);//栏目
         $this->assign('lists',$lists);//列表
         $this->assign('page',D('Document')->page);//分页
-
-                 
+        
+        $user_auth = session('user_auth');
+         
+        $home_quanzhi_job = M('job')->where("status = 1 and ishome = 1 and job_type = '全职'")->select(); //
+        $home_jianzhi_job = M('job')->where("status = 1 and ishome = 1 and job_type = '兼职'")->select();
+        
+        $this->assign("home_quanzhi_job",$home_quanzhi_job);
+        $this->assign("home_jianzhi_job",$home_jianzhi_job);
         $this->display();
     }
 

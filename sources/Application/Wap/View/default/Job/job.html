@@ -1,7 +1,7 @@
 <include file="Public/head"/>
 <div class="task-filter">
 	<ul>
-		<li>
+<!--		<li>
 			<select class="task-filter-select">
 				<option>全部</option>
 				<option>建筑</option>
@@ -15,141 +15,52 @@
 				<option>零活</option>
 				<option>其他</option>
 			</select>
-		</li>
-		<li class="center">推荐兼职</li>
-		<li>最新兼职</li>
+		</li>-->
+                <li>
+                        <select class="task-filter-select" name="job_type">
+				<option value="all">全部</option>
+				<option value="全职">全职</option>
+				<option value="兼职">兼职</option>
+			</select>
+                </li>
+		<li class="center"><a href="/wap.php?s=/Job/index/istop=1">推荐兼职</a></li>
+		<li><a href="/wap.php?s=/Job/index/isnew=1">最新兼职</a></li>
 	</ul>
 </div>
 <div id="list" class="task-list">
-		<a href="/wap.php?s=/Job/detail">
+            <volist name="list" id="vo">
+		<a href="/wap.php?s=/Job/detail/jobId={$vo.id}">
 		<div class="task-single">
 			<div class="index-task-single-line">
 				<span class="index-task-li-right">面议</span>
-				厨师
+				{$vo.title}
 			</div>
 			<div class="index-task-single-line">
 				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
 				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgpink">女</div>
+                                
+                                <if condition="$vo['changqizhaopin'] eq '长期'">
+                                    <div class="index-task-single-icon bgorange">长</div>
+                                <elseif condition="$vo['chanqizhaopin'] eq '短期'" />
+                                    <div class="index-task-single-icon bgorange">短</div>
+                                </if>
+
+                                <if condition="$vo.sexlimit eq '男'">
+                                    <div class="index-task-single-icon bgblue">男</div>
+                                <elseif condition="$vo.sexlimit eq '女'" />
+                                    <div class="index-task-single-icon bgpink">女</div>
+                                <else />
+
+                                </if>
+                                
 			</div>
 			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">山东龙力生物科技股份有限公司
+				<img src="__IMG__/address.png">{$vo.content}
 			</div>
 		</div>
 		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>
-				营销人员
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgred">专</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">德信羊绒公司
-			</div>
-		</div>
-		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>PHP工程师
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgpink">女</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">禹城智达电子商务有限公司（创新创业大厦三楼）
-			</div>
-		</div>
-		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>
-				工程造价专业人员
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgpink">女</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">禹城市建设工程监理中心
-			</div>
-		</div>
-		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>
-				中心校长
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgpink">女</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">优贝乐国际儿童教育中心（新时代广场三楼）
-			</div>
-		</div>
-		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>加油员
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgpink">女</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">禹城市长安能源有限公司
-			</div>
-		</div>
-		</a>
-		<a href="/wap.php?s=/Job/detail">
-		<div class="task-single">
-			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>企管内勤
-			</div>
-			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-				<div class="index-task-single-icon bgorange">长</div>
-				<div class="index-task-single-icon bgblue">男</div>
-				<div class="index-task-single-icon bgpink">女</div>
-			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<span class="index-task-li-right">长期</span>
-				<img src="__IMG__/address.png">德州恒特重工有限公司
-			</div>
-		</div>
-		</a>
+            </volist>    
+		
 		
 		
 		<!--  button-right-task-list  -->

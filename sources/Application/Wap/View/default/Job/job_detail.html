@@ -1,22 +1,45 @@
 <include file="Public/head-home"/>
 	<div class="taskinfo-bt">
     	<div class="taskinfo-bt-right">
+             <if condition="$data['commission_status'] eq 1">
         	<img src="__IMG__/yongjingreen.png">已托管
+             </if>
+            {$data.push_at}
         </div>
         具体需求
     </div>
     <div class="middleline8"></div>
     <div class="taskinfo-task">
-    	<p>明天上午德邦物流需要三个装卸工，两车货，每人150元，来靠谱的，不想下力、嫌钱少的勿扰。</p>
-        <p>需要：3人</p>
-        <p>佣金：150元/人</p>
-        <p>工时：1天</p>
-        <p>电话：13100010001</p>
-        <p>地址：商贸港三期5号楼201</p>
-        <p>
-        	<a href="tel:13100010001"><input class="taskinfo-task-contact" type="button" value="联系雇主"></a>
+        <p style="text-align:center;color:#f96306;">{$data.companyname}</p>
+        <hr>
+    	<p>{$data.content}</p>
+        <if condition="$data['peoplenums'] neq NULL">
+        <p>需要：{$data.peoplenums}人</p>
+        </if>
+        <if condition="$data['commission'] neq NULL">
+        <p>佣金：{$data.commission}元/人</p>
+        </if>
+        <if condition="$data['workhours'] neq NULL">
+        <p>工时：{$data.workhours}</p>
+        </if>
+        <if condition="$data['contactphone'] neq NULL">
+            <p>电话：
+                <if condition="$data['contactname'] neq NULL">{$data.contactname}</if>
+                <?=substr_replace($data['contactphone'],'*****',3,5); ?></p>
+        </if>
+        <if condition="$data['contactphone2'] neq NULL">
+            <p>电话：
+                <if condition="$data['contactname2'] neq NULL">{$data.contactname}</if>
+                <?=substr_replace($data['contactphone2'],'*****',3,5); ?></p>
+        </if>
+        <if condition="$data['workaddress'] neq NULL">
+            <p>地址：{$data.workaddress}</p>
+        </if>
+        <p style="text-align: right;">
+        	<a href="tel:{$data.contactphone}"><input class="taskinfo-task-contact" type="button" value="联系雇主"></a>
         </p>
     </div>
+    <!--
     <div class="taskinfo-tips">
     	<div class="editinfo-skill-tips">
         	<img src="__IMG__/tips.png">普通会员最多可申请3项兼职，且同一天兼职最多申请1项，申请后不可撤销，请谨慎申请合适的兼职！
@@ -25,5 +48,5 @@
     <div class="editinfo-submit">
     	<input type="button" value="申请兼职"> 
     </div>
-    
+    -->
 <include file="Public/footer"/>

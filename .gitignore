@@ -6,3 +6,4 @@ sources/Runtime/Cache/*
 sources/Runtime/Logs/*
 sources/Runtime/Temp/*
 *.zip
+/sources/nbproject/private/

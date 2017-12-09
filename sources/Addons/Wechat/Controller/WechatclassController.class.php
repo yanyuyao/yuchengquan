@@ -103,7 +103,7 @@ class WechatclassController extends AddonsController{
 				'time' => NOW_TIME,
 				'msgid' => $this->data ['MsgId']
 			);
-			D('Addons://Wechat/Wechat_message')->data($data)->add();
+			//D('Addons://Wechat/Wechat_message')->data($data)->add();
 		}
        	return $this->data;
 	}
@@ -136,7 +136,7 @@ class WechatclassController extends AddonsController{
 			'user' => $this->data ['ToUserName'],
 			'time' => $this->data ['CreateTime']
 		);
-		D('Addons://Wechat/Wechat_message')->data($data)->add();
+		//D('Addons://Wechat/Wechat_message')->data($data)->add();
 		/* 转换数据为XML */
 		$xml = new \SimpleXMLElement('<xml></xml>');
 		$this->data2xml($xml, $this->data);

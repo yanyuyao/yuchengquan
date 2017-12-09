@@ -35,102 +35,35 @@
 		</a>
 		<div class="swiper-container swiper-container2 index-task-k">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥1000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥2000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥3000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥4000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥5000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司禹城智达电子商务有限公司禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥6000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
+                            <volist name="home_jianzhi_job" id="job">
+                                    <div class="swiper-slide">
+                                            <div class="index-task-single-line">
+                                                    <a href="/wap.php?s=/Job/detail/jobId/{$job.id}"><span class="index-task-li-right"> <if condition="$job.commission neq NULL">￥{$job.commission}</if></span>{$job.title}</a>
+                                            </div>
+                                            <div class="index-task-single-line">
+                                                    <div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
+                                                    <div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
+                                                    <if condition="$job['changqizhaopin'] eq '长期'">
+                                                        <div class="index-task-single-icon bgorange">长</div>
+                                                    <elseif condition="$job['chanqizhaopin'] eq '短期'" />
+                                                        <div class="index-task-single-icon bgorange">短</div>
+                                                    </if>
+
+                                                    <if condition="$job.sexlimit eq '男'">
+                                                        <div class="index-task-single-icon bgblue">男</div>
+                                                    <elseif condition="$job.sexlimit eq '女'" />
+                                                        <div class="index-task-single-icon bgpink">女</div>
+                                                    <else />
+
+                                                    </if>
+                                            </div>
+                                            <div class="index-task-single-line index-task-single-address">
+                                                    <span class="index-task-li-right">长期</span>
+                                                    <img src="__IMG__/address.png">禹城智达电子商务有限公司
+                                            </div>
+                                    </div>
+                                
+                            </volist>
 			</div>
 		</div>
 		<a href="#">
@@ -140,102 +73,22 @@
 		</a>
 		<div class="swiper-container swiper-container2 index-task-k">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
+                                <volist name="home_quanzhi_job" id="job">
+                                    <div class="swiper-slide">
 					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥1000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥2000+</span>PHP工程师
+						<a href="/wap.php?s=/Job/detail/jobId/{$job.id}"><span class="index-task-li-right"></span>{$job.title}</a>
 					</div>
 					<div class="index-task-single-line">
 						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
 						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
 						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
 					</div>
 					<div class="index-task-single-line index-task-single-address">
 						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司
+						<img src="__IMG__/address.png">{$job.content}
 					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥3000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥4000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥5000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司禹城智达电子商务有限公司禹城智达电子商务有限公司禹城智达电子商务有限公司
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="index-task-single-line">
-						<span class="index-task-li-right">￥6000+</span>PHP工程师
-					</div>
-					<div class="index-task-single-line">
-						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-						<div class="index-task-single-icon bgorange">长</div>
-						<div class="index-task-single-icon bgblue">男</div>
-						<div class="index-task-single-icon bgpink">女</div>
-					</div>
-					<div class="index-task-single-line index-task-single-address">
-						<span class="index-task-li-right">长期</span>
-						<img src="__IMG__/address.png">禹城智达电子商务有限公司
-					</div>
-				</div>
+                                    </div>
+				</volist>
 			</div>
 		</div>
 		<div style="clear:both;"></div>

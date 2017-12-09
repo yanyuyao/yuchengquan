@@ -18,14 +18,34 @@ class JobController extends HomeController {
 
 	//系统首页
     public function index(){
+        
+        $where = array();
+        
+        $where['status'] = 1;
+        
+        if(isset($_REQUEST['istop'])){
+            $where['istop'] = 1;
+        }
+        $list = M('job')->where($where)->select();
+        
+        $this->assign("list",$list);
         $this->display('job');
     }
 	
-	public function pushjob(){
+    public function pushjob(){
         $this->display('job_push');
     }
-	
-	public function detail(){
+    
+    public function detail(){
+        $jobId = isset($_REQUEST['jobId'])?$_REQUEST['jobId']:0;
+        
+        if(!$jobId){
+            $this->redirect('Index/index');
+        }
+        
+        $detail = M('job')->where('id = "'.$jobId.'"')->find();
+        $this->assign("data",$detail);
+        
         $this->display('job_detail');
     }
 	
