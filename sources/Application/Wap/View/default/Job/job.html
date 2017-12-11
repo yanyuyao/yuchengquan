@@ -17,68 +17,66 @@
 			</select>
 		</li>-->
                 <li>
-                        <select class="task-filter-select" name="job_type">
+                        <select class="task-filter-select" name="job_type" id="job_type">
 				<option value="all">全部</option>
 				<option value="全职">全职</option>
 				<option value="兼职">兼职</option>
 			</select>
                 </li>
-		<li class="center"><a href="/wap.php?s=/Job/index/istop=1">推荐兼职</a></li>
-		<li><a href="/wap.php?s=/Job/index/isnew=1">最新兼职</a></li>
+		<li class="center"><a href="/wap.php?s=/Job/index/istop/1">推荐兼职</a></li>
+		<li><a href="/wap.php?s=/Job/index/isnew/1">最新兼职</a></li>
 	</ul>
+    <input type="hidden" id="istop" name="istop" value="{$istop}">
+    <input type="hidden" id="isnew" name="isnew" value="{$isnew}">
+    <input type="hidden" id="page" name="page" value="{$page}">
 </div>
 <div id="list" class="task-list">
             <volist name="list" id="vo">
-		<a href="/wap.php?s=/Job/detail/jobId={$vo.id}">
-		<div class="task-single">
+		<a href="/wap.php?s=/Job/detail/jobId/{$vo.id}" class="lineitem">
+		<div class="task-single" style="height:auto;">
 			<div class="index-task-single-line">
-				<span class="index-task-li-right">面议</span>
-				{$vo.title}
+                            
+                                 <!-- icon -->
+                                    <span class="index-task-li-right">
+                                        <div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
+                                        <div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
+
+                                        <if condition="$vo['changqizhaopin'] eq '长期'">
+                                            <div class="index-task-single-icon bgorange">长</div>
+                                        <elseif condition="$vo['chanqizhaopin'] eq '短期'" />
+                                            <div class="index-task-single-icon bgorange">短</div>
+                                        </if>
+
+                                        <if condition="$vo.sexlimit eq '男'">
+                                            <div class="index-task-single-icon bgblue">男</div>
+                                        <elseif condition="$vo.sexlimit eq '女'" />
+                                            <div class="index-task-single-icon bgpink">女</div>
+                                        <else />
+
+                                        </if>
+                                    </span>
+                                <!-- end icon -->
+                                <span style="color:#f96306;font-size:1.2em;">{$vo.title}</span>       
 			</div>
 			<div class="index-task-single-line">
-				<div class="index-task-single-icon"><img src="__IMG__/tong.png"></div>
-				<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-                                
-                                <if condition="$vo['changqizhaopin'] eq '长期'">
-                                    <div class="index-task-single-icon bgorange">长</div>
-                                <elseif condition="$vo['chanqizhaopin'] eq '短期'" />
-                                    <div class="index-task-single-icon bgorange">短</div>
-                                </if>
-
-                                <if condition="$vo.sexlimit eq '男'">
-                                    <div class="index-task-single-icon bgblue">男</div>
-                                <elseif condition="$vo.sexlimit eq '女'" />
-                                    <div class="index-task-single-icon bgpink">女</div>
-                                <else />
-
-                                </if>
-                                
+				<if condition="$vo.commission neq NULL">
+                                    <span class="index-task-li-right">面议</span>
+                                </if>                      
 			</div>
-			<div class="index-task-single-line index-task-single-address">
-				<img src="__IMG__/address.png">{$vo.content}
+                        <div class="index-task-single-line" style="overflow: auto;  white-space: normal; color:#5f5d5d;">
+				{$vo.content|mb_substr=0,80,'utf-8'}
+			</div>
+                        <if condition="$vo.workaddress neq NULL">
+                            <div class="index-task-single-line index-task-single-address" >
+                                    <img src="__IMG__/address.png">{$vo.workaddress}
+                            </div>
+                        </if>
+                        <div class="index-task-single-line">
+                             <span class="index-task-li-right" style="color:gray;">发布时间：{$vo.push_at}</span>                    
 			</div>
 		</div>
 		</a>
-            </volist>    
-		
-		
-		
-		<!--  button-right-task-list  -->
-		<!--
-        <div class="task-single">
-            <div class="task-single-right">
-                <a href="/wap.php?s=/Job/detail"><a href="/wap.php?s=/Job/detail"><div class="task-single-right-button">报名</div></a></a>
-                <div class="task-single-right-remark green">
-                    <img src="__IMG__/yongjingreen.png">已托管
-                </div>
-            </div>
-            <div class="task-single-textk">
-                <div class="task-single-text">
-                    商贸港，9月26日上午需要三个兼职，具体需求详谈商贸港，9月26日上午需要三个兼职，具体需求详谈商贸港，9月26日上午需要三个兼职，具体需求详谈
-                </div>
-            </div>
-        </div>
-        -->
+            </volist>  	
     </div>
     <div class="weui-loadmore">
       <i class="weui-loading"></i>
@@ -100,19 +98,71 @@
         if(loading) return;
         loading = true;
         setTimeout(function() {
-          $("#list").append('<div class="task-single">'+
-								'<div class="task-single-right">'+
-								'	<a href="/wap.php?s=/Job/detail"><div class="task-single-right-button">报名</div></a>'+
-								'	<div class="task-single-right-remark green">'+
-								'		<img src="__IMG__/yongjingreen.png">已托管'+
-								'	</div>'+
-								'</div>'+
-								'<div class="task-single-textk">'+
-								'	<div class="task-single-text">'+
-								'		商贸港，9月26日上午需要三个兼职，具体需求详谈商贸港，9月26日上午需要三个兼职，具体需求详谈'+
-								'	</div>'+
-								'</div>'+
-							'</div>');
+            $.post("/wap.php?s=/Job/index",
+            {
+                "page":$('#page').val(),
+                "job_type":$('#job_type').val(),
+                "isnew":$('#isnew').val(),
+                "istop":$('#istop').val(),
+                "datatype":'ajax'
+            },
+                function(data){
+                    //alert(data);
+                    if(data.code == '1'){
+                        var list = data.list;
+                        var line_html = '';
+                        for(var i=0;i<list.length;i++){
+//                            alert(parseInt($('#page').val()));
+                            var lineitem = list[i];
+                            line_html = 
+                                    ''
+                                    +'	<div class="task-single" style="height:auto;">'
+                                    +'		<div class="index-task-single-line">'
+                                    +'                        <span class="index-task-li-right">'
+                                    +'                            <div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>'
+                                    +'                            <div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>';
+                                    if(lineitem['changqizhaopin'] == '长期'){
+                                        line_html += '<div class="index-task-single-icon bgorange">长</div>';
+                                    }else if(lineitem['changqizhaopin'] == '短期'){
+                                        line_html += '<div class="index-task-single-icon bgorange">短</div>';
+                                    }
+                                    if(lineitem['sexlimit'] == '男'){
+                                        line_html += '<div class="index-task-single-icon bgblue">男</div>';
+                                    }else if(lineitem['sexlimit'] == '女'){
+                                        line_html += '<div class="index-task-single-icon bgpink">女</div>';
+                                    }
+                                    line_html +=  '</span>'
+                                    +'                    <span style="color:#f96306;font-size:1.2em;">'+lineitem['title']+'</span> '      
+                                    +'		</div>'
+                                    +'  	<div class="index-task-single-line">';
+
+                        //            if(lineitem['commission'] != 'NULL' && lineitem['commission'] != ''){
+                        //                line_html += '<span class="index-task-li-right">面议</span>';
+                        //            }
+                                    line_html += '      </div>'
+                                    +'            <div class="index-task-single-line" style="overflow: auto;  white-space: normal; color:#5f5d5d;">'
+                                            +lineitem['content']+
+                                    +'		</div>';
+                                    if(lineitem['workaddress'] != 'NULL' && lineitem['commission'] != ''){
+                                        line_html += '<div class="index-task-single-line index-task-single-address" >'
+                                                       '     <img src="__IMG__/address.png">'+lineitem['workaddress']+
+                                                    '</div>';
+                                    }
+                                    line_html +='            <div class="index-task-single-line">'
+                                    +'                 <span class="index-task-li-right" style="color:gray;">发布时间：{$vo.push_at}</span> '                   
+                                    +'		</div>'
+                                    +'	</div>'
+                                    +'';
+//alert(line_html)
+                                    $("#list").append('<a href="/wap.php?s=/Job/detail/jobId/'+lineitem['id']+'" class="lineitem">'+line_html+'</a>');
+                        }
+                     $('#page').val(parseInt($('#page').val())+1);
+                    }else{
+                        $('.weui-loadmore__tips').text('没有更多信息了')
+                    }
+                }
+            );
+         
           loading = false;
         }, 700);
       });

@@ -19,6 +19,13 @@ class JobController extends HomeController {
 	//系统首页
     public function index(){
         
+        $datatype = isset($_REQUEST['datatype'])?$_REQUEST['datatype']:'';
+        $istop = isset($_REQUEST['istop'])?$_REQUEST['istop']:0;
+        $isnew = isset($_REQUEST['isnew'])?$_REQUEST['isnew']:0;
+        
+        $page = isset($_REQUEST['page'])?$_REQUEST['page']:0;
+        $num = 5;
+        
         $where = array();
         
         $where['status'] = 1;
@@ -26,10 +33,17 @@ class JobController extends HomeController {
         if(isset($_REQUEST['istop'])){
             $where['istop'] = 1;
         }
-        $list = M('job')->where($where)->select();
+        $list = M('job')->where($where)->limit($page,$num)->select();
         
-        $this->assign("list",$list);
-        $this->display('job');
+        if($datatype == 'ajax'){
+            $this->ajaxReturn(array("code"=>$list?"1":'0',"list"=>$list),'JSON');
+        }else{
+            $this->assign("istop",$istop);
+            $this->assign("page",$page);
+            $this->assign("isnew",$isnew);
+            $this->assign("list",$list);
+            $this->display('job');
+        }
     }
 	
     public function pushjob(){
