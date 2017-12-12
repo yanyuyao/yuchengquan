@@ -22,15 +22,25 @@ class UserController extends HomeController {
 	public function center(){
 		$usertype = "user";
 		if($usertype == 'user'){
-			$this->display('user_center');
+			$this->user_center();
 		}else if($usertype == 'employer'){
-			$this->display('employer_center');
+			$this->employer_center();
 		}
 	}
 	//会员主页
 	public function user_center(){
-		
-			$this->display('user_center');
+		$phone = '';
+                $uid = 0;
+                if(!$is_allow_anyone){
+                    if(!checkuserlogin()){ $this->error('请先登录',U('/User/login'));}
+                        $user_auth = session('user_auth');
+                        $uid = $user_auth['uid'];
+                        $phone = $user_auth['phone'];
+                }
+                $userinfo = M('user')->where("id = ".$uid)->find();
+                
+                $this->assign("userinfo",$userinfo);
+		$this->display('user_center');
 		
 	}
 	//会员信息页

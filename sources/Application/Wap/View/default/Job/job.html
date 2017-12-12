@@ -23,8 +23,8 @@
 				<option value="兼职">兼职</option>
 			</select>
                 </li>
-		<li class="center"><a href="/wap.php?s=/Job/index/istop/1">推荐兼职</a></li>
-		<li><a href="/wap.php?s=/Job/index/isnew/1">最新兼职</a></li>
+		<li class="center"><a href="/wap.php?s=/Job/index/istop/1">推荐</a></li>
+		<li><a href="/wap.php?s=/Job/index/isnew/1">最新</a></li>
 	</ul>
     <input type="hidden" id="istop" name="istop" value="{$istop}">
     <input type="hidden" id="isnew" name="isnew" value="{$isnew}">
@@ -141,7 +141,7 @@
                         //            }
                                     line_html += '      </div>'
                                     +'            <div class="index-task-single-line" style="overflow: auto;  white-space: normal; color:#5f5d5d;">'
-                                            +lineitem['content']+
+                                            +lineitem['content']
                                     +'		</div>';
                                     if(lineitem['workaddress'] != 'NULL' && lineitem['commission'] != ''){
                                         line_html += '<div class="index-task-single-line index-task-single-address" >'
@@ -155,6 +155,7 @@
                                     +'';
 //alert(line_html)
                                     $("#list").append('<a href="/wap.php?s=/Job/detail/jobId/'+lineitem['id']+'" class="lineitem">'+line_html+'</a>');
+                                    line_html = '';
                         }
                      $('#page').val(parseInt($('#page').val())+1);
                     }else{

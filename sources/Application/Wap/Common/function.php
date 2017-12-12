@@ -68,3 +68,11 @@ function get_nav_url($url){
     }
     return $url;
 }
+
+function checkuserlogin(){
+    $user_auth = session('user_auth');
+    if(!$user_auth){
+        return false;
+    }
+    return true;
+}

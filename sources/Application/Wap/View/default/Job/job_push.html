@@ -1,68 +1,64 @@
+<style>
+    a{color:#000;}
+    .activetab{
+        background: #f96306;
+        color:#fff;
+    }
+    .activetab a{color:#fff;}
+</style>
 <include file="Public/head-home"/>
-	<div class="taskinfo-bt">
-    	<div class="taskinfo-bt-right">
-        	<img src="__IMG__/yongjingreen.png">已托管
-        </div>
-        具体需求
+    <div class="taskinfo-bt" style="width:100%;margin-left:0px;">
+        <div style="float:left;width:50%;text-align:center;" <if condition="$jobtype eq 'quanzhi'">class="activetab"</if>><a href="wap.php?s=/Job/pushjob/jobtype/quanzhi">招聘全职</a></div>
+        <div style="float:left;width:50%;text-align:center;" <if condition="$jobtype eq 'jianzhi'">class="activetab"</if>><a href="wap.php?s=/Job/pushjob/jobtype/jianzhi">招聘兼职</a></div>
+        <div style="clear:both;"></div>
     </div>
     <div class="middleline8"></div>
-    <div class="taskinfo-task">
-    	<p><textarea class="releasetask-textarea" placeholder="招工需求"></textarea></p>
-        <p>需要：<input class="releasetask-number" type="number">人</p>
-        <p>佣金：<input class="releasetask-number" type="number">元/人</p>
-        <p>工时：<input class="releasetask-number" type="number">天<input class="releasetask-number" type="number">小时</p>
-        <p>电话：<input class="releasetask-text" type="tel"></p>
-        <p>地址：<input class="releasetask-text" type="text"></p>
-        <p>
-        	<input class="taskinfo-task-contact" type="button" value="托管佣金">
-        </p>
-    </div>
+    <if condition="$jobtype eq 'jianzhi'">
+        <form action="/wap.php?s=/Job/pushjob/" method="post">
+            <div class="taskinfo-task" style="padding-top:15px;">
+                <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title"/></p>
+                <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称" name="company"/></p>
+                <p>需要：<input class="releasetask-number" type="number" name="peoplenum">人</p>
+                <p>佣金：<input class="releasetask-number" type="number" name="commision">元/人</p>
+                <p>工时：<input class="releasetask-number" type="number" name="workday">天
+                    <!--<input class="releasetask-number" type="number" name>小时-->
+                </p>
+                <p>联系人：<input class="releasetask-text" type="text" name="contactname"></p>
+                <p>电话：<input class="releasetask-text" type="tel" name="contactphone" value="{$userphone}"></p>
+                <p>地址：<input class="releasetask-text" type="text" name="workaddress"></p>
+                <p><textarea class="releasetask-textarea" placeholder="招工需求" style="margin-top:15px;" name="content"></textarea></p>
+
+            </div>
+            <div class="editinfo-submit">
+                <input type="submit" value="发布需求"> 
+            </div>
+            <input type="hidden" name="jobtype" value="jianzhi" />
+    <else />
+        <form action="/wap.php?s=/Job/pushjob/" method="post">
+            <div class="taskinfo-task" style="padding-top:15px;">
+                <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title" /></p>
+                <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称"  name="company"/></p>
+                <p>招聘：<input class="releasetask-number" type="number" name="peoplenum">人</p>
+                <p>工资：<input class="releasetask-number" type="number" name="commision">/月</p>
+                <p>联系人：<input class="releasetask-text" type="text" name="contactname"></p>
+                <p>电话：<input class="releasetask-text" type="tel" name="contactphone" value="{$userphone}"></p>
+                <p>地址：<input class="releasetask-text" type="text" name="workaddress"></p>
+                <p><textarea class="releasetask-textarea" placeholder="招聘需求" style="margin-top:20px;" name="content"></textarea></p>
+            </div>
+            <div class="editinfo-submit">
+                <input type="submit" value="发布需求"> 
+            </div>
+            <input type="hidden" name="jobtype" value="quanzhi" />
+        </form>    
+    </if>
     <div class="taskinfo-tips">
     	<div class="editinfo-skill-tips">
         	<img src="__IMG__/tips.png">雇主您好，需求发布请尽量把佣金托管，佣金托管后兼职人员会优先承接您的工作，为得到更好的服务，使雇佣双方权利都得到保障，请您发布需求的同时，托管佣金。
         </div>
-    </div>
-    <div class="editinfo-submit">
-    	<input type="button" value="发布需求"> 
+<!--        <p>
+        	<input class="taskinfo-task-contact" type="button" value="托管佣金">
+        </p>-->
     </div>
     
-    <div class="releasetask-employee">
-    	<div class="taskinfo-bt">已申请兼职人员</div>
-        <div class="middleline8"></div>
-        
-        <div class="task-single">
-            <div class="task-single-right">
-                <a href="employee-info"><div class="task-single-right-button">查看详情</div></a>
-            </div>
-            <div class="task-single-textk">
-                <div class="task-single-text">
-                    <b>王XX</b><img class="vip-icon" src="__IMG__/jin.png"><br>
-                    本人从事搬运2年多了，希望老板给个机会。
-                </div>
-            </div>
-        </div>
-        <div class="task-single">
-            <div class="task-single-right">
-                <div class="task-single-right-button">查看详情</div>
-            </div>
-            <div class="task-single-textk">
-                <div class="task-single-text">
-                    <b>王XX</b><img class="vip-icon" src="__IMG__/jin.png"><br>
-                    本人从事搬运2年多了，希望老板给个机会。
-                </div>
-            </div>
-        </div>
-        <div class="task-single">
-            <div class="task-single-right">
-                <div class="task-single-right-button">查看详情</div>
-            </div>
-            <div class="task-single-textk">
-                <div class="task-single-text">
-                    <b>王XX</b><img class="vip-icon" src="__IMG__/jin.png"><br>
-                    本人从事搬运2年多了，希望老板给个机会。
-                </div>
-            </div>
-        </div>
-        
-    </div>
+    
 <include file="Public/footer"/>
