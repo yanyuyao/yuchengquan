@@ -22,7 +22,12 @@ return array(
     /* 数据缓存设置 */
     'DATA_CACHE_PREFIX' => 'onethink_', // 缓存前缀
     'DATA_CACHE_TYPE'   => 'File', // 数据缓存类型
-
+	
+	/* 错误页面模板 */
+	'TMPL_ACTION_ERROR'     =>  'Public:error',  //默认错误跳转对应的模板文件'
+	'TMPL_ACTION_SUCCESS'   =>  'Public:success', //默认成功跳转对应的模板文件'
+	'TMPL_EXCEPTION_FILE'   =>  MODULE_PATH.'../View/Public/exception.html', // 异常页面的模板文件
+	
     /* 文件上传相关配置 */
     'DOWNLOAD_UPLOAD' => array(
         'mimes'    => '', //允许上传的文件MiMe类型

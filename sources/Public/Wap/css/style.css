@@ -9,6 +9,7 @@ body{
 }
 a{
 	text-decoration:none;
+	color:inherit;
 }
 input{
 	padding:0;
@@ -83,7 +84,12 @@ input{
 	color:red;
 	margin-top:50px;
 }
-
+.login-codeimg{
+	cursor:pointer;
+	width:100px;
+	float:right;
+	margin-top:10px;
+}
 
 
 /* cover 封面样式 */
@@ -626,6 +632,9 @@ input.taskinfo-task-contact{
 	height:30px;
 	border-bottom:1px solid #ccc;
 }
+.releasetask-text-short{
+	width:293px;
+}
 .releasetask-textarea{
 	width:370px;
 	height:100px;
@@ -645,7 +654,13 @@ input.taskinfo-task-contact{
 	margin-right:5px;
 	margin-left:5px;
 }
-
+.releasetask-teltip{
+	font-size:14px;
+	color:#999;
+	margin:-13px 0 -5px 40px;
+	width:360px;
+	text-align:center;
+}
 
 
 
@@ -655,6 +670,39 @@ input.taskinfo-task-contact{
 .employee-info-nav2{
 	width:415px;
 	padding:15px 30px;
+}
+
+
+
+
+
+/**  success  成功页面 **/
+.release-success-img{
+	width:100%;
+	text-align:center;
+}
+.release-success-img img{
+	width:150px;
+	margin:130px auto 70px;
+}
+.release-success-text{
+	width:100%;
+	text-align:center;
+	color:green;
+	font-weight:blod;
+	font-size:25px;
+	line-height:35px;
+}
+.release-fail-text{
+	width:100%;
+	text-align:center;
+	color:#666;
+	font-size:25px;
+	font-weight:bold;
+	line-height:35px;
+}
+.release-success-jump{
+	font-size:21px;
 }
 
 
