@@ -1,18 +1,27 @@
 <include file="Public/head-home"/>
 	<div class="person-head">
     	<div class="person-head-left">
-        	<img src="__IMG__/head.jpg">
+                 <if condition="$userinfo['avatar'] neq ''">
+                    <img src="{$userinfo['avatar']}" />
+                 <else />   
+                    <img src="__IMG__/head.jpg">
+                 </if>
+                    <br>
+                 {$userinfo['username']}<br>
+                 <a href="/wap.php?s=/User/user_info_edit/usertype/user">设置</a>
                 <p>
-				<?=substr_replace($userinfo['username'],'*****',3,5); ?><br>
+                                <if condition="$userinfo['phone'] neq ''">
+                                    <?=substr_replace($userinfo['phone'],'*****',3,5); ?><br>
+                                </if>
                                 <if condition="$userinfo['type'] eq 'user'">
-                                    <a href="/wap.php?s=/User/user_info">微名片</a>
+                                    <!--<a href="/wap.php?s=/User/user_info">微名片</a>-->
                                 <elseif condition="$userinfo['type'] eq 'company'" />
-                                    <a href="/wap.php?s=/User/company_info">公司名片</a>
+                                    <!--<a href="/wap.php?s=/User/company_info">公司名片</a>-->
                                 </if><br>
                                 <if condition="$userinfo['type'] eq 'user'">
-                                    <a href="/wap.php?s=/User/user_info_edit/usertype/user">设置</a>
+                                    <!--<a href="/wap.php?s=/User/user_info_edit/usertype/user">设置</a>-->
                                 <elseif condition="$userinfo['type'] eq 'company'" />
-                                    <a href="/wap.php?s=/User/user_info_edit/usertype/company">设置</a>
+                                    <!--<a href="/wap.php?s=/User/user_info_edit/usertype/company">设置</a>-->
                                 </if>
                                 
                 </p>
@@ -28,12 +37,12 @@
     <div class="middleline8"></div>
     
     <div class="person-list">
-    	<a href="/wap.php?s=/Job/index"><div class="person-list-single"><img src="__IMG__/jianzhi.png"><br>兼职推荐</div></a>
-        <a href="/wap.php?s=/Job/mydetail"><div class="person-list-single"><img src="__IMG__/zhongbiao.png"><br>中标工作</div></a>
-        <a href="/wap.php?s=/User/user_info_edit"><div class="person-list-single"><img src="__IMG__/jzjilu.png"><br>兼职记录</div></a>
-        <a href="taskstates-success.html"><div class="person-list-single"><img src="__IMG__/zhaoren.png"><br>我要招人</div></a>
-        <a href="task.html"><div class="person-list-single"><img src="__IMG__/toubiao.png"><br>投标人员</div></a>
-        <a href="weiquan.html"><div class="person-list-single"><img src="__IMG__/zrjilu.png"><br>招人记录</div></a>
+    	<a href="/wap.php?s=/Job/index/istop/1"><div class="person-list-single"><img src="__IMG__/jianzhi.png"><br>推荐</div></a>
+        <a href="/wap.php?s=/Job/joblist/type/my"><div class="person-list-single"><img src="__IMG__/zhongbiao.png"><br>感兴趣</div></a>
+        <a href="javascript:;"><div class="person-list-single"><img src="__IMG__/jzjilu.png"><br>兼职记录</div></a>
+        <a href="/wap.php?s=/Job/pushjob"><div class="person-list-single"><img src="__IMG__/zhaoren.png"><br>我要招人</div></a>
+        <a href="javascript:;"><div class="person-list-single"><img src="__IMG__/toubiao.png"><br>投标人员</div></a>
+        <a href="/wap.php?s=/Job/joblist/type/mypush"><div class="person-list-single"><img src="__IMG__/zrjilu.png"><br>招聘记录</div></a>
         <div style="clear:both;"></div>
     </div>
     <div class="taskinfo-tips">

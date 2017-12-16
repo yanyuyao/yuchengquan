@@ -22,9 +22,10 @@ class JobController extends HomeController {
         $datatype = isset($_REQUEST['datatype'])?$_REQUEST['datatype']:'';
         $istop = isset($_REQUEST['istop'])?$_REQUEST['istop']:0;
         $isnew = isset($_REQUEST['isnew'])?$_REQUEST['isnew']:0;
+        $jobtype = isset($_REQUEST['jobtype'])?$_REQUEST['jobtype']:'';
         
         $page = isset($_REQUEST['page'])?$_REQUEST['page']:0;
-        $num = 5;
+        $num = 200;
         
         $where = array();
         
@@ -32,12 +33,25 @@ class JobController extends HomeController {
         
         if(isset($_REQUEST['istop'])){
             $where['istop'] = 1;
+            $pagetitle = "推荐";
         }
+        if($jobtype){
+            if($jobtype == 'quanzhi'){
+                $where['job_type'] = '全职';
+            }
+            if($jobtype == 'jianzhi'){
+                $where['job_type'] = '兼职';
+            }
+        }
+        
         if($isnew){
             $list = M('job')->where($where)->limit($page,$num)->order('push_at desc')->select();
+            $pagetitle = '最新';
         }else{
             $list = M('job')->where($where)->limit($page,$num)->select();
         }
+       
+        
         if($datatype == 'ajax'){
             $this->ajaxReturn(array("code"=>$list?"1":'0',"list"=>$list),'JSON');
         }else{
@@ -45,12 +59,13 @@ class JobController extends HomeController {
             $this->assign("page",$page);
             $this->assign("isnew",$isnew);
             $this->assign("list",$list);
+            $this->assign("pagetitle",$pagetitle?'找工作 - '.$pagetitle:'找工作');
             $this->display('job');
         }
     }
 	
     public function pushjob(){
-        $is_allow_anyone = 1;
+        $is_allow_anyone = 0;
        
         $phone = '';
         $uid = 0;
@@ -102,6 +117,7 @@ class JobController extends HomeController {
         $this->assign("jobtype",$jobtype);
         $this->assign("userphone",$phone);
         $this->assign("userid",$uid);
+        $this->assign("pagetitle",'发布招聘信息');
         $this->display('job_push');
     }
     
@@ -120,5 +136,55 @@ class JobController extends HomeController {
 	
 	public function mydetail(){
         $this->display('job_mydetail');
+    }
+    
+    public function addToMyJob(){
+        $jobId = isset($_REQUEST['jobId'])?$_REQUEST['jobId']:0;
+        $user_auth = session('user_auth');
+        $uid = $user_auth['uid'];
+        
+        if($jobId && $uid){
+            $data = array(
+                "iUserId"=>$uid,
+                "iJobId"=>$jobId,
+                "created_at"=>date("Y-m-d H:i:s",time()),
+                "status"=>0
+            );
+            M('applications')->add($data);
+        }
+        return 1;
+    }
+    
+    public function joblist(){
+        $user_auth = session('user_auth');
+        $uid = $user_auth['uid'];
+        $pagetitle = '';
+        $jobtype = isset($_REQUEST['type'])?$_REQUEST['type']:'new';
+
+        //我感兴趣的
+        if($jobtype == 'my'){
+            $sql = "select * from ycq_job job left join ycq_applications a on job.id = a.iJobId Where a.iUserId = $uid ";
+            $pagetitle = '我刚兴趣的工作';
+        }
+        if($jobtype == 'new'){
+            $sql = "select * from ycq_job job where status = 1 order by push_at desc ";
+             $pagetitle = '最新工作';
+        }
+        if($jobtype == 'mypush'){
+            $sql = "select * from ycq_job job where status = 1 and iUserId = '".$uid."' order by push_at desc ";
+             $pagetitle = '我发布的';
+        }
+        $page = isset($_REQUEST['page'])?$_REQUEST['page']:0;
+        $num = 200;
+//        echo $sql;
+//        $list = M('job')->where($where)->limit($page,$num)->order('push_at desc')->select();
+//        
+        $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
+        $list = $Model->query($sql);
+        
+        $this->assign("page",$page);
+        $this->assign("list",$list);
+        $this->assign("pagetitle",$pagetitle);
+        $this->display('joblist');
     }
 }

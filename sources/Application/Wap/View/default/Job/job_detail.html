@@ -36,8 +36,9 @@
             <p>地址：{$data.workaddress}</p>
         </if>
         <p style="text-align: right;">
-        	<a href="tel:{$data.contactphone}"><input class="taskinfo-task-contact" type="button" value="联系雇主"></a>
+        	<a href="tel:{$data.contactphone}"><input class="taskinfo-task-contact" style="font-size: 1em;" type="button" value="联系雇主" onclick="addjobs();"></a>
         </p>
+        <input type="hidden" id="jobid" value="{$data.id}" />
     </div>
     <!--
     <div class="taskinfo-tips">
@@ -49,4 +50,16 @@
     	<input type="button" value="申请兼职"> 
     </div>
     -->
+    <script>
+        function addjobs(){
+            $.ajax({
+                type: 'POST',
+                url: '/wap.php?s=/Job/addToMyJob',
+                data: {
+                    'jobId':$('#jobid').val()
+                },
+                success: function(data){}
+              });
+      }
+    </script>
 <include file="Public/footer"/>

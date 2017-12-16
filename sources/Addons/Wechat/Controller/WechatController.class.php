@@ -24,16 +24,17 @@ class WechatController extends AddonsController {
 							$reply = array($username.'你好!'.$weixin->getconf('msgset/default/content'), $weixin->getconf('msgset/default/msgtype'));
 							break;
 						default :						
-							if (strpos ( $data ['Content'], '刘华' ) !== false) {
-								$html = '刘华是个好人！';
-								$reply = array ( $html, 'text' );
-							} else {
-								if($users['errcode']){
-									$reply = array('你好!'.$data['Content'], 'text');
-								}else{
-									$reply = array($username.'你好!'.$data['Content'], 'text');
-								}
-							}
+//							if (strpos ( $data ['Content'], '刘华' ) !== false) {
+//								$html = '刘华是个好人！';
+//								$reply = array ( $html, 'text' );
+//							} else {
+//								if($users['errcode']){
+//									$reply = array('你好!'.$data['Content'], 'text');
+//								}else{
+//									$reply = array($username.'你好!'.$data['Content'], 'text');
+//								}
+//							}
+                                                        $reply = array('您的消息我们已收到，我们会尽快答复您！感谢您对我们的支持！', 'text');
 							break;
 					}
 					break;

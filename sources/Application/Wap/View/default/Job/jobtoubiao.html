@@ -1,36 +1,4 @@
 <include file="Public/head"/>
-<div class="task-filter">
-	<ul>
-<!--		<li>
-			<select class="task-filter-select">
-				<option>全部</option>
-				<option>建筑</option>
-				<option>维修</option>
-				<option>普工</option>
-				<option>木工</option>
-				<option>司机</option>
-				<option>园林绿化</option>
-				<option>农活</option>
-				<option>销售</option>
-				<option>零活</option>
-				<option>其他</option>
-			</select>
-		</li>-->
-                <li>
-<!--                        <select class="task-filter-select" name="job_type" id="job_type">
-				<option value="all">全部</option>
-				<option value="全职">全职</option>
-				<option value="兼职">兼职</option>
-			</select>-->
-                    <a href="/wap.php?s=/Job/index/">全部</a>
-                </li>
-		<li class="center"><a href="/wap.php?s=/Job/index/istop/1">推荐</a></li>
-		<li><a href="/wap.php?s=/Job/index/isnew/1">最新</a></li>
-	</ul>
-    <input type="hidden" id="istop" name="istop" value="{$istop}">
-    <input type="hidden" id="isnew" name="isnew" value="{$isnew}">
-    <input type="hidden" id="page" name="page" value="{$page}">
-</div>
 <div id="list" class="task-list">
             <volist name="list" id="vo">
 		<a href="/wap.php?s=/Job/detail/jobId/{$vo.id}" class="lineitem">
@@ -80,7 +48,7 @@
             </volist>  	
     </div>
     <div class="weui-loadmore">
-      <!--<i class="weui-loading"></i>-->
+      <i class="weui-loading"></i>
       <!--<span class="weui-loadmore__tips">正在加载</span>-->
     </div>
     

@@ -12,7 +12,7 @@
  * 所有除开系统级别的前台配置
  */
 return array(
-
+	'WEBURL' =>'http://8.heyukj.com/',
     // 预先加载的标签库
     'TAGLIB_PRE_LOAD'     =>    'OT\\TagLib\\Article,OT\\TagLib\\Think',
         

@@ -9,14 +9,15 @@
 
 namespace Wap\Controller;
 use User\Api\UserApi;
-
+header("Content-type: text/html; charset=utf-8"); 
 /**
  * 用户控制器
  * 包括用户中心，用户登录及注册
  */
 class UserController extends HomeController {
-
-	/* 用户中心首页 */
+    
+	
+		/* 用户中心首页 */
 	public function index(){
 	}
 	public function center(){
@@ -31,6 +32,7 @@ class UserController extends HomeController {
 	public function user_center(){
 		$phone = '';
                 $uid = 0;
+                $is_allow_anyone = 0;
                 if(!$is_allow_anyone){
                     if(!checkuserlogin()){ $this->error('请先登录',U('/User/login'));}
                         $user_auth = session('user_auth');
@@ -40,6 +42,7 @@ class UserController extends HomeController {
                 $userinfo = M('user')->where("id = ".$uid)->find();
                 
                 $this->assign("userinfo",$userinfo);
+                $this->assign("pagetitle",'用户中心');
 		$this->display('user_center');
 		
 	}
@@ -50,11 +53,30 @@ class UserController extends HomeController {
 	}
 	//会员信息页
 	public function user_info_edit(){
-			$this->display('user_info_edit');
+            $user_auth = session('user_auth');
+            $uid = $user_auth['uid'];
+            if(isset($_REQUEST['exec']) && $_REQUEST['exec'] == 'save'){
+                $data = array(
+                    "realname"=>isset($_REQUEST['realname'])?$_REQUEST['realname']:'',
+                    "phone"=>isset($_REQUEST['phone'])?$_REQUEST['phone']:'',
+                    "sex"=>isset($_REQUEST['sex'])?$_REQUEST['sex']:'',
+                    "evaluation"=>isset($_REQUEST['evaluation'])?$_REQUEST['evaluation']:'',
+                );
+               
+                $flag = M('user')->where("id = ".$uid)->save($data);
+//                echo $flag;
+                $this->success('保存成功',U('/User/center'));
+                return;
+            }
+            $userinfo = M('user')->where("id = ".$uid)->find();
+            $this->assign("userinfo",$userinfo);
+                $this->assign("pagetitle",'设置');
+                $this->display('user_info_edit');
 		
 	}
 	//会员升级页面
 	public function user_upgrade(){
+            $this->assign("pagetitle",'账户升级');
 		$this->display('user_upgrade');
 	}
 	
