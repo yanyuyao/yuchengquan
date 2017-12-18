@@ -789,6 +789,93 @@ input.taskinfo-task-contact{
 .resume-k{
 	padding:10px 25px;
 }
+.resume-head{
+	padding:25px 30px 25px 0;
+}
+.resume-head-img{
+	float:left;
+	width:150px;
+	text-align:center;
+	line-height:30px;
+}
+.resume-head-img img{
+	width:80px;
+	height:80px;
+	border:1px solid #ccc;
+	border-radius:40px;
+	-webkit-border-radius:40px;
+	-moz-border-radius:40px;
+}
+.resume-head-name{
+	font-size:21px;
+	line-height:55px;
+}
+.resume-head-name input{
+	background-color:f96306;
+	padding:3px 10px;
+	float:right;
+	color:#fff;
+	font-size:15px;
+	margin-top:15px;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+}
+.resume-head-age{
+	margin:0 35px;
+}
+.resume-nav{
+	padding:10px 25px 0;
+	border-bottom:8px solid #f2f2f2;
+}
+.resume-nav-tel{
+	padding:20px 0;
+	border-bottom:1px solid #ccc;
+}
+.resume-nav-tel img{
+	width:20px;
+	vertical-align:middle;
+	margin-top:-5px;
+	margin-right:10px;
+}
+.resume-nav-tel-rightarrow{
+	float:right;
+	margin-top:6px;
+}
+.resume-nav-bt{
+	line-height:50px;
+	font-size:21px;
+	border-bottom:1px solid #ccc;
+	margin-bottom:15px;
+	font-weight:bold;
+	color:#f96306;
+}
+.resume-nav-bt2{
+	font-weight:bold;
+	margin-bottom:5px;
+	line-height:30px;
+	font-size:16px;
+}
+.resume-nav-text{
+	color:#666;
+	margin-bottom:25px;
+}
+
+
+
+
+/**  resume-edit  简历编辑  **/
+.resume-edit-k input,.resume-edit-k textarea{
+	font-size:17px;
+}
+input.resume-edit-input-name{
+	width:230px;
+	border:none;
+	float:none;
+	background:none;
+	border-bottom:1px solid #666;
+	margin-top:10px;
+}
 
 
 
