@@ -15,6 +15,11 @@ input{
 	padding:0;
 	border:none;
 }
+input[type=button], input[type=submit], input[type=file], button { 
+	outline:0px;
+	cursor: pointer; 
+	-webkit-appearance: none; 
+} 
 .red{
 	color:#E51C23;
 }
@@ -456,6 +461,11 @@ input{
 	margin:0 20px;
 	text-indent:2em;
 }
+.taskinfo-task-bt{
+	text-align:center;
+	color:#f96306;
+	font-size:20px;
+}
 input.taskinfo-task-contact{
 	width:150px;
 	height:35px;
@@ -706,6 +716,79 @@ input.taskinfo-task-contact{
 }
 
 
+
+
+
+
+/**  noticelist  通知列表  **/
+.noticelist-single{
+	width:425px;
+	padding:10px 25px 15px;
+	border-bottom:1px solid #ccc;
+	line-height:25px;
+	position:relative;
+}
+.noticelist-single-bt{
+	font-size:20px;
+	line-height:40px;
+	color:#f96306;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.noticelist-single-type{
+	margin-left:50px;
+}
+.noticelist-single-rightarrow{
+	position:absolute;
+	right:30px;
+	bottom:17px;
+}
+.noticelist-single-rightarrow img{
+	width:20px;
+}
+
+
+
+
+
+/**  noticeinfo  通知详情  **/
+.noticeinfo-header{
+	padding:0 25px;
+	line-height:60px;
+	font-size:20px;
+}
+.noticeinfo-header-right{
+	float:right;
+	color:#999;
+	font-size:18px;
+}
+.noticeinfo-k{
+	padding:10px 25px;
+}
+.noticeinfo-bt{
+	font-size:20px;
+	color:#f96306;
+	line-height:60px;
+	margin-bottom:20px;
+	border-bottom:1px solid #000;
+}
+.noticeinfo-state{
+	font-size:15px;
+	color:#999;
+	float:right;
+}
+.noticeinfo-button{
+	margin:30px 0;
+}
+
+
+
+
+/**  resume  个人简历**/
+.resume-k{
+	padding:10px 25px;
+}
 
 
 

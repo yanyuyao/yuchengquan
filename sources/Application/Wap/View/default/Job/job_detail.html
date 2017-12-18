@@ -10,7 +10,7 @@
     </div>
     <div class="middleline8"></div>
     <div class="taskinfo-task">
-        <p style="text-align:center;color:#f96306;">{$data.companyname}</p>
+        <p class="taskinfo-task-bt">{$data.companyname}</p>
         <hr>
     	<p>{$data.content}</p>
         <if condition="$data['peoplenums'] neq NULL">
@@ -37,6 +37,9 @@
         </if>
         <p style="text-align: right;">
         	<a href="tel:{$data.contactphone}"><input class="taskinfo-task-contact" style="font-size: 1em;" type="button" value="联系雇主" onclick="addjobs();"></a>
+        </p>
+		<p style="text-align: right;">
+        	<a href="/wap.php?s=/Resume/resume"><input class="taskinfo-task-contact" style="font-size: 1em;" type="button" value="投递简历"></a>
         </p>
         <input type="hidden" id="jobid" value="{$data.id}" />
     </div>
