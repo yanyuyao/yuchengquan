@@ -19,7 +19,7 @@
                 <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title"/></p>
                 <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称" name="company"/></p>
                 <p>需要：<input class="releasetask-number" type="number" name="peoplenum">人</p>
-                <p>佣金：<input class="releasetask-number" type="number" name="commision">元/人</p>
+                <p>佣金：<input class="releasetask-number" type="text" name="commision">元/人</p>
                 <p>工时：<input class="releasetask-number" type="number" name="workday">天
                     <!--<input class="releasetask-number" type="number" name>小时-->
                 </p>
@@ -40,7 +40,7 @@
                 <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title" /></p>
                 <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称"  name="company"/></p>
                 <p>招聘：<input class="releasetask-number" type="number" name="peoplenum">人</p>
-                <p>工资：<input class="releasetask-number" type="number" name="commision">/月</p>
+                <p>工资：<input class="releasetask-number" type="text" name="commision">/月</p>
                 <p>联系人：<input class="releasetask-text releasetask-text-short" type="text" name="contactname"></p>
                 <p>电话：<input id="tel2" class="releasetask-text" type="tel" name="contactphone" value="{$userphone}"></p>
 				<p class="releasetask-teltip">* 请填写有效的手机号或座机(区号-号码)</p>
@@ -81,21 +81,25 @@
 		}
 	})
 	$("#submit1,#submit2").click(function(){
+           
 		$(this).parent('.editinfo-submit').siblings(".taskinfo-task").children("p").children("input,textarea").each(function() {
-            if($(this).val()==''){
+                    if($(this).val()==''){
 				$(this).css("border-color","red");
 				$(this).addClass("emptyinput");
 			}else{
 				$(this).css("border-color","#ccc");
 				$(this).removeClass("emptyinput");
 			}
-        });	
+                });	
 		if($(this).parent('.editinfo-submit').siblings(".taskinfo-task").children("p").children("input,textarea").hasClass("emptyinput")){
 			return false;	
 		}else if($(".releasetask-teltip").css("color") == "rgb(0, 128, 0)"){
 			//内容填写正确，post
+                        return 1;
 		}else{
 			return false;
 		}
-	})
+                
+                return 1;
+	});
 </script>
