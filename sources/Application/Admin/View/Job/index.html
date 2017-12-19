@@ -3,15 +3,12 @@
 <block name="body">
 	<!-- 标题栏 -->
 	<div class="main-title">
-		<h2>工作</h2>
+		<h2>招聘信息</h2>
 	</div>
 	<div class="cf">
 		<div class="fl">
-            <a class="btn" href="{:U('add')}">新 增</a>
-            <button class="btn ajax-post" url="{:U('changeStatus?method=resumeUser')}" target-form="ids">启 用</button>
-            <button class="btn ajax-post" url="{:U('changeStatus?method=forbidUser')}" target-form="ids">禁 用</button>
-            <button class="btn ajax-post confirm" url="{:U('changeStatus?method=deleteUser')}" target-form="ids">删 除</button>
-        </div>
+                    <a class="btn" href="{:U('add')}">新 增</a>
+                </div>
 
         <!-- 高级搜索 -->
 		<div class="search-form fr cf">
@@ -26,48 +23,119 @@
 	<table class="">
     <thead>
         <tr>
-		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">ID</th>
 		<th class="">UID</th>
-		<th class="">昵称</th>
-		<th class="">积分</th>
-		<th class="">登录次数</th>
-		<th class="">最后登录时间</th>
-		<th class="">最后登录IP</th>
+		<th class="">招聘标题</th>
+		<th class="">公司</th>
+		<th class="">招聘人数</th>
+		<th class="">联系人</th>
+		<th class="">联系方式</th>
+		<th class="">工作地址</th>
+		<th class="">发布时间</th>
 		<th class="">状态</th>
 		<th class="">操作</th>
 		</tr>
     </thead>
     <tbody>
-		<notempty name="_list">
-		<volist name="_list" id="vo">
-		<tr>
-            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
-			<td>{$vo.uid} </td>
-			<td>{$vo.nickname}</td>
-			<td>{$vo.score}</td>
-			<td>{$vo.login}</td>
-			<td><span>{$vo.last_login_time|time_format}</span></td>
-			<td><span>{:long2ip($vo['last_login_ip'])}</span></td>
-			<td>{$vo.status_text}</td>
-			<td><eq name="vo.status" value="1">
-				<a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}" class="ajax-get">禁用</a>
-				<else/>
-				<a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}" class="ajax-get">启用</a>
-				</eq>
-				<a href="{:U('AuthManager/group?uid='.$vo['uid'])}" class="authorize">授权</a>
-                <a href="{:U('User/changeStatus?method=deleteUser&id='.$vo['uid'])}" class="confirm ajax-get">删除</a>
-                </td>
-		</tr>
-		</volist>
+		<notempty name="list">
+                    <volist name="list" id="vo">
+                        <tr>
+                                        <td style="width:50px;" onclick="showJobDetail({$vo.id})">{$vo.id}</td>
+                                        <td style="width:50px;">{$vo.iUserId}</td>
+                                        <td style="width:150px;">{$vo.title}</td>
+                                        <td style="width:150px;">{$vo.companyname}</td>
+                                        <td style="width:150px;">{$vo.peoplenums}</td>
+                                        <td style="width:150px;">{$vo.contactname}</td>
+                                        <td style="width:150px;">{$vo.contactphone}</td>
+                                        <td style="width:150px;">{$vo.workaddress}</td>
+                                        <td><span>{$vo.push_at|strtotime|date='Y-m-d',###}</span></td>
+                                        <td>
+                                            <if condition="$vo.status eq 1">
+                                                正常
+                                            <elseif condition="$vo.status eq 0" />
+                                                未发布
+                                            <elseif condition="$vo.status eq 3" />
+                                                工作中
+                                            <elseif condition="$vo.status eq 4" />
+                                                取消
+                                            <elseif condition="$vo.status eq 6" />
+                                                完成
+                                            <else/>    
+                                            </if>
+                                        
+                                        </td>
+                                        <td style="width:100px;">
+                                                <a href="{:U('Job/changeStatus?method=disable&id='.$vo['id'])}" class="ajax-get">禁用</a>
+                                                <a href="{:U('Job/changeStatus?method=avail&id='.$vo['id'])}" class="ajax-get">启用</a>
+                                                <a href="{:U('Job/changeStatus?method=delete&id='.$vo['id'])}" class="ajax-get">删除</a>
+                                        </td>
+                        </tr>
+                    </volist>
 		<else/>
-		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+                    <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
 		</notempty>
 	</tbody>
     </table>
 	</div>
     <div class="page">
-        {$_page}
+        {$page}
     </div>
+    
+<!-- Modal -->
+<div class="modal fade" id="JobDetailModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+            <div>
+                <table class="table">
+                    <tr>
+                        <th style="width:100px;">发布时间 ：</th>
+                        <td id="push_at" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th>招聘人数 ：</th>
+                        <td id="peoplenum" colspan="3"></td>
+                    </tr>
+                     <tr>
+                        <th>薪资 ：</th>
+                        <td id="commission" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th>联系人 ：</th>
+                        <td id="contact" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th style="width:100px;">招聘标题 ：</th>
+                        <td id="title" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th style="width:100px;">公司 ：</th>
+                        <td id="companyname" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th >招聘内容 ：</th>
+                        <td id="content" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <th >工作地址 ：</th>
+                        <td id="workaddress" colspan="3"></td>
+                    </tr>
+                </table>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Modal -->
+    
 </block>
 
 <block name="script">
@@ -96,5 +164,30 @@
 	});
     //导航高亮
     highlight_subnav('{:U('User/index')}');
+    
+    
+    function showJobDetail(jobId){
+       
+        $.post(
+            '/admin.php?s=/Job/getJobDetail/',
+            {
+                "jobId":jobId
+            },
+            function(data){
+                
+                $('#myModalLabel').html(data.title);
+                $('#title').html(data.title);
+                $('#companyname').html(data.companyname);
+                $('#push_at').html(data.push_at);
+                $('#peoplenum').html(data.peoplenum);
+                $('#commission').html(data.commission);
+                $('#contact').html(data.contactphone+" "+data.contact);
+                $('#content').html(data.content);
+                $('#workaddress').html(data.workaddress);
+                
+                $('#JobDetailModel').modal();
+            }, 
+            "json");
+    }
 	</script>
 </block>

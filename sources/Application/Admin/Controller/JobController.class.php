@@ -4,91 +4,135 @@
 // +----------------------------------------------------------------------
 // | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// | Author: huajie <banhuajie@163.com>
 // +----------------------------------------------------------------------
-
 namespace Admin\Controller;
-use User\Api\UserApi;
+use Admin\Model\AuthGroupModel;
+use Think\Page;
 
 /**
- * 后台用户控制器
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ * 后台内容控制器
+ * @author huajie <banhuajie@163.com>
  */
 class JobController extends AdminController {
-
-    /**
-     * 用户管理首页
-     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
-     */
+   
     public function index(){
-       
-        //$map['status']  =   array('egt',0);
-//        if(is_numeric($nickname)){
-//            $map['uid|nickname']=   array(intval($nickname),array('like','%'.$nickname.'%'),'_multi'=>true);
-//        }else{
-//            $map['nickname']    =   array('like', '%'.(string)$nickname.'%');
-//        }
+    
+        $Job   =   M('job');
+        $count      = $Job->where('status!=6')->count();
+        $Page       = new Page($count,10);
+        $show       = $Page->show();
 
-        $list   = $this->lists('Job', $map);
-        $this->assign('_list', $list);
-        $this->meta_title = '工作管理';
+        $list = $Job->where('status!=6')->order('push_at desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('list',$list);
+        $this->assign('page',$show);
+
+        $this->display();
+    }
+    public function getJobDetail(){
+        $jobId = isset($_REQUEST['jobId'])?$_REQUEST['jobId']:0;
+        if($jobId){
+            $data = M('job')->where('id = '.$jobId)->find();
+            $this->ajaxReturn($data);
+        }else{
+            return 0;
+        }
+    }
+    
+    public function changeStatus(){
+        $method = isset($_REQUEST['method'])?$_REQUEST['method']:'';
+        $jobId = isset($_REQUEST['id'])?$_REQUEST['id']:'';
+        
+        if($method && $jobId){
+            if($method == 'avail'){
+                $status = 1;
+                 $data = array("status",$status);
+                M('job')->where("id = ".$jobId)->save();
+            }elseif($method == 'disable'){
+                $status = 6;
+                 $data = array("status",$status);
+                M('job')->where("id = ".$jobId)->save();
+            }elseif($method == 'delete'){
+                M('job')->where("id = ".$jobId)->delete();
+            }
+            $this->success('操作成功',U('Job/Index'));
+        }else{
+            $this->error('参数错误！',U('Job/Index'));
+        }
+    }
+
+    
+    /**
+     * 文档新增页面初始化
+     * @author huajie <banhuajie@163.com>
+     */
+    public function add(){
+        if(isset($_POST) && isset($_POST['title']) && isset($_POST['contactphone'])){
+            $_POST['created_at'] = date("Y-m-d H:i:s",time());
+            $_POST['updated_at'] = date("Y-m-d H:i:s",time());
+            M('job')->data($_POST)->add();
+            $this->success('操作成功',U('Job/Index'));
+        }
         $this->display();
     }
 
     /**
-     * 会员状态修改
-     * @author 朱亚杰 <zhuyajie@topthink.net>
+     * 文档编辑页面初始化
+     * @author huajie <banhuajie@163.com>
      */
-    public function changeStatus($method=null){
-        $id = array_unique((array)I('id',0));
-        if( in_array(C('USER_ADMINISTRATOR'), $id)){
-            $this->error("不允许对超级管理员执行该操作!");
+    public function edit(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $id     =   I('get.id','');
+        if(empty($id)){
+            $this->error('参数不能为空！');
         }
-        $id = is_array($id) ? implode(',',$id) : $id;
-        if ( empty($id) ) {
-            $this->error('请选择要操作的数据!');
+
+        // 获取详细数据 
+        $Document = D('Document');
+        $data = $Document->detail($id);
+        if(!$data){
+            $this->error($Document->getError());
         }
-        $map['uid'] =   array('in',$id);
-        switch ( strtolower($method) ){
-            case 'forbiduser':
-                $this->forbid('Member', $map );
-                break;
-            case 'resumeuser':
-                $this->resume('Member', $map );
-                break;
-            case 'deleteuser':
-                $this->delete('Member', $map );
-                break;
-            default:
-                $this->error('参数非法');
+
+        if($data['pid']){
+            // 获取上级文档
+            $article        =   $Document->field('id,title,type')->find($data['pid']);
+            $this->assign('article',$article);
+        }
+        // 获取当前的模型信息
+        $model    =   get_document_model($data['model_id']);
+
+        $this->assign('data', $data);
+        $this->assign('model_id', $data['model_id']);
+        $this->assign('model',      $model);
+
+        //获取表单字段排序
+        $fields = get_model_attribute($model['id']);
+        $this->assign('fields',     $fields);
+
+
+        //获取当前分类的文档类型
+        $this->assign('type_list', get_type_bycate($data['category_id']));
+
+        $this->meta_title   =   '编辑文档';
+        $this->display();
+    }
+
+    /**
+     * 更新一条数据
+     * @author huajie <banhuajie@163.com>
+     */
+    public function update(){
+        $document   =   D('Document');
+        $res = $document->update();
+        if(!$res){
+            $this->error($document->getError());
+        }else{
+            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
         }
     }
 
-    public function add($username = '', $password = '', $repassword = '', $email = ''){
-        if(IS_POST){
-            /* 检测密码 */
-            if($password != $repassword){
-                $this->error('密码和重复密码不一致！');
-            }
 
-            /* 调用注册接口注册用户 */
-            $User   =   new UserApi;
-            $uid    =   $User->register($username, $password, $email);
-            if(0 < $uid){ //注册成功
-                $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1);
-                if(!M('Member')->add($user)){
-                    $this->error('用户添加失败！');
-                } else {
-                    $this->success('用户添加成功！',U('index'));
-                }
-            } else { //注册失败，显示错误信息
-                $this->error($this->showRegError($uid));
-            }
-        } else {
-            $this->meta_title = '新增用户';
-            $this->display();
-        }
-    }
-
-   
 }
