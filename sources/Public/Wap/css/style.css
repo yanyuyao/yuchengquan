@@ -14,6 +14,7 @@ a{
 input{
 	padding:0;
 	border:none;
+	font-size:inherit;
 }
 input[type=button], input[type=submit], input[type=file], button { 
 	outline:0px;
@@ -38,6 +39,127 @@ input[type=button], input[type=submit], input[type=file], button {
 	width:100%;
 	height:100%;
 }
+.marginbottom30{
+	margin-bottom:50px;
+}
+
+
+
+
+/**  popup  弹出框  **/
+.popup-k{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:100;
+	display:none;
+}
+.popup-zhezhao{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	z-index:101;
+}
+.popup-box-k{
+	width:100%;
+	height:70%;
+	display:flex;
+	display: -webkit-flex; /* Safari */
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+}
+.popup-box{
+	width:350px;
+	background-color:#fff;
+	margin:auto;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	z-index:102;
+}
+.popup-text{
+	padding:35px 0;
+	text-align:center;
+}
+.popup-text-bt{
+	font-weight:bold;
+	font-size:20px;
+}
+.popup-text-inputk{
+	padding:30px 30px 0 30px;
+	text-align:left;
+}
+input.popup-text-input-radio{
+	margin-right:10px;
+}
+input.popup-text-input-text{
+	width:200px;
+	height:30px;
+	border-bottom:1px solid #ccc;
+	font-size:inherit;
+}
+textarea.popup-text-input-textarea{
+	width:100%;
+	height:100px;
+	font-size:17px;
+	padding:5px;
+}
+.popup-button{
+	height:60px;
+	text-align:center;
+	line-height:60px;
+	border-top:1px solid #999;
+}
+.popup-button-confirm{
+	width:174px;
+	border-right:2px solid #ccc;
+	color:green;
+	float:left;
+}
+.popup-button-cancel{
+	width:174px;
+	color:#999;
+	float:right;
+}
+.popup-box-tip{
+	text-align:center;
+	color:red;
+	font-size:15px;
+}
+
+
+
+
+
+/**  popup-tip  弹出小提示 **/
+.popup-tip{
+	width:100%;
+	position:fixed;
+	bottom:130px;
+	left:0;
+	text-align:center;
+	display:none;
+}
+.popup-tip-text{
+	background-color:#000;
+	color:#fff;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	padding:5px 20px;
+	font-size:15px;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+}
+
 
 
 
@@ -189,6 +311,7 @@ input[type=button], input[type=submit], input[type=file], button {
 	text-align:center;
 	font-size:12px;
 	margin-right:10px;
+	margin-top:5px;
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
@@ -213,6 +336,7 @@ input[type=button], input[type=submit], input[type=file], button {
 	font-size:14px;
 	line-height:25px;
 	color:#666;
+	margin-bottom:10px;
 }
 .index-task-single-address img{
 	width:15px;
@@ -294,6 +418,16 @@ input[type=button], input[type=submit], input[type=file], button {
 	justify-content:center;
 	text-align:center;
 }
+.task-single-content{
+	margin:10px 0;
+	max-height:54px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.task-single-pay{
+	line-height:40px;
+	float:right;
+}
 .task-single-right-button{
 	font-size:19px;
 	color:#fff;
@@ -327,7 +461,55 @@ input[type=button], input[type=submit], input[type=file], button {
 	display:-webkit-box;
     -webkit-box-orient: vertical;
 }
+.task-single-total{
+	margin-bottom:10px;
+	font-size:14px;
+	color:#999;
+}
+.task-single-total-look{
+	float:left;
+	width:80px;
+}
+.task-single-total-look-icon{
+	width:18px;
+	height:18px;
+	margin-right:5px;
+	vertical-align:middle;
+	margin-top:-3px;
+}
+.task-single-total-resume{
+	float:right;
+	width:80px;
+	text-align:right;
+}
 
+
+
+/**  tasklist-edit 任务列表编辑 **/
+.tasklist-single-edit{
+	width:100%;
+	border-top:1px solid #999;
+	color:#666;
+	font-size:15px;
+	padding:10px 0;
+}
+.tasklist-single-edit-right{
+	float:right;
+	width:100px;
+	text-align:right;
+}
+.tasklist-single-edit-left{
+	float:left;
+	width:100px;
+	text-align:left;
+}
+.tasklist-single-edit-icon{
+	width:20px;
+	height:20px;
+	margin-right:10px;
+	vertical-align:middle;
+	margin-top:-3px;
+}
 
 
 
@@ -345,7 +527,7 @@ input[type=button], input[type=submit], input[type=file], button {
 .editinfo-inputsingle{
 	line-height:50px;
 	border-bottom:1px solid #f2f2f2;
-	font-size:20px;
+	font-size:18px;
 }
 .editinfo-inputsingle input{
 	border:none; 
@@ -457,29 +639,83 @@ input[type=button], input[type=submit], input[type=file], button {
 	font-size:17px;
 }
 .taskinfo-task{
-	width:435px;
-	margin:0 20px;
-	text-indent:2em;
+	width:405px;
+	margin:0 35px;
 }
 .taskinfo-task-bt{
 	text-align:center;
 	color:#f96306;
 	font-size:20px;
-}
-input.taskinfo-task-contact{
-	width:150px;
-	height:35px;
-	background-color:#f96306;
-	color:#fff;
-	border-radius:7px;
-	-webkit-border-radius:7px;
-	-moz-border-radius:7px;
+	padding:20px 0 5px;
+	font-weight:bold;
 }
 .taskinfo-tips{
 	width:455px;
 	padding:15px 10px;
 }
-
+.taskinfo-button-k{
+	width:100%;
+	margin-top:50px;
+}
+.taskinfo-button-k input{
+	height:40px;
+	width:100px;
+	background-color:#f96306;
+	color:#fff;
+	font-size:17px;
+	margin:20px 15px;
+	border-radius:7px;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+.taskinfo-resume-bt{
+	margin-top:100px;
+	text-align:center;
+	color:#f96306;
+	width:100%;
+	font-size:20px;
+	font-weight:bold;
+	line-height:60px;
+}
+.taskinfo-resume-bt-single{
+	width:192.5px;
+	margin-left:30px;
+	float:left;
+}
+.taskinfo-resume-bt-single-active{
+	border-bottom:3px solid #f96306;
+	font-size:22px;
+}
+.taskinfo-resume-bt-single img{
+	width:23px;
+	height:23px;
+	vertical-align:middle;
+	margin-top:-5px;
+	margin-right:5px;
+}
+.taskinfo-resumelist-right{
+	float:right;
+	width:80px;
+	height:100px;
+	display:flex;
+	display: -webkit-flex; /* Safari */
+	flex-direction:column;
+	justify-content:center;
+	text-align:center;
+}
+.taskinfo-resumelist-right input{
+	width:100%;
+	line-height:30px;
+	color:#fff;
+	margin:5px 0;
+	background-color:#f96306;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+.taskinfo-resumelist2{
+	display:none;
+}
 
 
 
@@ -509,6 +745,11 @@ input.taskinfo-task-contact{
 	float:right;
 	margin-top:10px;
 }
+.person-head-right-edit{
+	text-align:right;
+	margin-right:30px;
+	margin-top:10px;
+}
 .person-head-right img{
 	width:23px;
 	height:23px;
@@ -536,6 +777,7 @@ input.taskinfo-task-contact{
 .person-list-single img{
 	width:50px;
 }
+/**
 .pop-box{
 	width:100%;
 	position:fixed;
@@ -586,11 +828,72 @@ input.taskinfo-task-contact{
 	width:162px;
 	float:right;
 }
+**/
 
 
 
 
+/**  userinfo_edit  **/
+.userinfo-edit-tip{
+	width:100%;
+	text-align:center;
+	margin-top:30px;
+	color:red;
+	font-size:15px;
+}
 
+
+/**  employer-info  企业主页  **/
+.employer-info-bt{
+	text-align:center;
+	padding:35px 10px;
+	font-size:23px;
+	border-bottom:10px solid #f2f2f2;
+}
+.employer-info-logo{
+	width:35px;
+	height:35px;
+	vertical-align:middle;
+	margin-right:10px;
+}
+.employer-info-contact{
+	padding:0 30px;
+	border-bottom:10px solid #f2f2f2;
+}
+.employer-info-contact-single{
+	padding:15px 0;
+	border-bottom:1px solid #ccc;
+}
+.employer-info-resume{
+	padding:10px 30px 20px;
+	color:#666;
+	border-bottom:10px solid #f2f2f2;
+}
+.employer-info-resume-bt{
+	line-height:50px;
+	border-bottom:1px solid #ccc;
+	color:#f96306;
+	font-size:18px;
+	margin-bottom:20px;
+	font-weight:bold;
+}
+.employer-info-job-bt{
+	line-height:60px;
+	border-bottom:1px solid #ccc;
+	color:#f96306;
+	font-size:18px;
+	padding:0 30px;
+	margin-bottom:20px;
+	font-weight:bold;
+}
+
+
+/**  employer-info-edit  企业主页编辑  **/
+.employerinfo-edit-img{
+	width:90px;
+	height:90px;
+	border:1px solid #ccc;
+}
 
 
 
@@ -637,10 +940,22 @@ input.taskinfo-task-contact{
 	font-size:17px;
 }
 .releasetask-text{
-	width:310px;
+	width:300px;
 	line-height:30px;
 	height:30px;
 	border-bottom:1px solid #ccc;
+}
+.releasetask-p{
+	width:100%;
+	margin-top:10px;
+	clear:both;
+}
+.releasetask-p-bt{
+	width:70px;
+	float:left;
+	font-size:17px;
+	text-align:justify;
+    text-align-last:justify;
 }
 .releasetask-text-short{
 	width:293px;
@@ -667,11 +982,17 @@ input.taskinfo-task-contact{
 .releasetask-teltip{
 	font-size:14px;
 	color:#999;
-	margin:-13px 0 -5px 40px;
-	width:360px;
+	width:300px;
+	margin-left:80px;
 	text-align:center;
 }
-
+.releasetask-tip{
+	font-size:14px;
+	color:red;
+	width:100%;
+	text-align:center;
+	margin-top:20px;
+}
 
 
 
@@ -731,10 +1052,21 @@ input.taskinfo-task-contact{
 .noticelist-single-bt{
 	font-size:20px;
 	line-height:40px;
+	margin-bottom:10px;
 	color:#f96306;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+.noticelist-single-state{
+	float:right;
+	color:#666;
+	font-size:15px;
+}
+.noticelist-single-date{
+	margin-top:15px;
+	color:#666;
+	font-size:15px;
 }
 .noticelist-single-type{
 	margin-left:50px;
@@ -808,7 +1140,7 @@ input.taskinfo-task-contact{
 }
 .resume-head-name{
 	font-size:21px;
-	line-height:55px;
+	line-height:70px;
 }
 .resume-head-name input{
 	background-color:f96306;
@@ -822,7 +1154,7 @@ input.taskinfo-task-contact{
 	-moz-border-radius:3px;
 }
 .resume-head-age{
-	margin:0 35px;
+	margin:0 25px;
 }
 .resume-nav{
 	padding:10px 25px 0;
@@ -865,20 +1197,170 @@ input.taskinfo-task-contact{
 
 
 /**  resume-edit  简历编辑  **/
-.resume-edit-k input,.resume-edit-k textarea{
+.resume-edit-k input,.resume-edit-k textarea,.resume-edit-k select{
 	font-size:17px;
 }
-input.resume-edit-input-name{
-	width:230px;
-	border:none;
+.resume-edit-head-right{
+	width:280px;
+	float:left;
+}
+input.resume-edit-input-name,select.resume-edit-input-name{
+	width:200px;
 	float:none;
+	border:none;
+	padding:0 5px;
 	background:none;
 	border-bottom:1px solid #666;
+	margin-top:15px;
+}
+.resume-edit-input-sex{
+	margin-top:15px;
+}
+.resume-edit-input-sex label{
+	margin:0 15px;
+}
+input.resume-edit-input-tel{
+	margin:0;
+	width:300px;
+}
+.resume-edit-nav-single{
+	padding-left:30px;
+	margin-bottom:20px;
+	position:relative;
+}
+.resume-edit-nav-single input{
+	width:270px;
+}
+.resume-edit-textarea{
+	margin-top:15px;
+}
+.resume-edit-textarea textarea{
+	width:350px;
+	height:100px;
 	margin-top:10px;
+	margin-left:8px;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+}
+.resume-edit-nav-bt-right{
+	float:right;
+	font-size:15px;
+	color:red;
+	font-weight:normal;
+}
+.resume-edit-nav-single-icon{
+	position:absolute;
+	top:15px;
+	left:0;
+	width:20px;
+	height:20px;
+}
+.resume-edit-nav-single-cancel{
+	width:100%;
+	text-align:right;
+}
+.resume-edit-nav-single-cancel input{
+	background-color:#f96306;
+	color:#fff;
+	width:60px;
+	margin-top:20px;
+	line-height:25px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+.resume-edit-textarea-self{
+	width:390px;
+	height:100px;
+	margin-top:10px;
+	margin-left:8px;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+}
+.resume-edit-hide{
+	display:none;
+}
+.resume-edit-open{
+	width:405px;
+	padding:15px 35px;
+	font-size:19px;
+	border-bottom:8px solid #f2f2f2;
+}
+.resume-edit-open-buttonk{
+	width:70px;
+	height:30px;
+	border:1px solid #ccc;
+	background-color:#f2f2f2;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	float:right;
+}
+.resume-edit-open-button{
+	width:40px;
+	height:30px;
+	background-color:#fff;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	margin-left:30px;
 }
 
 
 
+
+
+
+/** resumelist 简历列表 **/
+.resumelist-single{
+	width:415px;
+	padding:10px 30px 0;
+	border-bottom:1px solid #ccc;
+}
+.resumelist-single-name{
+	line-height:40px;
+	font-size:20px;
+}
+.resumelist-single-info{
+	color:#999;
+	line-height:25px;
+	margin-bottom:10px;
+}
+.resumelist-single-name-icon{
+	width:20px;
+	height:20px;
+	margin-left:10px;
+	margin-top:-3px;
+	vertical-align:middle;
+}
+.resumelist-single-rightarrow{
+	width:30px;
+	height:30px;
+	float:right;
+	margin-top:45px;
+}
+.resumelist-single-look{
+	margin-bottom:10px;
+	font-size:14px;
+	color:#999;
+}
+
+
+
+
+/**  employer-prove  企业认证  **/
+.employer-prove-k{
+	padding:30px 0;
+}
+.employer-prove-addimg{
+	width:150px;
+	height:212px;
+	border:1px solid #ccc;
+	margin-left:5em;
+	margin-top:15px;
+}
 
 
 

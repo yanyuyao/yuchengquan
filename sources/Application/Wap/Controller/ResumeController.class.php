@@ -15,12 +15,20 @@ use OT\DataDictionary;
  * 主要获取首页聚合数据
  */
 class ResumeController extends HomeController {
-	//通知列表
+	
     public function resume(){
 		$this->display('resume');
 	}
 	
 	public function edit(){
 		$this->display('edit');
+	}
+	
+	public function resumelist(){
+		$this->display('resumelist');
+	}
+	
+	public function resumelistmylike(){
+		$this->display('resumelist_mylike');
 	}
 }

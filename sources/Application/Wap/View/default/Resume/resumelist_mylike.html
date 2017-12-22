@@ -1,0 +1,162 @@
+<include file="Public/head-home"/>
+	<div class="middleline8"></div>
+
+	<div class="resumelist-single">
+		<a href="/wap.php?s=/Resume/resume">
+			<img class="resumelist-single-rightarrow" src="__IMG__/rightarrow.png">
+			<div class="resumelist-single-name">
+				哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+			</div>
+			<div class="resumelist-single-info">
+				男 / 25岁 / 未婚 / 本科<br>
+				求职意向：市场专员
+			</div>
+			<div class="resumelist-single-look">
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+				</div>
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</a>
+		<div class="tasklist-single-edit">
+			<div class="tasklist-single-edit-left resumemeet">
+				<img class="tasklist-single-edit-icon" src="__IMG__/meet.png">邀请面试
+			</div>
+			<div class="tasklist-single-edit-right resumedelete">
+				<img class="tasklist-single-edit-icon" src="__IMG__/delete.png">关闭
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	<div class="resumelist-single">
+		<a href="/wap.php?s=/Resume/resume">
+			<img class="resumelist-single-rightarrow" src="__IMG__/rightarrow.png">
+			<div class="resumelist-single-name">
+				哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+			</div>
+			<div class="resumelist-single-info">
+				男 / 25岁 / 未婚 / 本科<br>
+				求职意向：市场专员
+			</div>
+			<div class="resumelist-single-look">
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+				</div>
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+		</a>
+		<div class="tasklist-single-edit">
+			<div class="tasklist-single-edit-left resumemeet">
+				<img class="tasklist-single-edit-icon" src="__IMG__/meet.png">邀请面试
+			</div>
+			<div class="tasklist-single-edit-right resumedelete">
+				<img class="tasklist-single-edit-icon" src="__IMG__/delete.png">关闭
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	
+	
+	<!--pop-box-delete start-->
+	<div class="popup-k popup-k-delete">
+		<div class="popup-zhezhao"></div>
+		<div class="popup-box-k">
+			<div class="popup-box">
+				<div class="popup-text">
+					<span class="popup-text-bt">关闭原因</span>
+					<div class="popup-text-inputk">
+						关闭原因：<input class="popup-text-input-text" type="text" placeholder="招聘关闭原因">
+					</div>
+				</div>
+				<div class="popup-box-tip"></div>
+				<div class="popup-button">
+					<div class="popup-button-confirm popup-button-confirm-delete">确定</div>
+					<div class="popup-button-cancel">取消</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--pop-box-delete end-->
+	
+	
+	<!--pop-box-meet start-->
+	<div class="popup-k popup-k-meet">
+		<div class="popup-zhezhao"></div>
+		<div class="popup-box-k">
+			<div class="popup-box">
+				<div class="popup-text">
+					<span class="popup-text-bt">邀请面试岗位</span>
+					<div class="popup-text-inputk">
+						<label><input class="popup-text-input-radio" checked type="radio" name="task" value="市场专员">市场专员</label><br>
+						<label><input class="popup-text-input-radio" type="radio" name="task" value="办公室文员">办公室文员</label><br>
+						<label><input class="popup-text-input-radio" type="radio" name="task" value="销售内勤">销售内勤</label>
+					</div>
+				</div>
+				<div class="popup-box-tip"></div>
+				<div class="popup-button">
+					<div class="popup-button-confirm popup-button-confirm-meet">确定</div>
+					<div class="popup-button-cancel">取消</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--pop-box-luyong end-->
+	
+	
+	<!--pop-tip start-->
+	<div class="popup-tip">
+		<span class="popup-tip-text"></span>
+	</div>
+	<!--pop-tip end-->
+	
+	
+<include file="Public/footer"/>
+
+<script>
+	
+	$(".popup-button-cancel,.popup-zhezhao").click(function(){
+		$(".popup-k").fadeOut(500);
+		$(".delete-active").removeClass("delete-active");
+		$(".popup-text-input-text").val('');
+	})//popup cancel
+	
+	
+	//popup-box-delete
+	$(".resumedelete").click(function(){
+		$(".popup-k-delete").fadeIn(500);
+		$(this).addClass("delete-active");
+	})//popup display
+	$(".popup-button-confirm-delete").click(function(){
+		if($(".popup-text-input-text").val() != ''){
+			$(".popup-k").fadeOut(500);
+			$(".delete-active").parents(".resumelist-single").remove();
+			$(".popup-box-tip").text("");
+			$(".popup-text-input-text").val('');
+		}else{
+			$(".popup-box-tip").text("请填写关闭原因");
+		}
+	})//popup confirm
+	
+	
+	//popup-box-meet
+	$(".resumemeet").click(function(){
+		$(".popup-k-meet").fadeIn(500);
+		$(this).addClass("delete-active");
+	})//popup display
+	$(".popup-button-confirm-meet").click(function(){
+		$(".popup-k").fadeOut(500);
+		
+		$(".popup-tip-text").text("面试邀请发送成功！");//popup-tip  meetsend-tip
+		$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+	})//popup confirm
+	
+</script>
+
+
+

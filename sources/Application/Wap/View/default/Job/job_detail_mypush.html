@@ -1,0 +1,229 @@
+<include file="Public/head-home"/>
+	<div class="taskinfo-bt">
+    	<div class="taskinfo-bt-right">
+             <if condition="$data['commission_status'] eq 1">
+        	<img src="__IMG__/yongjingreen.png">已托管
+             </if>
+            {$data.push_at}
+        </div>
+        具体需求
+    </div>
+    <div class="middleline8"></div>
+	
+    <div class="taskinfo-task">
+		<div class="taskinfo-task-bt">{$data.companyname}</div>
+		<hr>
+    	<p>{$data.content}</p>
+        <if condition="$data['peoplenums'] neq NULL">
+        <p>需要：{$data.peoplenums}人</p>
+        </if>
+        <if condition="$data['commission'] neq NULL">
+        <p>佣金：{$data.commission}元/人</p>
+        </if>
+        <if condition="$data['workhours'] neq NULL">
+        <p>工时：{$data.workhours}</p>
+        </if>
+        <if condition="$data['contactphone'] neq NULL">
+            <p>电话：
+                <if condition="$data['contactname'] neq NULL">{$data.contactname}</if>
+                <?=substr_replace($data['contactphone'],'*****',3,5); ?></p>
+        </if>
+        <if condition="$data['contactphone2'] neq NULL">
+            <p>电话：
+                <if condition="$data['contactname2'] neq NULL">{$data.contactname}</if>
+                <?=substr_replace($data['contactphone2'],'*****',3,5); ?></p>
+        </if>
+        <if condition="$data['workaddress'] neq NULL">
+            <p>地址：{$data.workaddress}</p>
+        </if>
+		<div class="task-single-total">
+			<div class="task-single-total-look">
+				<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+			</div>
+			<div class="task-single-total-look">
+				<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+			</div>
+			<div class="task-single-total-resume">
+				<img class="task-single-total-look-icon" src="__IMG__/meet.png">5
+			</div>
+			<div class="task-single-total-resume">
+				<img class="task-single-total-look-icon" src="__IMG__/resume.png">5
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		
+		
+			
+			
+			
+			
+        <input type="hidden" id="jobid" value="{$data.id}" />
+    </div>
+	
+	<div class="taskinfo-resume-bt">
+		<div class="taskinfo-resume-bt-single taskinfo-resume-bt-single-active">
+			<img src="__IMG__/resume.png">应聘简历(5)
+		</div>
+		<div class="taskinfo-resume-bt-single">
+			<img src="__IMG__/meet.png">已邀请面试(5)
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div class="middleline8"></div>
+	
+	
+	<!--应聘简历 start-->
+	<div class="taskinfo-resumelist">
+		<div class="resumelist-single">
+			<div class="taskinfo-resumelist-right">
+				<a href="/wap.php?s=/User/user_info"><input type="button" value="个人主页"></a>
+				<a href="/wap.php?s=/Resume/resume"><input type="button" value="查看简历"></a>
+			</div>
+			<a href="/wap.php?s=/Resume/resume">	
+				<div class="resumelist-single-name">
+					哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+				</div>
+				<div class="resumelist-single-info">
+					男 / 25岁 / 未婚 / 本科<br>
+					求职意向：市场专员
+				</div>
+				<div class="resumelist-single-look">
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+					</div>
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+					</div>
+					<div class="task-single-total-resume">
+						<img class="task-single-total-look-icon" src="__IMG__/meet.png">已邀
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</a>
+		</div>
+		<div class="resumelist-single">
+			<div class="taskinfo-resumelist-right">
+				<a href="/wap.php?s=/User/user_info"><input type="button" value="个人主页"></a>
+				<a href="/wap.php?s=/Resume/resume"><input type="button" value="查看简历"></a>
+			</div>
+			<a href="/wap.php?s=/Resume/resume">	
+				<div class="resumelist-single-name">
+					哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+				</div>
+				<div class="resumelist-single-info">
+					男 / 25岁 / 未婚 / 本科<br>
+					求职意向：市场专员
+				</div>
+				<div class="resumelist-single-look">
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+					</div>
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+					</div>
+					<div class="task-single-total-resume">
+						<img class="task-single-total-look-icon" src="__IMG__/meet.png">已邀
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<!--应聘简历 end-->
+	
+	<!--邀请面试简历 start-->
+	<div class="taskinfo-resumelist2 taskinfo-resumelist">
+		<div class="resumelist-single">
+			<div class="taskinfo-resumelist-right">
+				<a href="/wap.php?s=/User/user_info"><input type="button" value="个人主页"></a>
+				<a href="/wap.php?s=/Resume/resume"><input type="button" value="查看简历"></a>
+			</div>
+			<a href="/wap.php?s=/Resume/resume">	
+				<div class="resumelist-single-name">
+					哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+				</div>
+				<div class="resumelist-single-info">
+					女 / 25岁 / 未婚 / 本科<br>
+					求职意向：市场专员
+				</div>
+				<div class="resumelist-single-look">
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+					</div>
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+					</div>
+					<div class="task-single-total-resume">
+						<img class="task-single-total-look-icon" src="__IMG__/meet.png">已邀
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</a>
+		</div>
+		<div class="resumelist-single">
+			<div class="taskinfo-resumelist-right">
+				<a href="/wap.php?s=/User/user_info"><input type="button" value="个人主页"></a>
+				<a href="/wap.php?s=/Resume/resume"><input type="button" value="查看简历"></a>
+			</div>
+			<a href="/wap.php?s=/Resume/resume">	
+				<div class="resumelist-single-name">
+					哼哼哈嘿<img class="resumelist-single-name-icon" src="__IMG__/tong.png">
+				</div>
+				<div class="resumelist-single-info">
+					女 / 25岁 / 未婚 / 本科<br>
+					求职意向：市场专员
+				</div>
+				<div class="resumelist-single-look">
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+					</div>
+					<div class="task-single-total-look">
+						<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+					</div>
+					<div class="task-single-total-resume">
+						<img class="task-single-total-look-icon" src="__IMG__/meet.png">已邀
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<!--邀请面试简历 end-->
+	
+	
+	
+    <!--
+    <div class="taskinfo-tips">
+    	<div class="editinfo-skill-tips">
+        	<img src="__IMG__/tips.png">普通会员最多可申请3项兼职，且同一天兼职最多申请1项，申请后不可撤销，请谨慎申请合适的兼职！
+        </div>
+    </div>
+    <div class="editinfo-submit">
+    	<input type="button" value="申请兼职"> 
+    </div>
+    -->
+    <script>
+        function addjobs(){
+            $.ajax({
+                type: 'POST',
+                url: '/wap.php?s=/Job/addToMyJob',
+                data: {
+                    'jobId':$('#jobid').val()
+                },
+                success: function(data){}
+              });
+      }
+    </script>
+<include file="Public/footer"/>
+
+<script>
+	$(".taskinfo-resume-bt-single").click(function(){
+		$(this).addClass("taskinfo-resume-bt-single-active");
+		$(this).siblings(".taskinfo-resume-bt-single").removeClass("taskinfo-resume-bt-single-active");
+		
+		var i = $(this).index();
+		$(".taskinfo-resumelist").eq(i).show();
+		$(".taskinfo-resumelist").eq(i).siblings(".taskinfo-resumelist").hide();
+	})
+
+</script>	

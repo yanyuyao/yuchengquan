@@ -1,9 +1,10 @@
 <include file="Public/head"/>
-<div class="middleline8"></div>
-<div id="list">
+	<div class="middleline8"></div>
+	<div id="list">
             <volist name="list" id="vo">
-		<a href="/wap.php?s=/Job/detail/jobId/{$vo.id}" class="lineitem">
+		
 		<div class="task-single" style="height:auto;">
+		<a href="/wap.php?s=/Job/detail/jobId/{$vo.id}" class="lineitem">
 			<div class="index-task-single-line">
                 <div class="task-single-pay">
 					<if condition="$vo.commission neq NULL">
@@ -44,6 +45,7 @@
 						<img src="__IMG__/address.png">{$vo.workaddress}
 				</div>
 			</if>
+			
 			<div class="task-single-total">
 				<div class="task-single-total-look">
 					<img class="task-single-total-look-icon" src="__IMG__/look.png">10
@@ -54,19 +56,45 @@
 				<div class="task-single-total-resume">
 					<img class="task-single-total-look-icon" src="__IMG__/resume.png">5
 				</div>
-				
 				<div style="clear:both;"></div>
 			</div>
+			</a>
+			<div class="tasklist-single-edit">
+				<div class="tasklist-single-edit-right taskdelete">
+					<img class="tasklist-single-edit-icon" src="__IMG__/delete.png">删除
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			
 		</div>
-		</a>
+		
             </volist>  	
     </div>
+	
+	
     <div class="weui-loadmore">
       <!--<i class="weui-loading"></i>-->
       <!--<span class="weui-loadmore__tips">正在加载</span>-->
     </div>
     
     
+	<!--pop-->
+	<div class="popup-k">
+		<div class="popup-zhezhao"></div>
+		<div class="popup-box-k">
+			<div class="popup-box">
+				<div class="popup-text">
+					<span class="popup-text-bt">确认删除？</span>
+				</div>
+				<div class="popup-button">
+					<div class="popup-button-confirm">确定</div>
+					<div class="popup-button-cancel">取消</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
     
     <script src="__JS__/jquery-weui.js"></script>
     <script src="__JS__/fastclick.js"></script>
@@ -160,3 +188,28 @@
     </script>
     
 <include file="Public/footer"/>
+
+<script>
+	//popup
+	$(".taskdelete").click(function(){
+		$(".popup-k").fadeIn(500);
+		$(this).addClass("delete-active");
+	})//popup display
+	$(".popup-button-cancel,.popup-zhezhao").click(function(){
+		$(".popup-k").fadeOut(500);
+		$(".delete-active").removeClass("delete-active");
+	})//popup cancel
+	$(".popup-button-confirm").click(function(){
+		$(".popup-k").fadeOut(500);
+		$(".delete-active").parents(".task-single").remove();
+	})//popup confirm
+	
+</script>
+
+
+
+
+
+
+
+

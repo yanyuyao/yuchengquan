@@ -48,7 +48,7 @@ class UserController extends HomeController {
 	}
 	//会员信息页
 	public function user_info(){
-			$this->display('user_info');
+		$this->display('user_info');
 		
 	}
 	//会员信息页
@@ -267,5 +267,15 @@ class UserController extends HomeController {
             $this->display();
         }
     }
+	
+	
+	
+	
+	
+	
+	//add by xinxin
+	public function prove(){
+		$this->display('employer_prove');
+	}
 
 }

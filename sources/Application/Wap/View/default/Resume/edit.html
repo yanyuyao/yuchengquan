@@ -1,0 +1,143 @@
+<include file="Public/head-home"/>
+	<div class="resume-edit-k">
+		<div class="resume-edit-open">
+			<div class="resume-edit-open-buttonk">
+				<div class="resume-edit-open-button"></div>
+			</div>
+			公开简历
+		</div>
+		<div class="resume-head">
+			<div class="resume-head-img">
+				<img src="__IMG__/addhead.png"><br>
+				头像
+			</div>
+			<div class="resume-head-right resume-edit-head-right">
+				姓名：<input class="resume-edit-input-name" type="text" placeholder="姓名" name="name"><br>
+				<div class="resume-edit-input-sex">
+					性别：
+					<label><input type="radio" name="sex" value="男">男</label>
+					<label><input type="radio" name="sex" value="女">女</label>
+				</div>
+				年龄：<input class="resume-edit-input-name" type="number" placeholder="年龄" name="age">
+				<div class="resume-edit-input-sex">
+					婚姻：
+					<label><input type="radio" name="marry" value="未婚">未婚</label>
+					<label><input type="radio" name="marry" value="已婚">已婚</label>
+				</div>
+				学历：
+				<select class="resume-edit-input-name">
+					<option>选择学历</option>
+					<option>初中及以下</option>
+					<option>高中</option>
+					<option>技校</option>
+					<option>中专</option>
+					<option>大专</option>
+					<option>本科</option>
+					<option>硕士</option>
+					<option>博士</option>
+				</select>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="middleline8"></div>
+		<div class="resume-nav">
+			<div class="resume-nav-tel">
+				<img src="__IMG__/tel.png"><b>手机：</b><input class="resume-edit-input-name resume-edit-input-tel" type="tel" placeholder="手机号" name="tel" maxlength="11">
+			</div>
+			<div class="resume-nav-tel">
+				<img src="__IMG__/email.png"><b>邮箱：</b><input class="resume-edit-input-name resume-edit-input-tel" type="email" placeholder="邮箱" name="email">
+			</div>
+			<div class="resume-nav-tel">
+				<img src="__IMG__/address.png"><b>地址：</b><input class="resume-edit-input-name resume-edit-input-tel" type="tel" placeholder="联系地址" name="address">
+			</div>
+		</div>
+		<div class="resume-nav">
+			<div class="resume-nav-tel">
+				<b>求职意向：</b><input class="resume-edit-input-name resume-edit-input-tel" type="text" placeholder="求职意向">
+			</div>
+			<div class="resume-nav-tel">
+				<b>期望薪资：</b><input class="resume-edit-input-name resume-edit-input-tel" type="text" placeholder="期望薪资">
+			</div>
+		</div>
+		<div class="resume-nav">
+			<div class="resume-nav-bt">
+				<div id="workadd" class="resume-edit-nav-bt-right">+添加</div>
+				工作经历
+			</div>
+			
+		</div>
+		<div class="resume-nav">
+			<div class="resume-nav-bt">
+				<div id="eduadd" class="resume-edit-nav-bt-right">+添加</div>
+				教育经历
+			</div>
+			
+		</div>
+		<div class="resume-nav">
+			<div class="resume-nav-bt">技能特长</div>
+			<div class="resume-nav-text">
+				<textarea class="resume-edit-textarea-self" placeholder="技能特长"></textarea>
+			</div>
+		</div>
+		<div class="resume-nav">
+			<div class="resume-nav-bt">自我评价</div>
+			<div class="resume-nav-text">	
+				<textarea class="resume-edit-textarea-self" placeholder="自我评价"></textarea>
+			</div>
+		</div>
+		
+		<div class="editinfo-submit">
+			<input class="marginbottom30" type="submit" value="保存简历"> 
+		</div>
+	</div>
+	
+    
+<include file="Public/footer"/>
+
+<script>
+	//简历公开
+	$(".resume-edit-open-buttonk").click(function(){
+		if($(".resume-edit-open-button").css("margin-left") == "30px"){
+			$(".resume-edit-open-button").animate({marginLeft:"0px"},300);
+			$(".resume-edit-open-button").css("background-color","#4BC62C");
+		}else{
+			$(".resume-edit-open-button").animate({marginLeft:"30px"},300);
+			$(".resume-edit-open-button").css("background-color","#fff");
+		}
+	})
+	
+	//添加工作经历
+	var workadd = 	'<div class="resume-edit-nav-single resume-edit-nav-single-work">'+
+					'	开始时间：<input class="resume-edit-input-name" type="data"><br>'+
+					'	结束时间：<input class="resume-edit-input-name" type="data"><br>'+
+					'	工作单位：<input class="resume-edit-input-name" type="text">'+
+					'	<div class="resume-edit-textarea">'+
+					'		工作内容：<br><textarea placeholder="工作内容"></textarea>'+
+					'	</div>'+
+					'	<div class="resume-edit-nav-single-cancel">'+
+					'		<input class="resume-edit-cancel" type="button" value="取消">'+
+					'	</div>'+
+					'	<img class="resume-edit-nav-single-icon" src="__IMG__/work.png">'+
+					'</div>';
+	$("#workadd").click(function(){
+		$(this).parents(".resume-nav").append(workadd);	
+	})
+	//添加教育经历
+	var eduadd = 	'<div class="resume-edit-nav-single">'+
+					'	开始时间：<input class="resume-edit-input-name" type="data"><br>'+
+					'	结束时间：<input class="resume-edit-input-name" type="data"><br>'+
+					'	学校名称：<input class="resume-edit-input-name" type="text">'+
+					'	<div class="resume-edit-textarea">'+
+					'		专业课程：<br><textarea placeholder="专业课程"></textarea>'+
+					'	</div>'+
+					'	<div class="resume-edit-nav-single-cancel">'+
+					'		<input class="resume-edit-cancel" type="button" value="取消">'+
+					'	</div>'+
+					'	<img class="resume-edit-nav-single-icon" src="__IMG__/school.png">'+
+					'</div>';
+	$("#eduadd").click(function(){
+		$(this).parents(".resume-nav").append(eduadd);	
+		console.log($(".resume-edit-nav-single-cancel").children("input"));
+	})
+	
+</script>

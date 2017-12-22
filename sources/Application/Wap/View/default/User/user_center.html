@@ -1,6 +1,9 @@
 <include file="Public/head-home"/>
 	<div class="person-head">
-    	<div class="person-head-left">
+    	<div class="person-head-right-edit">
+			<a href="/wap.php?s=/User/user_info_edit/usertype/user">修改个人信息</a>
+		</div>
+		<div class="person-head-left">
                  <if condition="$userinfo['avatar'] neq ''">
                     <img src="{$userinfo['avatar']}" />
                  <else />   
@@ -8,10 +11,10 @@
                  </if>
                     <br>
                  {$userinfo['username']}<br>
-                 <a href="/wap.php?s=/User/user_info_edit/usertype/user">设置</a>
+                 
                 <p>
                                 <if condition="$userinfo['phone'] neq ''">
-                                    <?=substr_replace($userinfo['phone'],'*****',3,5); ?><br>
+                                    <?=substr_replace($userinfo['phone'],'*****',3,5); ?>
                                 </if>
                                 <if condition="$userinfo['type'] eq 'user'">
                                     <!--<a href="/wap.php?s=/User/user_info">微名片</a>-->
@@ -27,10 +30,12 @@
                 </p>
         </div>
         <div class="person-head-right">
-        	<p><img src="__IMG__/tong.png">铜牌会员 <a href="/wap.php?s=/User/user_upgrade" class="person-head-right-up">升级账户</a></p>
+        	
+			<p><img src="__IMG__/tong.png">铜牌会员 <a href="/wap.php?s=/User/user_upgrade" class="person-head-right-up">升级账户</a></p>
             <p>信用积分：100</p>
 			<p>平台积分：100</p>
             <p>上次登录时间：2017-09-23 12:30</p>
+			
         </div>
         <div style="clear:both;"></div>
     </div>

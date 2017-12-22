@@ -1,0 +1,75 @@
+<include file="Public/head-home"/>
+	<div class="editinfo-bt">
+    	企业主页编辑
+    </div>
+    <div class="middleline8"></div>
+    <form action="/wap.php?s=/User/user_info_edit/exec/save" method="post">
+        <div class="editinfo-input">
+            <div class="editinfo-inputsingle">
+                <div class="releasetask-p-bt"><b>企业名称</b></div>：
+				<input id="name" type="text" placeholder="企业名称" name="name">
+            </div>
+			<div class="editinfo-inputsingle">
+                <div class="releasetask-p-bt"><b>联系人</b></div>：
+				<input id="person" type="text" placeholder="联系人" name="name">
+            </div>
+			<div class="editinfo-inputsingle">
+                <div class="releasetask-p-bt"><b>联系电话</b></div>：
+				<input id="tel" type="text" placeholder="联系电话" name="name">
+            </div>
+			<div class="editinfo-inputsingle">
+                <div class="releasetask-p-bt"><b>联系地址</b></div>：
+				<input id="address" type="text" placeholder="联系地址" name="name">
+            </div>
+            <div class="editinfo-inputsingle">  
+				<textarea id="resume" placeholder="企业简介" name="evaluation"></textarea>
+            </div>
+			<div class="editinfo-inputsingle">  
+				上传企业logo:<br>
+				<img class="employerinfo-edit-img" src="__IMG__/addimg.png">
+            </div>
+			<div class="editinfo-inputsingle">  
+				上传企业照片（轮播图图片）:<br>
+				<img class="employerinfo-edit-img" src="__IMG__/addimg.png">
+            </div>
+        </div>
+
+        <div class="editinfo-submit">
+            <input type="submit" value="提交信息">
+        </div>
+		<div class="userinfo-edit-tip"></div>
+    </form>
+
+	
+	
+	<include file="Public/footer"/>
+	
+    <script>
+		
+		//form
+		$(".editinfo-submit").click(function(){
+			var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;  //匹配手机号  
+			var reg2 = /^(0[1-9][0-9][1-9]*)*-[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
+			var telNumber = $("#tel").val();
+			var result1 = reg1.test(telNumber);
+			var result2 = reg2.test(telNumber);
+			if($("#name").val() == ''){
+				$(".userinfo-edit-tip").text("请填写姓名");
+				return false;
+			}else if($("#tel").val() == ''){
+				$(".userinfo-edit-tip").text("请填写电话");
+				return false;
+			}else if(result1 == true || result2 == true){
+				if($("#resume").val() == ''){
+					$(".userinfo-edit-tip").text("请填写个人评价");
+					return false;
+				}else{
+					//提交成功
+				}
+			}else{
+				$(".userinfo-edit-tip").text("电话格式不正确");
+				return false;
+			}
+		})
+	</script>
+

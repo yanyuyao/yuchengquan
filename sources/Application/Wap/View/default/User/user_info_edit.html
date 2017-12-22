@@ -6,17 +6,17 @@
     <form action="/wap.php?s=/User/user_info_edit/exec/save" method="post">
         <div class="editinfo-input">
             <div class="editinfo-inputsingle">
-                    姓名：<input type="text" placeholder="请输入姓名" name="realname" value="{$userinfo.realname}">
+                    姓名：<input id="name" type="text" placeholder="请输入姓名" name="realname" value="{$userinfo.realname}">
             </div>
             <div class="editinfo-inputsingle">
                 性别：<input name="sex" type="radio" value="1" <if condition="$userinfo.sex eq 1">checked='checked'</if>>男 
                 <input name="sex" type="radio" value="2" <if condition="$userinfo.sex eq 2">checked='checked'</if>>女
             </div>
             <div class="editinfo-inputsingle">
-                    电话：<input type="tel" maxlength="11" placeholder="请输入联系电话" name="phone" value="{$userinfo.phone}">
+                    电话：<input id="tel" type="tel" maxlength="11" placeholder="请输入联系电话" name="phone" value="{$userinfo.phone}">
             </div>
             <div class="editinfo-inputsingle">
-                    <textarea placeholder="个人评价" name="evaluation">{$userinfo.evaluation}</textarea>
+				<textarea id="resume" placeholder="个人评价" name="evaluation">{$userinfo.evaluation}</textarea>
             </div>
         </div>
         <!--skill start-->
@@ -41,10 +41,15 @@
         <div class="editinfo-submit">
             <input type="submit" value="提交信息">
         </div>
+		<div class="userinfo-edit-tip"></div>
     </form>
+
 	
-    <script src="js/jquery-2.1.4.js"></script>
+	
+	<include file="Public/footer"/>
+	
     <script>
+		//技能选择
 		$(".editinfo-skill-single").click(function(){
 			if($(this).hasClass("active")){
 				$(this).removeClass("active");
@@ -52,6 +57,31 @@
 				$(this).addClass("active");
 			}
 		})
+		
+		//form
+		$(".editinfo-submit").click(function(){
+			var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;  //匹配手机号  
+			var reg2 = /^(0[1-9][0-9][1-9]*)*-[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
+			var telNumber = $("#tel").val();
+			var result1 = reg1.test(telNumber);
+			var result2 = reg2.test(telNumber);
+			if($("#name").val() == ''){
+				$(".userinfo-edit-tip").text("请填写姓名");
+				return false;
+			}else if($("#tel").val() == ''){
+				$(".userinfo-edit-tip").text("请填写电话");
+				return false;
+			}else if(result1 == true || result2 == true){
+				if($("#resume").val() == ''){
+					$(".userinfo-edit-tip").text("请填写个人评价");
+					return false;
+				}else{
+					//提交成功
+				}
+			}else{
+				$(".userinfo-edit-tip").text("电话格式不正确");
+				return false;
+			}
+		})
 	</script>
 
-<include file="Public/footer"/>
