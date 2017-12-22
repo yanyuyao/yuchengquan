@@ -1,0 +1,100 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>新增招聘信息</h2>
+    </div>
+    <form action="{:U('add')}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="">
+            </div>
+        </div>
+       <div class="form-item">
+            <label class="item-label">公司名称<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="companyname" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">招聘内容<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="content" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">招聘人数<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="peoplenums" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">薪资<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="commission" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系人姓名<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contactname" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系人电话<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contactphone" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系人姓名2<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contactname2" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系人电话2<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contactphone2" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">地址<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="workaddress" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">状态<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" value="1" name="status"/> 发布
+                <input type="radio" value="0" name="status"/> 不发布
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">发布时间<span class="check-tips">2017-10-10</span></label>
+            <div class="controls">
+                 <input type="text" class="text input-large" name="push_at" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">类型<span class="check-tips"></span></label>
+            <div class="controls">
+                  <input type="radio" value="全职" name="job_type"/> 全职
+                <input type="radio" value="兼职" name="job_type"/> 兼职
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>

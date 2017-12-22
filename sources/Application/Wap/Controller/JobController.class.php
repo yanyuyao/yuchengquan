@@ -45,10 +45,10 @@ class JobController extends HomeController {
         }
         
         if($isnew){
-            $list = M('job')->where($where)->limit($page,$num)->order('push_at desc')->select();
+            $list = M('job')->where($where)->limit($page,$num)->order('push_at desc,id desc')->select();
             $pagetitle = '最新';
         }else{
-            $list = M('job')->where($where)->limit($page,$num)->select();
+            $list = M('job')->where($where)->limit($page,$num)->order("id desc")->select();
         }
        
         
@@ -80,7 +80,7 @@ class JobController extends HomeController {
         $title = isset($_REQUEST['title'])?$_REQUEST['title']:'';
         $company = isset($_REQUEST['company'])?$_REQUEST['company']:'';
         $peoplenum = isset($_REQUEST['peoplenum'])?$_REQUEST['peoplenum']:'';
-        $commision = isset($_REQUEST['commision'])?intval($_REQUEST['commision']):'';
+        $commision = isset($_REQUEST['commision'])?($_REQUEST['commision']):'';
         $workday = isset($_REQUEST['workday'])?intval($_REQUEST['workday']):0;
         $workhours = isset($_REQUEST['workhours'])?intval($_REQUEST['workhours']):0;
         $contactname = isset($_REQUEST['contactname'])?$_REQUEST['contactname']:'';

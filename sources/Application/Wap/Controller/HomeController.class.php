@@ -92,32 +92,34 @@ class HomeController extends Controller {
 				header('Location: '.$url);
 			}
             }else{
-//                创建菜单
-//                $options = array(
-//				'token'=>'zhida', //填写你设定的key
-//				'encodingaeskey'=>'et5BMmHcVMpTnwhjEaw5e6PQf0VnWg4rqHc1xUI9NKq', //填写加密用的EncodingAESKey
-//				'appid'=>'wx229adf13706c23e9', //填写高级调用功能的app id 
-//				'appsecret'=>'dbcfacb447eba4cf5193bbd8bf4f7607' //填写高级调用功能的密钥
-//			);
-//			
-//			
-//                $weObj = new Wechat($options);
-//
-//                $newmenu =  array(
-//                                "button"=>
-//                                        array(
-//                                                array('type'=>'view','name'=>'首页','url'=>'http://8.heyukj.com/wap.php'),
-//                                                array('type'=>'view','name'=>'找工作','url'=>'http://8.heyukj.com/wap.php?s=/Job/index'),
-//                                                array('type'=>'view','name'=>'招人才','url'=>'http://8.heyukj.com/wap.php?s=/Job/pushjob')
-//                                            )
-//                                );
-//                    $result = $weObj->createMenu($newmenu);
-//                    var_dump($result);
-//                    return 1;
-//                var_dump(session('user_auth'));
+
             }            
 	}
         
+        public function createmenu(){
+            //创建菜单
+                $options = array(
+				'token'=>'zhida', //填写你设定的key
+				'encodingaeskey'=>'et5BMmHcVMpTnwhjEaw5e6PQf0VnWg4rqHc1xUI9NKq', //填写加密用的EncodingAESKey
+				'appid'=>'wx229adf13706c23e9', //填写高级调用功能的app id 
+				'appsecret'=>'dbcfacb447eba4cf5193bbd8bf4f7607' //填写高级调用功能的密钥
+			);
+			
+			
+                $weObj = new Wechat($options);
+
+                $newmenu =  array(
+                                "button"=>
+                                        array(
+                                                array('type'=>'view','name'=>'首页','url'=>'http://8.heyukj.com/wap.php'),
+                                                array('type'=>'view','name'=>'找工作','url'=>'http://8.heyukj.com/wap.php?s=/Job/index'),
+                                                array('type'=>'view','name'=>'招人才','url'=>'http://8.heyukj.com/wap.php?s=/Job/pushjob')
+                                            )
+                                );
+                    $result = $weObj->createMenu($newmenu);
+                    var_dump($result);
+                    return 1;
+        }
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
 		$this->redirect('Index/index');

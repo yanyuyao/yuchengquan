@@ -4,7 +4,7 @@
              <if condition="$data['commission_status'] eq 1">
         	<img src="__IMG__/yongjingreen.png">已托管
              </if>
-            {$data.push_at}
+            {$data.push_at|strtotime|date='Y-m-d',###}
         </div>
         具体需求
     </div>

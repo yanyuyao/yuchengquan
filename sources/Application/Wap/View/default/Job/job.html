@@ -73,7 +73,7 @@
                             </div>
                         </if>
                         <div class="index-task-single-line">
-                             <span class="index-task-li-right" style="color:gray;">发布时间：{$vo.push_at}</span>                    
+                             <span class="index-task-li-right" style="color:gray;">发布时间：{$vo.push_at|strtotime|date='Y-m-d',###}</span>                    
 			</div>
 		</div>
 		</a>
