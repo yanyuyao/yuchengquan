@@ -36,6 +36,7 @@ class HomeController extends Controller {
 			$weObj = new Wechat($options);
                         
 			$code = isset($_GET['code'])?$_GET['code']:'';
+                        
 			if($code){
 				$access_token = $weObj->getOauthAccessToken();
 				$userinfo = $weObj->getOauthUserinfo($access_token['access_token'],$access_token['openid']);
@@ -87,8 +88,9 @@ class HomeController extends Controller {
                                     }
                                 }
 			}else{
-				$url = (C('WEBURL')."wap.php?s=/Index/index");
+				$url = (C('WEBURL')."wap.php?s=/User/center");
 				$url = $weObj->getOauthRedirect($url);
+                                
 				header('Location: '.$url);
 			}
             }else{

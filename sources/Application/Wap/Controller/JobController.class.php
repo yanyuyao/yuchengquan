@@ -14,7 +14,7 @@ use OT\DataDictionary;
  * 前台首页控制器
  * 主要获取首页聚合数据
  */
-class JobController extends HomeController {
+class JobController extends Home2Controller {
 
 	//系统首页
     public function index(){
@@ -69,12 +69,11 @@ class JobController extends HomeController {
        
         $phone = '';
         $uid = 0;
-        if(!$is_allow_anyone){
-            if(!checkuserlogin()){ $this->error('请先登录',U('/User/login'));}
-                $user_auth = session('user_auth');
-                $uid = $user_auth['uid'];
-                $phone = $user_auth['phone'];
-        }
+        
+        $user_auth = session('user_auth');
+        $uid = $user_auth['uid'];
+        //$phone = $user_auth['phone'];
+      
         
         $jobtype = isset($_REQUEST['jobtype'])?$_REQUEST['jobtype']:'quanzhi';
         $title = isset($_REQUEST['title'])?$_REQUEST['title']:'';
@@ -101,7 +100,7 @@ class JobController extends HomeController {
                 "contactname"=>  addslashes($contactname),
                 "contactphone"=>$contactphone,
                 "workaddress"=>$workaddress,
-                "status"=>1,
+                "status"=>0,
                 "created_at"=>date("Y-m-d H:i:s",time()),
                 "updated_at"=>date("Y-m-d H:i:s",time()),
                 "push_at"=>date("Y-m-d H:i:s",time()),
