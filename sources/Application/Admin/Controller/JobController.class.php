@@ -70,6 +70,9 @@ class JobController extends AdminController {
         if(isset($_POST) && isset($_POST['title']) && isset($_POST['contactphone'])){
             $_POST['created_at'] = date("Y-m-d H:i:s",time());
             $_POST['updated_at'] = date("Y-m-d H:i:s",time());
+            $_POST['push_at'] = date("Y-m-d",time());
+            $_POST['status'] = 1;
+            $_POST['job_type'] = '全职';
             M('job')->data($_POST)->add();
             $this->success('操作成功',U('Job/Index'));
         }
