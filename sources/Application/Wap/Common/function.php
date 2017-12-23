@@ -76,3 +76,60 @@ function checkuserlogin(){
     }
     return true;
 }
+
+
+
+function send_wxtemp($weObj,$data){
+    
+//        $options = array(
+//				'token'=>'feiteng2986', //填写你设定的key
+//				'encodingaeskey'=>'3Wnly9bJP3RDzf4S19fXfS9txn0KmUU6MtOtMmIDn9h', //填写加密用的EncodingAESKey
+//				'appid'=>'wx23a2016c198ffa37', //填写高级调用功能的app id 
+//				'appsecret'=>'9aad9f0f6792fa31c54b32ad408868f3' //填写高级调用功能的密钥
+//			);
+//        $weObj = new Wechat($options);
+        
+       
+        //var_dump($data);
+        
+        if($data != ''){
+            $msg = $weObj->sendTemplateMessage($data);
+            //$weObj->addTemplateMessage();
+            //echo $weObj->errCode."<br>";
+            //echo $weObj->errMsg;
+        }
+}
+	//工号审核后，发送账户开通通知
+function send_zhiwu_template($weObj,$uid){
+        $openid = M('wxuser')->where("uid = '".$uid."'")->getField('openid');
+        if($openid == ''){
+                return 0;
+        }
+
+        $data = array(
+                "touser"=>$openid,
+                "template_id"=>"xL2KjaETCdkTy4foB09hxBLQMZ77e-w9PofWpO0ff9Q",
+                "url"=>"http://gdfeiteng.com/index.php/Home/Index/user", 
+                "data"=>array(
+                                "first"=>array(
+                                        "value"=>"恭喜您通过审核!",
+                                        "color"=>"#173177"
+                                ),
+                                "VIPName"=>array(
+                                        "value"=>"工号",
+                                        "color"=>"#173177"
+                                ),
+                                "VIPMobilePhone"=>array(
+                                        "value"=>"15253179513",
+                                        "color"=>"#173177"
+                                ),
+                                "remark"=>array(
+                                        "value"=>"欢迎再次购买！",
+                                        "color"=>"#173177"
+                                )
+                )
+        );
+        
+        send_wxtemp($weObj,$data);
+        
+}
