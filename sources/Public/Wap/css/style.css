@@ -889,11 +889,34 @@ textarea.popup-text-input-textarea{
 
 
 /**  employer-info-edit  企业主页编辑  **/
-.employerinfo-edit-img{
+.editinfo-upfile{
 	width:90px;
 	height:90px;
 	border:1px solid #ccc;
+	overflow:hidden;
+	float:left;
+	margin-right:6px;
+	position:relative;
+	background-image:url(../img/addimg.png);
+	background-position:center;
+	background-size:cover;
 }
+.editinfo-upfile-input{
+	width:100%;
+	height:100%;
+	opacity:0;
+	filter:alpha(opacity=0);
+}
+.editinfo-upfile-img{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+}
+
+
 
 
 

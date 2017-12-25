@@ -25,19 +25,33 @@
 				<textarea id="resume" placeholder="企业简介" name="evaluation"></textarea>
             </div>
 			<div class="editinfo-inputsingle">  
-				上传企业logo:<br>
-				<img class="employerinfo-edit-img" src="__IMG__/addimg.png">
-            </div>
-			<div class="editinfo-inputsingle">  
-				上传企业照片（轮播图图片）:<br>
-				<img class="employerinfo-edit-img" src="__IMG__/addimg.png">
+				上传企业logo<span style="font-size:14px;">（支持图片格式：jpg/png/gif）</span>:<br>
+				<div class="editinfo-upfile" id="logo">
+					<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="editinfo-inputsingle" id="banner">  
+				上传企业宣传图<span style="font-size:14px;">（推荐尺寸：475*200，最多上传4张）</span>:<br>
+				<div class="editinfo-upfile">
+					<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+				</div>
+				<div class="editinfo-upfile">
+					<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+				</div>
+				<div class="editinfo-upfile">
+					<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+				</div>
+				<div class="editinfo-upfile">
+					<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+				</div>
+				<div style="clear:both;"></div>
             </div>
         </div>
-
+		<div class="userinfo-edit-tip"></div>
         <div class="editinfo-submit">
             <input type="submit" value="提交信息">
         </div>
-		<div class="userinfo-edit-tip"></div>
     </form>
 
 	
@@ -45,26 +59,58 @@
 	<include file="Public/footer"/>
 	
     <script>
+		//图片上传预览
+		$(".editinfo-upfile-input").change(function(){
+			var upfileDiv = $(this).parents(".editinfo-upfile")
+			if (window.FileReader){
+				var reader = new FileReader();
+				reader.readAsDataURL(this.files[0]);
+				reader.onloadend = function (e) {
+					upfileDiv.prepend("<img class='editinfo-upfile-img' src='"+e.target.result+"'>")    //e.target.result就是最后的路径地址
+				}   
+			}
+		})
 		
+			
 		//form
 		$(".editinfo-submit").click(function(){
+			var bannerImg = 0; //企业宣传图上传数量
+			$("#banner").children(".editinfo-upfile").each(function(){
+				if($(this).children("img").length > 0){
+					bannerImg = bannerImg + 1;
+				}
+			})
+			
 			var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;  //匹配手机号  
-			var reg2 = /^(0[1-9][0-9][1-9]*)*-[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
+			var reg2 = /^(0[1-9][0-9][1-9]*)*-?[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
 			var telNumber = $("#tel").val();
 			var result1 = reg1.test(telNumber);
 			var result2 = reg2.test(telNumber);
 			if($("#name").val() == ''){
-				$(".userinfo-edit-tip").text("请填写姓名");
+				$(".userinfo-edit-tip").text("请填写企业名称");
+				return false;
+			}else if($("#person").val() == ''){
+				$(".userinfo-edit-tip").text("请填写联系人姓名");
 				return false;
 			}else if($("#tel").val() == ''){
-				$(".userinfo-edit-tip").text("请填写电话");
+				$(".userinfo-edit-tip").text("请填写联系电话");
 				return false;
 			}else if(result1 == true || result2 == true){
-				if($("#resume").val() == ''){
-					$(".userinfo-edit-tip").text("请填写个人评价");
+				if($("#address").val() == ''){
+					$(".userinfo-edit-tip").text("请填写联系地址");
+					return false;
+				}else if($("#resume").val() == ''){
+					$(".userinfo-edit-tip").text("请填写企业简介");
+					return false;
+				}else if($("#logo").children("img").length == 0){
+					$(".userinfo-edit-tip").text("请上传企业logo");
+					return false;
+				}else if(bannerImg == 0){
+					$(".userinfo-edit-tip").text("请至少上传一张企业宣传图");
 					return false;
 				}else{
 					//提交成功
+					$(".userinfo-edit-tip").text('');
 				}
 			}else{
 				$(".userinfo-edit-tip").text("电话格式不正确");
