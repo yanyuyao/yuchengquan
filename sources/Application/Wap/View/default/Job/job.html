@@ -36,44 +36,57 @@
 		<a href="/wap.php?s=/Job/detail/jobId/{$vo.id}" class="lineitem">
 		<div class="task-single" style="height:auto;">
 			<div class="index-task-single-line">
-                            
-                                 <!-- icon -->
-                                    <span class="index-task-li-right">
-                                        <div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
-                                        <div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
-
-                                        <if condition="$vo['changqizhaopin'] eq '长期'">
-                                            <div class="index-task-single-icon bgorange">长</div>
-                                        <elseif condition="$vo['chanqizhaopin'] eq '短期'" />
-                                            <div class="index-task-single-icon bgorange">短</div>
-                                        </if>
-
-                                        <if condition="$vo.sexlimit eq '男'">
-                                            <div class="index-task-single-icon bgblue">男</div>
-                                        <elseif condition="$vo.sexlimit eq '女'" />
-                                            <div class="index-task-single-icon bgpink">女</div>
-                                        <else />
-
-                                        </if>
-                                    </span>
-                                <!-- end icon -->
-                                <span style="color:#f96306;font-size:1.2em;">{$vo.title}</span>       
+                <div class="task-single-pay">
+					<if condition="$vo.commission neq NULL">
+						面议
+					</if>                      
+				</div>
+				<span style="color:#f96306;font-size:1.2em;">{$vo.title}</span>
 			</div>
-			<div class="index-task-single-line">
-				<if condition="$vo.commission neq NULL">
-                                    <span class="index-task-li-right">面议</span>
-                                </if>                      
-			</div>
-                        <div class="index-task-single-line" style="overflow: auto;  white-space: normal; color:#5f5d5d;">
+			<!-- icon -->
+				<div>
+					<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
+					<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
+
+					<if condition="$vo['changqizhaopin'] eq '长期'">
+						<div class="index-task-single-icon bgorange">长</div>
+					<elseif condition="$vo['chanqizhaopin'] eq '短期'" />
+						<div class="index-task-single-icon bgorange">短</div>
+					</if>
+
+					<if condition="$vo.sexlimit eq '男'">
+						<div class="index-task-single-icon bgblue">男</div>
+					<elseif condition="$vo.sexlimit eq '女'" />
+						<div class="index-task-single-icon bgpink">女</div>
+					<else />
+
+					</if>
+					<div class="index-task-li-right">
+						 <span class="" style="color:gray;">{$vo.push_at}</span>                    
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			<!-- end icon -->
+            <div class="task-single-content">
 				{$vo.content|mb_substr=0,80,'utf-8'}
 			</div>
-                        <if condition="$vo.workaddress neq NULL">
-                            <div class="index-task-single-line index-task-single-address" >
-                                    <img src="__IMG__/address.png">{$vo.workaddress}
-                            </div>
-                        </if>
-                        <div class="index-task-single-line">
-                             <span class="index-task-li-right" style="color:gray;">发布时间：{$vo.push_at|strtotime|date='Y-m-d',###}</span>                    
+			<if condition="$vo.workaddress neq NULL">
+				<div class="index-task-single-line index-task-single-address" >
+						<img src="__IMG__/address.png">{$vo.workaddress}
+				</div>
+			</if>
+			<div class="task-single-total">
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+				</div>
+				<div class="task-single-total-look">
+					<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+				</div>
+				<div class="task-single-total-resume">
+					<img class="task-single-total-look-icon" src="__IMG__/resume.png">5
+				</div>
+				
+				<div style="clear:both;"></div>
 			</div>
 		</div>
 		</a>

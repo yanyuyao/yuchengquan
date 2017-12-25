@@ -10,8 +10,8 @@
     </div>
     <div class="middleline8"></div>
     <div class="taskinfo-task">
-        <p class="taskinfo-task-bt">{$data.companyname}</p>
-        <hr>
+		<div class="taskinfo-task-bt">{$data.companyname}</div>
+		<hr>
     	<p>{$data.content}</p>
         <if condition="$data['peoplenums'] neq NULL">
         <p>需要：{$data.peoplenums}人</p>
@@ -35,14 +35,68 @@
         <if condition="$data['workaddress'] neq NULL">
             <p>地址：{$data.workaddress}</p>
         </if>
-        <p style="text-align: right;">
-        	<a href="tel:{$data.contactphone}"><input class="taskinfo-task-contact" style="font-size: 1em;" type="button" value="联系雇主" onclick="addjobs();"></a>
-        </p>
-		<p style="text-align: right;">
-        	<a href="/wap.php?s=/Resume/resume"><input class="taskinfo-task-contact" style="font-size: 1em;" type="button" value="投递简历"></a>
-        </p>
+		<div class="task-single-total">
+			<div class="task-single-total-look">
+				<img class="task-single-total-look-icon" src="__IMG__/look.png">10
+			</div>
+			<div class="task-single-total-look">
+				<img class="task-single-total-look-icon" src="__IMG__/like.png">5
+			</div>
+			<div class="task-single-total-resume">
+				<img class="task-single-total-look-icon" src="__IMG__/resume.png">5
+			</div>
+			
+			<div style="clear:both;"></div>
+		</div>
+		
+		<div class="taskinfo-button-k">
+			<a href="tel:{$data.contactphone}">
+				<input type="button" value="电话联系" onclick="addjobs();">
+			</a>
+			<a href="#">
+				<input id="chat" type="button" value="在线私信">
+			</a>
+			<a href="#">
+				<input id="addlike" type="button" value="加入收藏">
+			</a>
+			<a href="#">
+				<input id="sendresume" type="button" value="投递简历">
+			</a>
+			<a href="#">
+				<input id="report" type="button" value="虚假举报">
+			</a>
+		</div>
         <input type="hidden" id="jobid" value="{$data.id}" />
     </div>
+
+	<!--pop-box-report start-->
+	<div class="popup-k">
+		<div class="popup-zhezhao"></div>
+		<div class="popup-box-k">
+			<div class="popup-box">
+				<div class="popup-text">
+					<span class="popup-text-bt">虚假举报</span>
+					<div class="popup-text-inputk">
+						<textarea class="popup-text-input-textarea" placeholder="列举虚假原因"></textarea>
+					</div>
+				</div>
+				<div class="popup-box-tip"></div>
+				<div class="popup-button">
+					<div class="popup-button-confirm">举报</div>
+					<div class="popup-button-cancel">取消</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--pop-box-report end-->
+	
+	
+	<!--pop-tip start-->
+	<div class="popup-tip">
+		<span class="popup-tip-text"></span>
+	</div>
+	<!--pop-tip end-->
+	
     <!--
     <div class="taskinfo-tips">
     	<div class="editinfo-skill-tips">
@@ -53,7 +107,9 @@
     	<input type="button" value="申请兼职"> 
     </div>
     -->
-    <script>
+    
+<include file="Public/footer"/>
+	<script>
         function addjobs(){
             $.ajax({
                 type: 'POST',
@@ -65,4 +121,34 @@
               });
       }
     </script>
-<include file="Public/footer"/>
+	
+<script>
+
+	//加入收藏  投递简历
+	$("#addlike,#sendresume").click(function(){
+		var poptext = $(this).val();
+		$(".popup-tip-text").text(poptext + "成功！");
+		$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+	})
+	
+	
+	//popup-box-report
+	$(".popup-button-cancel,.popup-zhezhao").click(function(){
+		$(".popup-k").fadeOut(500);
+		$(".popup-text-input-textarea").val('');
+	})//popup cancel
+	$("#report").click(function(){
+		$(".popup-k").fadeIn(500);
+	})//popup display
+	$(".popup-button-confirm").click(function(){
+		if($(".popup-text-input-textarea").val() == ''){
+			$(".popup-box-tip").text("请列举虚假原因");
+		}else{
+			$(".popup-k").fadeOut(500);
+			$(".popup-box-tip").text("");
+			$(".popup-text-input-text").val('');
+			$(".popup-tip-text").text("您的举报发送成功！");
+			$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+		}
+	})//popup confirm
+</script>

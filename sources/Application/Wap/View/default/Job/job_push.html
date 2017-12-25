@@ -16,20 +16,47 @@
     <if condition="$jobtype eq 'jianzhi'">
         <form action="/wap.php?s=/Job/pushjob/" method="post">
             <div class="taskinfo-task" style="padding-top:15px;">
-                <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title"/></p>
-                <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称" name="company"/></p>
-                <p>需要：<input class="releasetask-number" type="number" name="peoplenum">人</p>
-                <p>佣金：<input class="releasetask-number" type="text" name="commision">元/人</p>
-                <p>工时：<input class="releasetask-number" type="number" name="workday">天
+				<div class="releasetask-p">
+					<div class="releasetask-p-bt">标题</div>：
+					<input class="releasetask-text" type="text" placeholder="招工标题" name="title"/>
+				</div>
+				<div class="releasetask-p">
+					<div class="releasetask-p-bt">公司</div>：
+					<input class="releasetask-text" type="text" placeholder="公司名称" name="company"/>
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">招聘人数</div>：
+					<input class="releasetask-number" type="number" name="peoplenum">人
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">佣金</div>：
+					<input class="releasetask-number" type="number" name="commision">元/人
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">工时</div>：
+					<input class="releasetask-number" type="number" name="workday">天
                     <!--<input class="releasetask-number" type="number" name>小时-->
-                </p>
-                <p>联系人：<input class="releasetask-text releasetask-text-short" type="text" name="contactname"></p>
-                <p>电话：<input id="tel1" class="releasetask-text" type="tel" name="contactphone" value="{$userphone}"></p>
-				<p class="releasetask-teltip">* 请填写有效的手机号或座机(区号-号码)</p>
-                <p>地址：<input class="releasetask-text" type="text" name="workaddress"></p>
-                <p><textarea class="releasetask-textarea" placeholder="招工需求" style="margin-top:15px;" name="content"></textarea></p>
-
+                </div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">联系人</div>：
+					<input class="releasetask-text releasetask-text-short" type="text" name="contactname">
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">电话</div>：
+					<input id="tel" class="releasetask-text" type="tel" name="contactphone" value="{$userphone}">
+				</div>
+				<div class="releasetask-teltip">* 请填写有效的手机号或座机(区号-号码)</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">地址</div>：
+					<input class="releasetask-text" type="text" name="workaddress">
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">招聘需求</div>：
+					<br>
+					<textarea class="releasetask-textarea" placeholder="招工需求" style="margin-top:15px;" name="content"></textarea>
+				</div>
             </div>
+			<div class="releasetask-tip"></div>
             <div class="editinfo-submit">
                 <input id="submit1" type="submit" value="发布需求"> 
             </div>
@@ -37,16 +64,41 @@
     <else />
         <form action="/wap.php?s=/Job/pushjob/" method="post">
             <div class="taskinfo-task" style="padding-top:15px;">
-                <p>标题：<input class="releasetask-text" type="text" placeholder="招工标题" name="title" /></p>
-                <p>公司：<input class="releasetask-text" type="text" placeholder="公司名称"  name="company"/></p>
-                <p>招聘：<input class="releasetask-number" type="number" name="peoplenum">人</p>
-                <p>工资：<input class="releasetask-number" type="text" name="commision">/月</p>
-                <p>联系人：<input class="releasetask-text releasetask-text-short" type="text" name="contactname"></p>
-                <p>电话：<input id="tel2" class="releasetask-text" type="tel" name="contactphone" value="{$userphone}"></p>
-				<p class="releasetask-teltip">* 请填写有效的手机号或座机(区号-号码)</p>
-                <p>地址：<input class="releasetask-text" type="text" name="workaddress"></p>
-                <p><textarea class="releasetask-textarea" placeholder="招聘需求" style="margin-top:20px;" name="content"></textarea></p>
+				<div class="releasetask-p">
+					<div class="releasetask-p-bt">标题</div>：
+					<input class="releasetask-text" type="text" placeholder="招工标题" name="title" />
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">公司</div>：
+					<input class="releasetask-text" type="text" placeholder="公司名称"  name="company"/>
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">招聘人数</div>：
+					<input class="releasetask-number" type="number" name="peoplenum">人
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">工资</div>：
+					<input class="releasetask-number" type="number" name="commision">/月
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">联系人</div>：
+					<input class="releasetask-text releasetask-text-short" type="text" name="contactname">
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">电话</div>：
+					<input id="tel" class="releasetask-text" type="tel" name="contactphone" value="{$userphone}">
+				</div>
+				<div class="releasetask-teltip">* 请填写有效的手机号或座机(区号-号码)</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">地址</div>：
+					<input class="releasetask-text" type="text" name="workaddress">
+				</div>
+                <div class="releasetask-p">
+					<div class="releasetask-p-bt">招聘需求</div>：<br>
+					<textarea class="releasetask-textarea" placeholder="招聘需求" style="margin-top:20px;" name="content"></textarea>
+				</div>
             </div>
+			<div class="releasetask-tip"></div>
             <div class="editinfo-submit">
                 <input id="submit2" type="submit" value="发布需求"> 
             </div>
@@ -55,7 +107,7 @@
     </if>
     <div class="taskinfo-tips">
     	<div class="editinfo-skill-tips">
-        	<img src="__IMG__/tips.png">雇主您好，需求发布请尽量把佣金托管，佣金托管后兼职人员会优先承接您的工作，为得到更好的服务，使雇佣双方权利都得到保障，请您发布需求的同时，托管佣金。
+        	<img src="__IMG__/tips.png">雇主您好，需求发布后需由工作人员审核后方能显示在招聘大厅，请保证需求的准确性。
         </div>
 <!--        <p>
         	<input class="taskinfo-task-contact" type="button" value="托管佣金">
@@ -66,6 +118,13 @@
 <include file="Public/footer"/>
 
 <script>
+	// 默认号码验证
+	if($("#tel").val() != ''){
+		$("div.releasetask-teltip").css({"color":"green","border-color":"#ccc"}).text("* 号码验证通过");
+	}
+	
+	
+	//号码验证
 	$("#tel1,#tel2").blur(function(){
 		var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;  //匹配手机号  
 		var reg2 = /^(0[1-9][0-9][1-9]*)*-[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
@@ -73,33 +132,41 @@
 		var result1 = reg1.test(telNumber);
 		var result2 = reg2.test(telNumber);
 		if(telNumber == ''){
-			$(this).parent("p").siblings("p.releasetask-teltip").css({"color":"red","border-color":"red"}).text("* 请填写电话！");
+			$(this).parent(".releasetask-p").siblings("div.releasetask-teltip").css({"color":"red","border-color":"red"}).text("* 请填写电话！");
 		}else if(result1 == false && result2 == false){
-			$(this).parent("p").siblings("p.releasetask-teltip").css({"color":"red","border-color":"red"}).text("* 请填写正确的号码！");
+			$(this).parent(".releasetask-p").siblings("div.releasetask-teltip").css({"color":"red","border-color":"red"}).text("* 请填写正确的号码！");
 		}else if(result1 == true || result2 == true){
-			$(this).parent("p").siblings("p.releasetask-teltip").css({"color":"green","border-color":"#ccc"}).text("* 号码验证通过");
+			$(this).parent(".releasetask-p").siblings("div.releasetask-teltip").css({"color":"green","border-color":"#ccc"}).text("* 号码验证通过");
 		}
 	})
+	
+	console.log();
+	
+	//表单提交
 	$("#submit1,#submit2").click(function(){
-           
-		$(this).parent('.editinfo-submit').siblings(".taskinfo-task").children("p").children("input,textarea").each(function() {
-                    if($(this).val()==''){
-				$(this).css("border-color","red");
+		var allTip = '';
+		$(".releasetask-p").children("input,textarea").each(function(){
+			if($(this).val()==''){
+				$(this).css("border-color","red");// border-red
 				$(this).addClass("emptyinput");
+				allTip = allTip + ' ' + $(this).siblings(".releasetask-p-bt").text();//
 			}else{
 				$(this).css("border-color","#ccc");
 				$(this).removeClass("emptyinput");
 			}
-                });	
-		if($(this).parent('.editinfo-submit').siblings(".taskinfo-task").children("p").children("input,textarea").hasClass("emptyinput")){
+        });	
+		$(".releasetask-tip").text('请填写' + allTip + '！');
+		
+		if($(this).parent('.editinfo-submit').siblings(".taskinfo-task").children(".releasetask-p").children("input,textarea").hasClass("emptyinput")){
 			return false;	
 		}else if($(".releasetask-teltip").css("color") == "rgb(0, 128, 0)"){
 			//内容填写正确，post
-                        return 1;
+			$(".releasetask-tip").text('');
+				return 1;
 		}else{
 			return false;
 		}
-                
-                return 1;
-	});
+		
+			return 1;
+	})
 </script>

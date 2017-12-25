@@ -163,7 +163,7 @@ class JobController extends Home2Controller {
         //我感兴趣的
         if($jobtype == 'my'){
             $sql = "select * from ycq_job job left join ycq_applications a on job.id = a.iJobId Where a.iUserId = $uid ";
-            $pagetitle = '我刚兴趣的工作';
+            $pagetitle = '我感兴趣的工作';
         }
         if($jobtype == 'new'){
             $sql = "select * from ycq_job job where status = 1 order by push_at desc ";
