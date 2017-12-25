@@ -140,6 +140,8 @@ class WechatclassController extends AddonsController{
 		/* 转换数据为XML */
 		$xml = new \SimpleXMLElement('<xml></xml>');
 		$this->data2xml($xml, $this->data);
+		file_put_contents('logs/wx_news1.log',json_encode($this->data));
+		file_put_contents('logs/wx_news.log',$xml->asXML());
 		exit($xml->asXML());
 	}
 	/**
@@ -341,17 +343,14 @@ class WechatclassController extends AddonsController{
 	 * @param  string $news 要回复的图文内容
 	 */
 	private function news($news){
+		file_put_contents('logs/wx_news_news.log',json_encode($news));
 		$articles = array();
 		foreach ($news as $key => $value) {
-			list(
-				$articles[$key]['Title'],
-				$articles[$key]['Description'],
-				$articles[$key]['PicUrl'],
-				$articles[$key]['Url']
-			) = $value;
+			$articles[$key] = $value;
 			if($key >= 9) { break; } //最多只允许10调新闻
 		}
 		$this->data['ArticleCount'] = count($articles);
+		file_put_contents('logs/wx_article.log',json_encode($articles));
 		$this->data['Articles'] = $articles;
 	}
 	/**
@@ -374,6 +373,7 @@ class WechatclassController extends AddonsController{
      * @return string
      */
     private function data2xml($xml, $data, $item = 'item') {
+		file_put_contents('logs/wx_news4.log',json_encode($data));
         foreach ($data as $key => $value) {
             /* 指定默认的数字key */
             is_numeric($key) && $key = $item;
@@ -382,6 +382,7 @@ class WechatclassController extends AddonsController{
             if(is_array($value) || is_object($value)){
                 $child = $xml->addChild($key);
                 $this->data2xml($child, $value, $item);
+				file_put_contents('logs/wx_news3.log',json_encode($value));
             } else {
             	if(is_numeric($value)){
             		$child = $xml->addChild($key, $value);

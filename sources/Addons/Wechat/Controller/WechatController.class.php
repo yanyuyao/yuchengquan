@@ -2,40 +2,113 @@
 namespace Addons\Wechat\Controller;
 use Home\Controller\AddonsController; 
 
+
 class WechatController extends AddonsController {
 	public function index(){
 		$weixin = A("Addons://Wechat/Wechatclass");
 		$data = $weixin->request();
 		list($content, $type) = $this->reply($data);
+		file_put_contents('logs/wx_news2.log',json_encode($content));
+		
 		$weixin->response($content, $type);
 	}
+	public function wxlog($txt,$title=''){
+		$file = fopen("logs/wx.log","a+");
+		fwrite($file,"\r\n====== [$title] ===========\r\n");
+		fwrite($file,$txt."\r\n");
+		fclose($file);
+	}
+	
 	private function reply($data){
 		$weixin = A("Addons://Wechat/Wechatclass");
 		$users = $weixin->user($data['FromUserName']);
-		// 消息类型
+		
+//{{{增加新用户
+$Model = D(); 
+$sql = "select * from `ycq_user` where wx_openid = '".$users['openid']."' limit 1";
+
+$checkuser = $Model->query($sql);
+//execute
+		
+		if(!$checkuser){
+			$openid = $users['openid'];
+			$nickname = $users['nickname'];
+			$city = $users['city'];
+			$province = $users['province'];
+			$country = $users['country'];
+			$headimgurl = $users['headimgurl'];
+			
+			$newuserdata = array(
+				"username"=>$nickname,
+				"password"=>md5($nickname),
+				"wx_openid"=>$openid,
+				"wx_nickname"=>$nickname,
+				"wx_country"=>$country,
+				"wx_province"=>$province,
+				"wx_city"=>$city,
+				"avatar"=>$headimgurl,
+				"created_at"=>date("Y-m-d H:i:s",time()),
+				"status"=>'1',
+				"last_login_at"=>date("Y-m-d H:i:s",time())
+			);
+			$addsql = "insert into ycq_user(username,password, wx_openid,wx_nickname,wx_country,wx_province,wx_city,avatar, created_at, status, last_login_at)values('".$nickname."', '".$password."','".$openid."','".$nickname."','".$country."','".$province."','".$city."','".$headimgurl."','".date("Y-m-d H:i:s",time())."','1','".date("Y-m-d H:i:s",time())."')";
+			
+			$this->wxlog($addsql);
+			$Model->execute($addsql);
+									//M('user')->add($newuserdata);
+		}
+		
+		
+//}}}增加新用户
+		
+				// 消息类型
 		if(!empty($data['errcode'])){
 			$reply = array($this->geterr($data['errcode']), 'text');
 		}else{
 			$username = ($users['errcode'])?'':$users['nickname'];
 			switch ($data ['MsgType']) {
 				case 'text': // 类型是文本的
-					switch ($data ['Content']) {
-						case '1' : //
-							$reply = array($username.'你好!'.$weixin->getconf('msgset/default/content'), $weixin->getconf('msgset/default/msgtype'));
-							break;
-						default :						
-//							if (strpos ( $data ['Content'], '刘华' ) !== false) {
-//								$html = '刘华是个好人！';
-//								$reply = array ( $html, 'text' );
-//							} else {
-//								if($users['errcode']){
-//									$reply = array('你好!'.$data['Content'], 'text');
-//								}else{
-//									$reply = array($username.'你好!'.$data['Content'], 'text');
-//								}
-//							}
-                                                        $reply = array('您的消息我们已收到，我们会尽快答复您！感谢您对我们的支持！', 'text');
-							break;
+					$defaulttext = true;
+					//if (strpos ( $data ['Content'], '刘华' ) !== false) {
+					$sql = "select * from ycq_job where content like '%".$data['Content']."%' limit 5 ";
+					$this->wxlog($sql);
+					$searchjoblist = $Model->query($sql);
+					if($searchjoblist){
+						$news = array();
+						foreach($searchjoblist as $k=>$job){
+							if($k == 0){
+								$banner_url = 'http://8.heyukj.com/zhaopin_banner.jpg';
+							}else{
+								$banner_url = 'http://8.heyukj.com/zhaopin_icon.jpg';
+							}
+							$news[] = array(
+								'Title' => $job['title'],
+								'Description'=> $job['content'],
+								'PicUrl'=> $banner_url,
+								'Url'=> 'http://8.heyukj.com/wap.php?s=/Job/detail/jobId/'.$job['id']
+							);
+
+						}
+						$reply = array($news, 'news');
+						$defaulttext = false;
+					}
+					
+					if(strpos ( $data ['Content'], '1' ) !== false) {
+						$news = array();
+						$news[0]['Title'] = 'Test';
+						$news[0]['Description']='Test test test test';
+						$news[0]['PicUrl']='http://8.heyukj.com/Public/Wap/img/index-banner4.jpg';
+						$news[0]['Url']='http://8.heyukj.com/wap.php';
+						$news[1]['Title'] = 'Test';
+						$news[1]['Description']='Test test test test';
+						$news[1]['PicUrl']='http://8.heyukj.com/Public/Wap/img/index-banner4.jpg';
+						$news[1]['Url']='http://8.heyukj.com/wap.php';
+						$reply = array($news, 'news');
+						
+						$defaulttext = false;
+					}					
+					if($defaulttext){
+						$reply = array('请尽可能详细的描述您的需求，您可以直接输入职位名称，比如： 小时工, 服务员，收银员，销售 等等职位， 如果您是公司招聘人员，请输入您的招工简章，我们会尽快答复您！感谢您对我们的支持！ ', 'text');
 					}
 					break;
 				case 'event' : // 类型是事件的			              
