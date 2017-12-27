@@ -750,6 +750,12 @@ textarea.popup-text-input-textarea{
 	margin-right:30px;
 	margin-top:10px;
 }
+.person-message{
+	width:23px;
+	height:23px;
+	margin-left:20px;
+	vertical-align:middle;
+}
 .person-head-right img{
 	width:23px;
 	height:23px;
@@ -1419,7 +1425,17 @@ input.resume-edit-input-tel{
 
 
 
-
-
+/**  disclaimer   免责声明  **/
+.disclaimer-bt{
+	padding-top:20px;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center;
+	line-height:50px;
+}
+.disclaimer-content{
+	padding:0 20px;
+	font-size:15px;
+}
 
 
