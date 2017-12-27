@@ -277,5 +277,10 @@ class UserController extends HomeController {
 	public function prove(){
 		$this->display('employer_prove');
 	}
-
+	public function employerinfo(){
+		$this->display('employer_info');
+	}
+	public function employerinfoedit(){
+		$this->display('employer_info_edit');
+	}
 }

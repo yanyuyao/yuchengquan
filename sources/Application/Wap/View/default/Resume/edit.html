@@ -1,5 +1,5 @@
 <include file="Public/head-home"/>
-	<div class="resume-edit-k">
+	<div class="resume-edit-k resume-edit-k-spanred">
 		<div class="resume-edit-open">
 			<div class="resume-edit-open-buttonk">
 				<div class="resume-edit-open-button"></div>
@@ -12,20 +12,21 @@
 				头像
 			</div>
 			<div class="resume-head-right resume-edit-head-right">
-				姓名：<input class="resume-edit-input-name" type="text" placeholder="姓名" name="name"><br>
+				姓名：<input id="name" class="resume-edit-input-name" type="text" placeholder="姓名" name="name"><span>*</span><br>
 				<div class="resume-edit-input-sex">
 					性别：
-					<label><input type="radio" name="sex" value="男">男</label>
+					<label><input type="radio" name="sex" value="男" checked>男</label>
 					<label><input type="radio" name="sex" value="女">女</label>
+					<span>*</span>
 				</div>
-				年龄：<input class="resume-edit-input-name" type="number" placeholder="年龄" name="age">
+				年龄：<input id="age" class="resume-edit-input-name" type="number" placeholder="年龄" name="age"oninput="if(value.length>2)value=value.slice(0,2)"><span>*</span>
 				<div class="resume-edit-input-sex">
 					婚姻：
-					<label><input type="radio" name="marry" value="未婚">未婚</label>
+					<label><input type="radio" name="marry" value="未婚" checked>未婚</label>
 					<label><input type="radio" name="marry" value="已婚">已婚</label>
 				</div>
 				学历：
-				<select class="resume-edit-input-name">
+				<select id="education" class="resume-edit-input-name">
 					<option>选择学历</option>
 					<option>初中及以下</option>
 					<option>高中</option>
@@ -36,13 +37,14 @@
 					<option>硕士</option>
 					<option>博士</option>
 				</select>
+				<span>*</span>
 			</div>
 			<div style="clear:both;"></div>
 		</div>
 		<div class="middleline8"></div>
 		<div class="resume-nav">
 			<div class="resume-nav-tel">
-				<img src="__IMG__/tel.png"><b>手机：</b><input class="resume-edit-input-name resume-edit-input-tel" type="tel" placeholder="手机号" name="tel" maxlength="11">
+				<img src="__IMG__/tel.png"><b>手机：</b><input id="tel" class="resume-edit-input-name resume-edit-input-tel" type="tel" placeholder="手机号" name="tel"><span>*</span>
 			</div>
 			<div class="resume-nav-tel">
 				<img src="__IMG__/email.png"><b>邮箱：</b><input class="resume-edit-input-name resume-edit-input-tel" type="email" placeholder="邮箱" name="email">
@@ -53,7 +55,7 @@
 		</div>
 		<div class="resume-nav">
 			<div class="resume-nav-tel">
-				<b>求职意向：</b><input class="resume-edit-input-name resume-edit-input-tel" type="text" placeholder="求职意向">
+				<b>求职意向：</b><input id="wantwork" class="resume-edit-input-name resume-edit-input-tel" type="text" placeholder="求职意向"><span>*</span>
 			</div>
 			<div class="resume-nav-tel">
 				<b>期望薪资：</b><input class="resume-edit-input-name resume-edit-input-tel" type="text" placeholder="期望薪资">
@@ -74,20 +76,21 @@
 			
 		</div>
 		<div class="resume-nav">
-			<div class="resume-nav-bt">技能特长</div>
+			<div class="resume-nav-bt">技能特长<span>*</span></div>
 			<div class="resume-nav-text">
-				<textarea class="resume-edit-textarea-self" placeholder="技能特长"></textarea>
+				<textarea id="skill" class="resume-edit-textarea-self" placeholder="技能特长"></textarea>
 			</div>
 		</div>
 		<div class="resume-nav">
-			<div class="resume-nav-bt">自我评价</div>
+			<div class="resume-nav-bt">自我评价<span>*</span></div>
 			<div class="resume-nav-text">	
-				<textarea class="resume-edit-textarea-self" placeholder="自我评价"></textarea>
+				<textarea id="pingjia" class="resume-edit-textarea-self" placeholder="自我评价"></textarea>
 			</div>
 		</div>
 		
+		<div class="resume-edit-tips">注意：右上角带有*符号的为必填项</div>
 		<div class="editinfo-submit">
-			<input class="marginbottom30" type="submit" value="保存简历"> 
+			<input id="submit" class="marginbottom30" type="submit" value="保存简历"> 
 		</div>
 	</div>
 	
@@ -121,7 +124,9 @@
 					'</div>';
 	$("#workadd").click(function(){
 		$(this).parents(".resume-nav").append(workadd);	
+		addCancel();
 	})
+	
 	//添加教育经历
 	var eduadd = 	'<div class="resume-edit-nav-single">'+
 					'	开始时间：<input class="resume-edit-input-name" type="data"><br>'+
@@ -137,7 +142,56 @@
 					'</div>';
 	$("#eduadd").click(function(){
 		$(this).parents(".resume-nav").append(eduadd);	
-		console.log($(".resume-edit-nav-single-cancel").children("input"));
+		addCancel();
 	})
+	
+	//取消添加工作/教育经历
+	function addCancel(){
+		$(".resume-edit-cancel").click(function(){
+			$(this).parents(".resume-edit-nav-single").remove();
+		})
+	}
+
+	
+	//form
+	$("#submit").click(function(){
+		var reg1 = /^1[3|4|5|7|8][0-9]{9}$/;  //匹配手机号  
+		var reg2 = /^(0[1-9][0-9][1-9]*)*-[1-9][0-9]{6,7}$/;   //匹配座机号(区号-号码)
+		var telNumber = $("#tel").val();
+		var result1 = reg1.test(telNumber);
+		var result2 = reg2.test(telNumber);
+			
+		if($("#name").val() == ''){
+			$(".resume-edit-tips").text("请填写姓名").css("color","red");
+			return false;
+		}else if($("#age").val() == ''){
+			$(".resume-edit-tips").text("请填写年龄").css("color","red");
+			return false;
+		}else if($("#education option:selected").index() == 0){
+			$(".resume-edit-tips").text("请选择学历").css("color","red");
+			return false;
+		}else if($("#tel").val() == ''){
+			$(".resume-edit-tips").text("请填写手机号").css("color","red");
+			return false;
+		}else if (result1 == false && result2 == false){
+			console.log(telNumber + result1 +result2);
+			$(".resume-edit-tips").text("号码填写错误，请检查").css("color","red");
+			return false;
+		}else if($("#wantwork").val() == ''){
+			$(".resume-edit-tips").text("请填写求职意向").css("color","red");
+			return false;
+		}else if($("#skill").val() == ''){
+			$(".resume-edit-tips").text("请填写技能特长").css("color","red");
+			return false;
+		}else if($("#pingjia").val() == ''){
+			$(".resume-edit-tips").text("请填写自我评价").css("color","red");
+			return false;
+		}else{
+			//success
+			$(".resume-edit-tips").text("注意：右上角带有*符号的为必填项").css("color","#666");
+			
+		}
+	})
+	
 	
 </script>

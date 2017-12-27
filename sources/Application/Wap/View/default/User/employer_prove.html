@@ -4,9 +4,10 @@
 		<p>企业名称：<input class="releasetask-text" type="text" placeholder="企业名称" name="companyname"/></p>
 		<p>企业法人：<input class="releasetask-text" type="text" name="contactname"></p>
 		<p>联系电话：<input class="releasetask-text" type="tel" name="contactphone"></p>
-		<p>上传企业营业执照：<br>
-			<img class="employer-prove-addimg" src="__IMG__/addimg.png">
-		</p>
+		<p>上传企业营业执照：</p>
+		<div class="employer-prove-addimg editinfo-upfile">
+			<input class="editinfo-upfile-input" type="file" accept="image/gif, image/jpeg,image/png">
+		</div>
 
 	</div>
 	<div class="editinfo-submit">
@@ -15,3 +16,16 @@
 
     
 <include file="Public/footer"/>
+<script>
+	//图片上传预览
+	$(".editinfo-upfile-input").change(function(){
+		var upfileDiv = $(this).parents(".editinfo-upfile")
+		if (window.FileReader){
+			var reader = new FileReader();
+			reader.readAsDataURL(this.files[0]);
+			reader.onloadend = function (e) {
+				upfileDiv.prepend("<img class='editinfo-upfile-img' src='"+e.target.result+"'>")    //e.target.result就是最后的路径地址
+			}
+		}
+	})
+</script>

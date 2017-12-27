@@ -766,8 +766,8 @@ textarea.popup-text-input-textarea{
 	padding:20px 27.5px;
 }
 .person-list-single{
-	width:100px;
-	margin:10px 19px;
+	width:80px;
+	margin:15px 10.5px;
 	float:left;
 	font-size:18px;
 	color:#000;
@@ -1215,11 +1215,35 @@ textarea.popup-text-input-textarea{
 	color:#666;
 	margin-bottom:25px;
 }
+.resume-infoedit-button-k{
+	padding:20px 30px;
+	text-align:right;
+	border-bottom:10px solid #f2f2f2;
+	color:#f96306;
+}
+.resume-infoedit-button-left{
+	float:left;
+	margin-top:-5px;
+}
+.resume-infoedit-button-k a{
+	padding:5px 10px;
+	line-height:20px;
+	border:1px solid #f96306;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+}
+
+
 
 
 
 
 /**  resume-edit  简历编辑  **/
+.resume-edit-k-spanred span{
+	color:red;
+	float:right;
+}
 .resume-edit-k input,.resume-edit-k textarea,.resume-edit-k select{
 	font-size:17px;
 }
@@ -1330,6 +1354,13 @@ input.resume-edit-input-tel{
 	-moz-border-radius:15px;
 	margin-left:30px;
 }
+.resume-edit-tips{
+	text-align:center;
+	color:#666;
+	font-size:15px;
+	margin:10px 0;
+}
+
 
 
 
