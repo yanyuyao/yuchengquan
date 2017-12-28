@@ -107,10 +107,9 @@
 	
 
 	<script>
-		//$(".chat-content").height(Number($(window).height())-138 + 'px');//聊天框高度
-		
-		$('div.chat-content').scrollTop(100);
-		
+		$(document).ready(function(){
+			$('body').scrollTop(Number($('body').height()));
+		})
 	</script>
 	
 </body>
