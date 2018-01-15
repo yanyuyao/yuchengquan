@@ -1,42 +1,40 @@
 <include file="Public/head-home"/>
 	<div class="task-filter">
 		<ul>
-			<li class="task-filter-active">私信</li>
+			<li>私信</li>
 			<li class="center">通知</li>
 			<li>公告</li>
 		</ul>
 	</div>
 	<div class="message-list">
-		<a href="/wap.php?s=/Message/mchat">
+	
+		<volist name="usermsglist" id="u">
+		<a href="/wap.php?s=/Message/mchat/uid/{$u.uid}">
 			<div class="message-single">
 				<div class="message-single-left">
+					<if condition="$u.uavatar neq ''">
+					<img src="{$u.uavatar}">
+					<else />
 					<img src="__IMG__/head.jpg">
+					</if>
 				</div>
 				<div class="message-single-right">
 					<div class="message-single-right-bt">
-						嘿嘿哈哼
+						<div class="message-single-time">{$u.lastsendtime}</div>
+						{$u.uname}
+						
 					</div>
 					<div class="message-single-right-text">			
-						哈哈哈哈，我给你发消息啦，亲爱的，你在干嘛呀
+						<if condition="$u.fromid eq $u.uid and $u.lastlooktime eq ''">	
+								<div class="message-single-nolook"></div>
+						</if>
+						{$u.lastmsg}
 					</div>
 				</div>
 			</div>
 		</a>
-		<a href="/wap.php?s=/Message/mchat">
-			<div class="message-single">
-				<div class="message-single-left">
-					<img src="__IMG__/head.jpg">
-				</div>
-				<div class="message-single-right">
-					<div class="message-single-right-bt">
-						嘿嘿哈哼
-					</div>
-					<div class="message-single-right-text">			
-						哈哈哈哈，我给你发消息啦，亲爱的，你在干嘛呀
-					</div>
-				</div>
-			</div>
-		</a>
+		</volist>
+		
 	</div>
 	<div class="message-list">
 		<a href="/wap.php?s=/Message/mnotice">
@@ -72,36 +70,24 @@
 		
 	</div>
 	<div class="message-list">
-		<a href="/wap.php?s=/Message/mpublic">
-			<div class="message-single">
-				<div class="message-single-left">
-					<img src="__IMG__/public.png">
-				</div>
-				<div class="message-single-right">
-					<div class="message-single-right-bt">
-						公告
+		<volist name="publiclist" id="p">
+			<a href="/wap.php?s=/Message/mpublic/pid/{$p.id}">
+				<div class="message-single">
+					<div class="message-single-left">
+						<img src="__IMG__/public.png">
 					</div>
-					<div class="message-single-right-text">			
-						欢迎加入禹城招聘平台，请阅读平台《免责声明》。
-					</div>
-				</div>
-			</div>
-		</a>
-		<a href="/wap.php?s=/Message/mpublic">
-			<div class="message-single">
-				<div class="message-single-left">
-					<img src="__IMG__/public.png">
-				</div>
-				<div class="message-single-right">
-					<div class="message-single-right-bt">
-						公告
-					</div>
-					<div class="message-single-right-text">			
-						欢迎加入禹城招聘平台，请阅读平台《免责声明》。
+					<div class="message-single-right">
+						<div class="message-single-right-bt">
+							<div class="message-single-time">{$p.sendtime}</div>
+							公告
+						</div>
+						<div class="message-single-right-text">			
+							{$p.msg}
+						</div>
 					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		</volist>
 		
 	</div>
 
@@ -110,16 +96,16 @@
 
 <include file="Public/footer"/>
 <script>
-	var ili = $("li.task-filter-active").index();
-	$(".message-list")[ili].style.display = "block";
+	
+	var ili = "{$type}";
+	//$(".task-filter ul li")[ili].className = "task-filter-active";
+	$(".task-filter ul li").eq(ili).addClass("task-filter-active");
+	$(".message-list").eq(ili).css("display","block");
+
 	
 	$(".task-filter ul li").click(function(){
-		$(this).addClass("task-filter-active");
-		$(this).siblings("li").removeClass("task-filter-active");
-		$(".message-list").hide();
-		ili = $("li.task-filter-active").index();
-		$(".message-list")[ili].style.display = "block";
-		
+		ili = $(this).index();
+		window.location.search = "s=/Message/mlist/type/"+ili;
 	})
 
 </script>

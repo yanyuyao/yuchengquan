@@ -1478,12 +1478,26 @@ input.resume-edit-input-tel{
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
+.message-single-time{
+	float:right;
+	font-size:14px;
+	color:#999;
+}
 .message-single-right-text{
 	font-size:15px;
 	color:#666;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
+}
+.message-single-nolook{
+	width:10px;
+	height:10px;
+	float:right;
+	background-color:red;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
 }
 .message-list{
 	display:none;
@@ -1517,6 +1531,9 @@ input.resume-edit-input-tel{
 	left:0;
 	z-index:99;
 	width:100%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
 	background-color:#fff;
 	text-align:center;
 	line-height:55px;
@@ -1541,7 +1558,7 @@ input.resume-edit-input-tel{
 	text-align:center;
 	box-shadow:0 -10px 10px #ccc;
 }
-.chat-input input{
+input.chat-input-text{
 	width:350px;
 	height:40px;
 	padding:0 5px;
@@ -1563,9 +1580,9 @@ input.resume-edit-input-tel{
 .chat-time{
 	width:100%;
 	text-align:center;
-	font-size:16px;
+	font-size:14px;
 	color:#333;
-	padding:20px 0 10px;
+	padding:30px 0 10px;
 }
 .chat-content-left,.chat-content-right{
 	width:360px;
@@ -1613,7 +1630,7 @@ input.resume-edit-input-tel{
 	right:-100px;
 	width:95px;
 	color:#999;
-	font-size:15px;
+	font-size:13px;
 	line-height:16px;
 }
 .chat-content-right .chat-content-head{

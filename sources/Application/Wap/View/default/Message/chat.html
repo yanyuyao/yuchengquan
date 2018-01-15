@@ -1,114 +1,185 @@
 <include file="Public/head-home"/>
 	<div class="chat-bt">
-		哼哼哈嘿
+		{$chatname}
 	</div>
 	<div class="chat-content">
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-left">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">未读</div>
-				哼哼哈嘿，给你发消息了，怎么了呢
-			</div>
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-right">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">
-					已读<br>
-					12-28 15:20
+		<volist name="chatmsglist" id="c">
+			<div class="chat-time">{$c.sendtime}</div>
+			<if condition="$c.fromid eq $chatid">
+				<div class="chatmsg chat-content-left">
+					<img src="{$chatavatar}" class="chat-content-head">
+					<div class="chat-content-text">
+						<div class="chat-content-text-icon"></div>
+						<div class="chat-content-status">
+							<if condition="$c.looktime eq ''">
+								未读
+							<else />
+								已读<br>{$c.looktime}
+							</if>
+						</div>
+						{$c.msg}
+					</div>
+					<div style="clear:both;"></div>
 				</div>
-				哼哼哈嘿，给你发消息了
-			</div>
-			
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-left">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">未读</div>
-				哼哼哈嘿，给你发消息了，怎么了呢
-			</div>
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-right">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">
-					已读<br>
-					12-28 15:20
+			<else />
+				<div class="chatmsg chat-content-right">
+					<img src="{$myavatar}" class="chat-content-head">
+					<div class="chat-content-text">
+						<div class="chat-content-text-icon"></div>
+						<div class="chat-content-status">
+							<if condition="$c.looktime eq ''">
+								未读
+							<else />
+								已读<br>{$c.looktime}
+							</if>
+						</div>
+						{$c.msg}
+					</div>
+					<div style="clear:both;"></div>
 				</div>
-				哼哼哈嘿，给你发消息了
-			</div>
-			
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-left">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">未读</div>
-				哼哼哈嘿，给你发消息了，怎么了呢
-			</div>
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-right">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">
-					已读<br>
-					12-28 15:20
-				</div>
-				哼哼哈嘿，给你发消息了
-			</div>
-			
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-left">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">未读</div>
-				哼哼哈嘿，给你发消息了，怎么了呢
-			</div>
-			<div style="clear:both;"></div>
-		</div>
-		<div class="chat-time">12-28 12:30</div>
-		<div class="chat-content-right">
-			<img src="__IMG__/head.jpg" class="chat-content-head">
-			<div class="chat-content-text">
-				<div class="chat-content-text-icon"></div>
-				<div class="chat-content-status">
-					已读<br>
-					12-28 15:20
-				</div>
-				哼哼哈嘿，给你发消息了
-			</div>
-			
-			<div style="clear:both;"></div>
-		</div>
-	</div>
-	<div  class="chat-input">
-		<input type="text">
-		<span class="chat-input-button">发送</span>
+			</if>
+		</volist>
+		
 	</div>
 	
+	<div class="chat-input">
+		<input name="mymsg" id="mychat" type="text" class="chat-input-text">
+		<span class="chat-input-button">提交</span>
+	</div>
+	
+	
+	<!--pop-tip start-->
+	<div class="popup-tip">
+		<span class="popup-tip-text"></span>
+	</div>
+	<!--pop-tip end-->
 
 	<script>
 		$(document).ready(function(){
 			$('body').scrollTop(Number($('body').height()));
+			$('.chat-content').css("min-height",Number($(window).height())-130+'px');
+			
+			
+		})
+		
+		var msgnum = $(".chatmsg").length;
+		
+		//ajax 每半分钟请求一次数据
+		function getData(){
+			
+			$.ajax({
+				type:'POST',
+				url:'/wap.php?s=/Message/mchat',
+				data:{
+					'act':'getajax',
+					'uid':"{$chatid}",
+					'msgnum':msgnum
+				},
+				success: function(data){
+					
+					if(data != 0){
+						var newmsg = $.parseJSON(data);
+						
+						
+						for(var i=0;i<newmsg.length;i++){
+							$(".chat-content").append(
+								'<div class="chat-time">'+ newmsg[i]["sendtime"] +'</div>'
+							);
+
+							var lookstatus = '';
+							if(newmsg[i]["looktime"] == null){
+								lookstatus = "未读";
+							}else{
+								lookstatus = "已读<br>" + newmsg[i]["looktime"];
+							}
+							
+							if(newmsg[i]["fromid"] == '{$chatid}'){
+								$(".chat-content").append(
+									'<div class="chatmsg chat-content-left">'+
+									'	<img src="{$chatavatar}" class="chat-content-head">'+
+									'	<div class="chat-content-text">'+
+									'		<div class="chat-content-text-icon"></div>'+
+									'		<div class="chat-content-status">'+
+												lookstatus +
+									'		</div>'+
+											newmsg[i]["msg"] +
+									'	</div>'+
+									'	<div style="clear:both;"></div>'+
+									'</div>'
+								);
+							}else{
+								$(".chat-content").append(
+									'<div class="chatmsg chat-content-right">'+
+									'	<img src="{$myavatar}" class="chat-content-head">'+
+									'	<div class="chat-content-text">'+
+									'		<div class="chat-content-text-icon"></div>'+
+									'		<div class="chat-content-status">'+
+												lookstatus +
+									'		</div>'+
+											newmsg[i]["msg"]+
+									'	</div>'+
+									'	<div style="clear:both;"></div>'+
+									'</div>'
+								);
+							}
+							msgnum	= msgnum+1;						
+						};
+						$('body').scrollTop(Number($('body').height()));
+					}
+				},
+				error:function(data){
+					console.log("获取失败");
+				}
+			});
+		}
+		setInterval(getData,3000);
+		
+		
+		
+		$(".chat-input-button").click(function(){
+			if($("#mychat").val() != ''){
+				var mymsg = $("#mychat").val();
+				$.ajax({
+					type:'POST',
+					url:"/wap.php?s=/Message/mchat/",
+					dataType:"json",
+					data:{
+						act:'ajax',
+						mymsg:mymsg,
+						uid:"{$chatid}",
+						type:0
+					},
+					success: function(data){
+						if(data == 1){    //发送成功
+							$(".chat-content").append(
+								'<div class="chat-time"><?php echo date("m-d H:i") ?></div>'+
+									'<div class="chat-content-right">'+
+									'	<img src="{$myavatar}" class="chat-content-head">'+
+									'	<div class="chat-content-text">'+
+									'		<div class="chat-content-text-icon"></div>'+
+									'		<div class="chat-content-status">'+
+									'			未读'+
+									'		</div>'+
+											mymsg+
+									'	</div>'+
+									'	<div style="clear:both;"></div>'+
+									'</div>'
+							);
+							$("#mychat").val('');
+						}else if(data == 0){   //发送失败
+							$(".popup-tip-text").text("消息发送失败，请重试！");
+							$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+						}
+						msgnum	= msgnum+1;	
+						$('body').scrollTop(Number($('body').height()));
+					},
+					error:function(data){
+						$(".popup-tip-text").text("消息发送失败，请重试！");
+						$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+					}
+				});
+			}
+			
 		})
 	</script>
 	
