@@ -1028,6 +1028,30 @@ li.task-filter-active{
 	text-align:center;
 	margin-top:20px;
 }
+.releasetask-pay-checkbox{
+	float:right;
+	margin-right:20px;
+	background-image:url(../img/checkbox.png);
+	background-repeat:no-repeat;
+	background-size:22px auto;
+	background-position:top left;
+}
+.releasetask-pay-checkbox input{
+	opacity:0;
+	filter:alpha(opacity=0);
+	margin-right:10px;
+}
+.releasetask-pay-meet{
+	display:none;
+	margin-bottom:18px;
+}
+.releasetask-p2{
+	margin-top:10px;
+	clear:both;
+	width:100%;
+}
+
+
 
 
 

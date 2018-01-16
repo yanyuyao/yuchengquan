@@ -79,15 +79,26 @@ class JobController extends Home2Controller {
         $title = isset($_REQUEST['title'])?$_REQUEST['title']:'';
         $company = isset($_REQUEST['company'])?$_REQUEST['company']:'';
         $peoplenum = isset($_REQUEST['peoplenum'])?$_REQUEST['peoplenum']:'';
-        $commision = isset($_REQUEST['commision'])?($_REQUEST['commision']):'';
+        $commision1 = isset($_REQUEST['commision1'])?($_REQUEST['commision1']):'';
+        $commision2 = isset($_REQUEST['commision2'])?($_REQUEST['commision2']):'';
+        $commision3 = isset($_REQUEST['commision3'])?($_REQUEST['commision3']):'';
         $workday = isset($_REQUEST['workday'])?intval($_REQUEST['workday']):0;
         $workhours = isset($_REQUEST['workhours'])?intval($_REQUEST['workhours']):0;
         $contactname = isset($_REQUEST['contactname'])?$_REQUEST['contactname']:'';
         $contactphone = isset($_REQUEST['contactphone'])?$_REQUEST['contactphone']:'';
+		$contactname2 = isset($_REQUEST['contactname2'])?$_REQUEST['contactname2']:'';
+        $contactphone2 = isset($_REQUEST['contactphone2'])?$_REQUEST['contactphone2']:'';
         $workaddress = isset($_REQUEST['workaddress'])?$_REQUEST['workaddress']:'';
         $content = isset($_REQUEST['content'])?$_REQUEST['content']:'';
         
-        
+        if($commision3 == "面议"){
+			$commision = $commision3;
+		}else if($commision2 == ''){
+			$commision = $commision1;
+		}else if($commision2 != ''){
+			$commision = $commision1."~".$commision2;
+		}
+		
         if($title && $content){
             $data = array(
                 "iUserId"=> $uid,
@@ -95,10 +106,12 @@ class JobController extends Home2Controller {
                 "companyname"=>  addslashes($company),
                 "content"=>  addslashes($content),
                 "peoplenums"=>$peoplenum,
-                "commission"=>$commision,
+                "commission"=> $commision,
                 "workhours"=>$workday*24 + $workhours,
                 "contactname"=>  addslashes($contactname),
                 "contactphone"=>$contactphone,
+				"contactname2"=>  addslashes($contactname2),
+                "contactphone2"=>$contactphone2,
                 "workaddress"=>$workaddress,
                 "status"=>0,
                 "created_at"=>date("Y-m-d H:i:s",time()),
