@@ -27,6 +27,71 @@
 		<a href="/wap.php?s=/User/center"><div class="index-dh-single">我的</div></a>
         <div style="clear:both;"></div>
     </div>
+	<div class="index-job">
+		<ul class="index-job-bt">
+			<li class="active">全职</li>
+			<li>兼职</li>
+		</ul>
+		<div class="index-job-refresh">
+			<span id="refresh"><img src="__IMG__/refresh.png">换一批</span>
+		</div>
+		<div class="index-joblist" style="display:block;" jobnum="0">
+			<volist name="home_quanzhi_job" id="job">
+                <div class="index-job-single">
+					<div class="index-task-single-line">
+						<span class="index-job-commission"><span class="index-job-commission"><if condition="$job.commission neq NULL">￥{$job.commission}</if></span></span>
+						<a href="/wap.php?s=/Job/detail/jobId/{$job.id}"><span class="index-task-li-right"></span>{$job.title}</a>
+					</div>
+					<div class="index-task-single-line">
+						<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
+						<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
+						<div class="index-task-single-icon bgorange">长</div>
+					</div>
+					<div class="index-task-single-line index-task-single-address">
+						<span class="index-task-li-right">长期</span>
+						<img src="__IMG__/address.png">{$job.content}
+					</div>
+                </div>
+			</volist>
+		
+		</div>
+		<div class="index-joblist" jobnum="0">
+			<volist name="home_jianzhi_job" id="job">
+				<div class="index-job-single">
+						<div class="index-task-single-line">
+							<span class="index-job-commission"><if condition="$job.commission neq NULL">￥{$job.commission}</if></span>
+							<a href="/wap.php?s=/Job/detail/jobId/{$job.id}">{$job.title}</a>
+						</div>
+						<div class="index-task-single-line">
+								<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>
+								<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>
+								<if condition="$job['changqizhaopin'] eq '长期'">
+									<div class="index-task-single-icon bgorange">长</div>
+								<elseif condition="$job['changqizhaopin'] eq '短期'" />
+									<div class="index-task-single-icon bgorange">短</div>
+								</if>
+
+								<if condition="$job.sexlimit eq '男'">
+									<div class="index-task-single-icon bgblue">男</div>
+								<elseif condition="$job.sexlimit eq '女'" />
+									<div class="index-task-single-icon bgpink">女</div>
+								<else />
+
+								</if>
+						</div>
+						<div class="index-task-single-line index-task-single-address">
+								<span class="index-task-li-right">长期</span>
+								<img src="__IMG__/address.png">禹城智达电子商务有限公司
+						</div>
+				</div>
+			</volist>
+		</div>
+	</div>
+	
+	
+	
+	
+<!--
 	<div class="index-task">
 		<a href="#">
 		<div class="index-task-bt">
@@ -93,6 +158,7 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+-->
 	<div class="swiper-container swiper-container3">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide"><img src="__IMG__/logo-text.jpg"></div>
@@ -101,6 +167,15 @@
 		</div>
 		<div class="swiper-pagination swiper-pagination3"></div>
 	</div>
+	
+	
+	<!--pop-tip start-->
+	<div class="popup-tip">
+		<span class="popup-tip-text"></span>
+	</div>
+	<!--pop-tip end-->
+	
+	
 <include file="Public/footer"/>
 <script src="__JS__/swiper.min.js"></script>
 <script>
@@ -109,6 +184,7 @@
         paginationClickable: true,
         spaceBetween:0
     });
+	/*
 	var swiper = new Swiper('.swiper-container2', {
         direction: 'vertical',
 		loop:true,
@@ -117,9 +193,101 @@
 		freeMode : true,
 	    autoplayDisableOnInteraction : false
     });
+	*/
 	var swiper = new Swiper('.swiper-container3', {
         pagination: '.swiper-pagination3',
         paginationClickable: true,
         spaceBetween:0
     });
 </script>
+<script>
+	//tab
+	$(".index-job-bt li").click(function(){
+		var i = $(this).index();
+		$(this).addClass("active");
+		$(this).siblings("li").removeClass("active");
+		$(".index-joblist").hide();
+		$(".index-joblist").eq(i).show();
+	})
+
+	//refresh
+	$("#refresh").click(function(){
+		var i = $(".index-job-bt li.active").index();
+		var jobnum = Number($(".index-joblist").eq(i).attr("jobnum")) + 5;
+		
+		$.ajax({
+			type:"POST",
+			url:"/wap.php?s=Index/index",
+			data:{
+				jobnum:jobnum,
+				jobtype:i
+			},
+			success:function(data){
+				var res = $.parseJSON(data);
+				console.log(res);
+				if(res == null){
+					$(".popup-tip-text").text("已没有更多");
+					$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+				}else if(res.length == 5){
+					$(".index-joblist").eq(i).attr("jobnum",jobnum);
+					var joblist = '';
+					for(l=0;l<5;l++){
+						var commission = '',qixian = '',sex = '';
+						if(res[l]['commission'] != null){
+							commission = '￥' + res[l]['commission'];
+						}else{
+							commission = '';
+						}
+						
+						if(res[l]["changqizhaopin"] == "长期"){
+							qixian = "长";
+						}else if(res[l]["changqizhaopin"] == "短期"){
+							qixian = "短";
+						}
+						
+						if(res[l]["sexlimit"] == "男"){
+							sex = "男";
+						}else if(res[l]["sexlimit"] == "女"){
+							sex = "女";
+						}
+						
+						var jobsingle = '<div class="index-job-single">'+
+										'	<div class="index-task-single-line">'+
+										'		<span class="index-job-commission">' + commission + '</span>'+
+										'		<a href="/wap.php?s=/Job/detail/jobId/' + res[l]["id"] + '">' + res[l]["title"] + '</a>'+
+										'	</div>'+
+										'	<div class="index-task-single-line">'+
+										'			<div class="index-task-single-icon"><img src="__IMG__/jin.png"></div>'+
+										'			<div class="index-task-single-icon"><img src="__IMG__/prove.png"></div>'+
+										'			<div class="index-task-single-icon bgorange">'+ qixian +'</div>'+
+										'			<div class="index-task-single-icon bgblue">'+ sex +'</div>'+
+										'	</div>'+
+										'	<div class="index-task-single-line index-task-single-address">'+
+										'			<span class="index-task-li-right">长期</span>'+
+										'			<img src="__IMG__/address.png">' + res[l]["content"] +
+										'	</div>'+
+										'</div>';
+						joblist = joblist + jobsingle;
+					}
+					$(".index-joblist").eq(i).html(joblist);
+					$(".index-task-single-icon").each(function(){
+						if($(this).html() == ''){
+							$(this).hide();
+						}
+					})
+				}else{
+					$(".popup-tip-text").text("已没有更多");
+					$(".popup-tip").fadeIn(500).delay(3000).fadeOut(500);
+				}
+			},
+			error:function(){
+				
+			}
+			
+		});
+	})
+
+
+</script>
+
+

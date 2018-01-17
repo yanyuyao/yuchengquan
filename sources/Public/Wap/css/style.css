@@ -147,6 +147,7 @@ textarea.popup-text-input-textarea{
 	left:0;
 	text-align:center;
 	display:none;
+	z-index:99;
 }
 .popup-tip-text{
 	background-color:#000;
@@ -366,7 +367,55 @@ textarea.popup-text-input-textarea{
 	justify-content:center;
 	text-align:center;
 }
-
+.index-job-bt{
+	width:100%;
+	border-top:10px solid #f2f2f2;
+	border-bottom:10px solid #f2f2f2;
+	height:60px;
+	margin:0;
+	padding:0;
+}
+.index-job-bt li{
+	list-style:none;
+	float:left;
+	margin-left:58px;
+	width:150px;
+	line-height:60px;
+	text-align:center;
+}
+.index-job-bt li.active{
+	border-bottom:2px solid #f96306;
+	color:#f96306;
+	font-size:19px;
+}
+.index-joblist{
+	padding:0 30px;
+	margin-bottom:30px;
+	border-bottom:10px solid #f2f2f2;
+	display:none;
+}
+.index-job-single{
+	border-bottom:1px solid #ccc;
+	margin-top:10px;
+}
+.index-job-refresh{
+	padding:10px 30px;
+	text-align:right;
+	color:#5899EF;
+	border-bottom:1px solid #ccc;
+	text-decoration:underline;
+}
+.index-job-refresh img{
+	width:17px;
+	height:17px;
+	margin-right:10px;
+	vertical-align:middle;
+}
+.index-job-commission{
+	float:right;
+	color:#f96306;
+	font-size:18px;
+}
 
 
 
